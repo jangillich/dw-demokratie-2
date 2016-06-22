@@ -4,5 +4,11 @@
     <string name="app_name">Festival für unangepasste Kunst</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="name_festival_1">Demokratie</string>
+    <string name="name_festival_2">Macht</string>
+    <string name="name_festival_3">Partizipation</string>
+    <string name="date_festival_1">Mai 6 – 8</string>
+    <string name="date_festival_2">Juli 15 – 17</string>
+    <string name="date_festival_3">Oktober 7 – 9</string>
 
 </resources>

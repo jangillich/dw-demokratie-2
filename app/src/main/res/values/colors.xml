@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+   <color name="primary">@color/demokratie</color>
+   <color name="primary_dark">#232323</color>
+   <color name="accent">@color/partizipation</color>
+
+   <color name="demokratie">#4b4b4b</color>
+   <color name="macht">#9c0000</color>
+   <color name="partizipation">#f5a400</color>
+   <color name="demokratie_transparent">#994b4b4b</color>
+   <color name="macht_transparent">#999c0000</color>
+   <color name="partizipation_transparent">#99f5a400</color>
+   <color name="demokratie_transparent_selected">#bb4b4b4b</color>
+   <color name="macht_transparent_selected">#bb9c0000</color>
+   <color name="partizipation_transparent_selected">#bbf5a400</color>
+
+   <color name="text_primary">#fefefe</color>
+   <color name="text_secondary">#66fefefe</color>
+
+</resources>
