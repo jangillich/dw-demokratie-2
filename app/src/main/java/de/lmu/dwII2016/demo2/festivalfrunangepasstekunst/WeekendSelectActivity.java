@@ -1,5 +1,6 @@
 package de.lmu.dwII2016.demo2.festivalfrunangepasstekunst;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -26,6 +27,12 @@ public class WeekendSelectActivity extends AppCompatActivity {
     ImageSwitcher machtSwitcher;
     @Bind(R.id.partizipation_images)
     ImageSwitcher partizipationSwitcher;
+    @Bind(R.id.demokratie_view)
+    View demokratieView;
+    @Bind(R.id.macht_view)
+    View machtView;
+    @Bind(R.id.partizipation_view)
+    View partizipationView;
 
     private String last_demokratie_image;
     private String last_macht_image;
@@ -40,6 +47,29 @@ public class WeekendSelectActivity extends AppCompatActivity {
         // TODO: change arrays
         initImageSwitcher(machtSwitcher, 2, R.array.demokratie_kunstwerke);
         initImageSwitcher(partizipationSwitcher, 3, R.array.demokratie_kunstwerke);
+        initOnClickListener();
+    }
+
+    private void initOnClickListener() {
+        demokratieView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(WeekendSelectActivity.this,  DemokratieOverviewActivity.class);
+                startActivity(intent);
+            }
+        });
+        machtView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        partizipationView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     private void initImageSwitcher(final ImageSwitcher switcher, final int festival, final int arrayRes) {
@@ -60,8 +90,6 @@ public class WeekendSelectActivity extends AppCompatActivity {
         switcher.setOutAnimation(animOut);
         switcher.postDelayed(new Runnable() {
             public void run() {
-//                Picasso.with(WeekendSelectActivity.this).load(getRandomImage(festival, arrayRes))
-//                      .into(switcher.getvie());
                 switcher.setImageDrawable(getRandomImage(festival, arrayRes));
                 switcher.postDelayed(this, 5000);
             }
@@ -111,7 +139,15 @@ public class WeekendSelectActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_events) {
+            return true;
+        } else if (id == R.id.action_anfahrt) {
+            return true;
+        } else if (id == R.id.action_festival) {
+            return true;
+        } else if (id == R.id.action_gruender) {
+            return true;
+        } else if (id == R.id.action_impressum) {
             return true;
         }
         return super.onOptionsItemSelected(item);

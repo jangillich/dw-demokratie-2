@@ -1,8 +1,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".WeekendSelectActivity" >
-    <item android:id="@+id/action_settings"
-        android:title="@string/action_settings"
+    <item android:id="@+id/action_events"
+        android:title="@string/action_events"
+        android:orderInCategory="100"
+        android:showAsAction="never" />
+    <item android:id="@+id/action_anfahrt"
+        android:title="@string/action_anfahrt"
+        android:orderInCategory="100"
+        android:showAsAction="never" />
+    <item android:id="@+id/action_festival"
+        android:title="@string/action_festival"
+        android:orderInCategory="100"
+        android:showAsAction="never" />
+    <item android:id="@+id/action_gruender"
+        android:title="@string/action_gruender"
+        android:orderInCategory="100"
+        android:showAsAction="never" />
+    <item android:id="@+id/action_impressum"
+        android:title="@string/action_impressum"
         android:orderInCategory="100"
         android:showAsAction="never" />
 </menu>

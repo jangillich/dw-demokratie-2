@@ -19,6 +19,7 @@
 
         </ImageSwitcher>
         <View
+           android:id="@+id/demokratie_view"
            android:layout_width="match_parent"
            android:layout_height="match_parent"
            android:clickable="true"
@@ -57,6 +58,7 @@
 
         </ImageSwitcher>
         <View
+           android:id="@+id/macht_view"
            android:layout_width="match_parent"
            android:layout_height="match_parent"
            android:clickable="true"
@@ -95,6 +97,7 @@
 
         </ImageSwitcher>
         <View
+           android:id="@+id/partizipation_view"
            android:layout_width="match_parent"
            android:layout_height="match_parent"
            android:clickable="true"

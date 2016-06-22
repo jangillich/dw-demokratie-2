@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-   <color name="primary">@color/demokratie</color>
-   <color name="primary_dark">#232323</color>
+   <color name="primary">#ff303030</color>
+   <color name="primary_dark">#ff212121</color>
    <color name="accent">@color/partizipation</color>
 
    <color name="demokratie">#4b4b4b</color>
