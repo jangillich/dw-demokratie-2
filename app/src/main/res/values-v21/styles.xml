@@ -18,6 +18,7 @@
         <item name="colorPrimaryDark">@color/primary_dark</item>
         <item name="android:colorAccent">@color/accent</item>
         <item name="colorAccent">@color/accent</item>
+        <item name="android:actionBarTheme">@style/Base.Theme.AppCompat.Light.DarkActionBar</item>
     </style>
 
 </resources>

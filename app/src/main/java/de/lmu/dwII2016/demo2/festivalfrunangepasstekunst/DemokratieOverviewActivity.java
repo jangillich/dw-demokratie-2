@@ -44,6 +44,8 @@ public class DemokratieOverviewActivity extends AppCompatActivity {
       ButterKnife.bind(this);
 
       setSupportActionBar(toolbar);
+      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
       tabLayout.addTab(tabLayout.newTab()
             .setText(getResources().getText(R.string.tab_kunstwerke)));
