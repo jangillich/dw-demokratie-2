@@ -17,5 +17,10 @@
 
    <color name="text_primary">#fefefe</color>
    <color name="text_secondary">#66fefefe</color>
+   <color name="text_dark">#ff303030</color>
+
+   <color name="flat_button_color">#9c0000</color>
+   <color name="flat_button_color_pressed">#730000</color>
+   <color name="flat_button_background_pressed">#7c9c0000</color>
 
 </resources>

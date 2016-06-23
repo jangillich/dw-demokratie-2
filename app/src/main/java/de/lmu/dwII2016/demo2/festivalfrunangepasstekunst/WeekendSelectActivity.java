@@ -1,14 +1,18 @@
 package de.lmu.dwII2016.demo2.festivalfrunangepasstekunst;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -34,15 +38,30 @@ public class WeekendSelectActivity extends AppCompatActivity {
     @Bind(R.id.partizipation_view)
     View partizipationView;
 
+    @Bind(R.id.notification_container)
+    CardView notificationContainer;
+    @Bind(R.id.notification_button_ok)
+    Button notificationButtonOk;
+    @Bind(R.id.notification_button_more)
+    Button notificationButtonMore;
+
     private String last_demokratie_image;
     private String last_macht_image;
     private String last_partizipation_image;
+
+    public static final String MyPREFERENCES = "MyPrefs" ;
+    public static final String NotificationClickedAway = "notAway";
+    SharedPreferences sharedpreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weekend_select);
         ButterKnife.bind(this);
+
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+
+        initNotification();
         initImageSwitcher(demokratieSwitcher, 1, R.array.demokratie_kunstwerke);
         // TODO: change arrays
         initImageSwitcher(machtSwitcher, 2, R.array.demokratie_kunstwerke);
@@ -70,6 +89,42 @@ public class WeekendSelectActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void initNotification() {
+        boolean showNotification = !sharedpreferences.getBoolean(NotificationClickedAway, false);
+        if(showNotification) {
+            notificationContainer.setVisibility(View.VISIBLE);
+            notificationButtonOk.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    notificationContainer.animate()
+                          .translationX(getResources().getDisplayMetrics().widthPixels)
+                          .alpha(1.0f)
+                          .setDuration(500)
+                          .withEndAction(new Runnable() {
+                              @Override
+                              public void run() {
+                                  notificationContainer.setVisibility(View.GONE);
+                                  saveHideNotificationButton();
+                              }
+                          }).start();
+                }
+            });
+            notificationButtonMore.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //TODO: go to festival page
+                    saveHideNotificationButton();
+                }
+            });
+        }
+    }
+
+    private void saveHideNotificationButton() {
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putBoolean(NotificationClickedAway, true);
+        editor.apply();
     }
 
     private void initImageSwitcher(final ImageSwitcher switcher, final int festival, final int arrayRes) {

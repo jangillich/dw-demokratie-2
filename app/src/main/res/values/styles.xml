@@ -16,4 +16,17 @@
         <item name="colorAccent">@color/accent</item>
     </style>
 
+    <style name="Festival.FlatButton" parent="Base.TextAppearance.AppCompat.Button">
+        <item name="android:background">@drawable/selector_btn_flat</item>
+        <item name="android:textColor">@color/flat_button_color</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textAppearance">@style/Festival.Text.RobotoMedium</item>
+        <item name="android:minWidth">@dimen/btn_flat_min_width</item>
+        <item name="android:minHeight">@dimen/btn_flat_min_height</item>
+        <item name="android:paddingLeft">@dimen/btn_flat_padding</item>
+        <item name="android:paddingRight">@dimen/btn_flat_padding</item>
+        <item name="android:layout_marginLeft">@dimen/btn_flat_margin</item>
+        <item name="android:layout_marginRight">@dimen/btn_flat_margin</item>
+    </style>
+
 </resources>

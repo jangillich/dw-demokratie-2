@@ -8,4 +8,11 @@
     <dimen name="festival_selection_button">150dp</dimen>
     <dimen name="text_size_festival_name">22sp</dimen>
     <dimen name="text_size_festival_date">18sp</dimen>
+
+
+    <dimen name="btn_flat_corner_radius">2dp</dimen>
+    <dimen name="btn_flat_min_width">50dp</dimen>
+    <dimen name="btn_flat_min_height">36dp</dimen>
+    <dimen name="btn_flat_padding">8dp</dimen>
+    <dimen name="btn_flat_margin">4dp</dimen>
 </resources>
