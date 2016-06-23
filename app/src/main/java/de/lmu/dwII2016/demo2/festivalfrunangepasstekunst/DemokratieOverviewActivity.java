@@ -30,7 +30,15 @@ public class DemokratieOverviewActivity extends AppCompatActivity {
    public boolean onOptionsItemSelected(MenuItem item) {
       int id = item.getItemId();
 
-      if (id == R.id.action_settings) {
+      if (id == R.id.action_events) {
+         return true;
+      } else if (id == R.id.action_anfahrt) {
+         return true;
+      } else if (id == R.id.action_festival) {
+         return true;
+      } else if (id == R.id.action_gruender) {
+         return true;
+      } else if (id == R.id.action_impressum) {
          return true;
       }
 
