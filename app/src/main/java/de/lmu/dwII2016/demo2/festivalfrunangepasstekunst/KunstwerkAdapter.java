@@ -1,13 +1,11 @@
 package de.lmu.dwII2016.demo2.festivalfrunangepasstekunst;
 
-import android.app.Activity;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -39,22 +37,21 @@ public class KunstwerkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
    private static final int TYPE_ITEM = 1;
 
    private ArrayList<Integer> kunstwerke;
-   private Activity context;
+   private Fragment context;
 
-   public KunstwerkAdapter(Activity context,ArrayList<Integer> kunstwerke) {
+   public KunstwerkAdapter(Fragment context,ArrayList<Integer> kunstwerke) {
       this.kunstwerke = kunstwerke;
       this.context = context;
    }
 
    @Override
    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-//      Context context = parent.getContext();
-//      context.getLayoutInflater().inflate()
       if (viewType == TYPE_ITEM) {
-         View view = context.getLayoutInflater().inflate(R.layout.item_kunstwerk, parent, false);
-         return new ItemViewHolder(view);
+         View view = context.getActivity().getLayoutInflater().inflate(R.layout.item_kunstwerk, parent, false);
+         ItemViewHolder viewHolder = new ItemViewHolder(view);
+         return viewHolder;
       } else if (viewType == TYPE_HEADER) {
-         View view = LayoutInflater.from(context).inflate(R.layout.item_recycler_header, parent, false);
+         View view = LayoutInflater.from(context.getActivity()).inflate(R.layout.item_recycler_header, parent, false);
          return new HeaderViewHolder(view);
       }
       throw new RuntimeException("There is no type that matches the type " + viewType + " + make sure your using types correctly");
@@ -64,7 +61,11 @@ public class KunstwerkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
       if (!isPositionHeader(position)) {
          ItemViewHolder itemViewHolder = (ItemViewHolder) viewHolder;
-         Picasso.with(context).load(kunstwerke.get(position - 2)).into(itemViewHolder.imgKunstwerk);
+//         itemViewHolder.imgKunstwerk.setImageDrawable(ImageHelper.decodeSampledBitmapFromResource(context.getResources(), kunstwerke.get(position - 2), 150, 150));
+         //
+         ((KunstwerkeOverviewFragment)context).loadBitmap(kunstwerke.get(position - 2), itemViewHolder.imgKunstwerk);
+//         loadBitmap(context, kunstwerke.get(position - 2), itemViewHolder.imgKunstwerk);
+//         Picasso.with(context).load(kunstwerke.get(position - 2)).into(itemViewHolder.imgKunstwerk);
       }
    }
 
@@ -84,4 +85,20 @@ public class KunstwerkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
    private boolean isPositionHeader(int position) {
       return position == 0 || position == 1;
    }
+
+
+//   public void loadBitmap(Context context, int resId, ImageView imageView) {
+//      final String imageKey = String.valueOf(resId);
+//
+//      final Bitmap bitmap = KunstwerkeOverviewFragment.getBitmapFromMemCache(imageKey);
+//      if (bitmap != null) {
+//         imageView.setImageBitmap(bitmap);
+//      } else {
+//         imageView.setImageResource(R.drawable.ic_launcher);
+//         KunstwerkeOverviewFragment.BitmapWorkerTask task = new KunstwerkeOverviewFragment.BitmapWorkerTask(context, imageView);
+//         task.execute(resId);
+//      }
+//   }
+
+
 }
