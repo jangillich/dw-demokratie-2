@@ -16,5 +16,5 @@
     <dimen name="btn_flat_padding">8dp</dimen>
     <dimen name="btn_flat_margin">4dp</dimen>
 
-    <dimen name="actionbar_and_tab_height">96dp</dimen>
+    <dimen name="actionbar_and_tab_height">104dp</dimen>
 </resources>
