@@ -6,6 +6,8 @@
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/primary_dark</item>
         <item name="colorAccent">@color/accent</item>
+        <item name="android:radioButtonStyle">@style/Festival.RadioButton</item>
+        <item name="radioButtonStyle">@style/Festival.RadioButton</item>
     </style>
 
     <!-- the theme applied to the application or activity -->
@@ -14,6 +16,7 @@
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/primary_dark</item>
         <item name="colorAccent">@color/accent</item>
+        <item name="android:radioButtonStyle">@style/Festival.RadioButton</item>
     </style>
 
     <style name="Festival.FlatButton" parent="Base.TextAppearance.AppCompat.Button">
@@ -27,6 +30,13 @@
         <item name="android:paddingRight">@dimen/btn_flat_padding</item>
         <item name="android:layout_marginLeft">@dimen/btn_flat_margin</item>
         <item name="android:layout_marginRight">@dimen/btn_flat_margin</item>
+    </style>
+    <style name="Festival.RadioButton" parent="Base.Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:button">@android:color/transparent</item>
+        <item name="android:background">@drawable/selector_viewpager_indicator</item>
+        <item name="android:height">10dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:layout_marginLeft">5dp</item>
     </style>
 
 </resources>

@@ -16,6 +16,9 @@
     <string name="date_festival_1">Mai 6 – 8</string>
     <string name="date_festival_2">Juli 15 – 17</string>
     <string name="date_festival_3">Oktober 7 – 9</string>
+    <string name="location_festival_1">Ort 1</string>
+    <string name="location_festival_2">Ort 1</string>
+    <string name="location_festival_3">Ort 1</string>
 
     <string name="tab_kunstwerke">Kunstwerke</string>
     <string name="tab_kuenstler">Künstler</string>
