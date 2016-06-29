@@ -53,7 +53,8 @@ public class TabWallFragment extends Fragment {
 
    private void initViews() {
       recyclerView.setHasFixedSize(true);
-      recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+      StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+      recyclerView.setLayoutManager(layoutManager);
 
       ArrayList<Integer> kunstwerkeArray = prepareData();
       WallImageAdapter adapter = new WallImageAdapter(TabWallFragment.this, kunstwerkeArray);
