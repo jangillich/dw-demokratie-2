@@ -1,0 +1,43 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   android:background="@color/black"
+   tools:context="de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.FullscreenActivity">
+
+   <ImageView
+      android:id="@+id/fullscreen_content"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:gravity="center"
+      android:keepScreenOn="true"
+      android:scaleType="fitCenter"/>
+
+   <FrameLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:fitsSystemWindows="true">
+
+      <LinearLayout
+         android:id="@+id/fullscreen_content_controls"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:gravity="center_horizontal"
+         android:layout_gravity="bottom"
+         android:padding="@dimen/activity_vertical_margin"
+         android:background="@color/white"
+         android:orientation="vertical"
+         tools:ignore="UselessParent">
+
+         <Button
+            android:id="@+id/dummy_button"
+            style="@style/Festival.FlatButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="Beispiel Künstler" />
+
+      </LinearLayout>
+   </FrameLayout>
+
+</FrameLayout>

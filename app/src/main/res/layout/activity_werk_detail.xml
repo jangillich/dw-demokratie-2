@@ -56,7 +56,6 @@
       android:layout_height="match_parent"
       android:scaleType="centerCrop"/>
    <ImageView
-      android:clickable="true"
       android:src="@drawable/selector_select_festival"
       android:layout_above="@id/img_infos"
       android:layout_below="@id/toolbar"

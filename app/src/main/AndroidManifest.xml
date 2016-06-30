@@ -33,6 +33,15 @@
             android:name="android.support.PARENT_ACTIVITY"
             android:value="de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.FestivalOverviewActivity" />
       </activity>
+      <activity
+         android:name=".FullscreenActivity"
+         android:configChanges="orientation|keyboardHidden|screenSize"
+         android:parentActivityName=".WerkDetailActivity"
+         android:theme="@style/Festival.FullscreenTheme">
+         <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.WerkDetailActivity" />
+      </activity>
    </application>
 
 </manifest>

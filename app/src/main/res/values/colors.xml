@@ -19,7 +19,10 @@
    <color name="text_secondary">#66fefefe</color>
    <color name="text_dark">#ff303030</color>
 
-   <color name="pager_indicator_selected">#ffffff</color>
+   <color name="black">#000000</color>
+   <color name="white">#ffffff</color>
+
+   <color name="pager_indicator_selected">@color/white</color>
    <color name="pager_indicator_unselected">#636363</color>
 
    <color name="tab_indicator_demokratie">@color/pager_indicator_selected</color>
@@ -32,5 +35,4 @@
    <color name="flat_button_color">#9c0000</color>
    <color name="flat_button_color_pressed">#730000</color>
    <color name="flat_button_background_pressed">#7c9c0000</color>
-
 </resources>

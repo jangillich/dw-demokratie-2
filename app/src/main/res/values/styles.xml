@@ -1,62 +1,61 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="Festival" parent="Theme.AppCompat.Light.DarkActionBar">
+   <!-- Base application theme. -->
+   <style name="Festival" parent="Theme.AppCompat.Light.DarkActionBar">
 
-        <item name="colorPrimary">@color/primary</item>
-        <item name="colorPrimaryDark">@color/primary_dark</item>
-        <item name="colorAccent">@color/accent</item>
-        <item name="android:radioButtonStyle">@style/Festival.RadioButton</item>
-        <item name="radioButtonStyle">@style/Festival.RadioButton</item>
-    </style>
-
-    <!-- the theme applied to the application or activity -->
-    <style name="Festival.TabbedActionBar" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/primary</item>
-        <item name="colorPrimaryDark">@color/primary_dark</item>
-        <item name="colorAccent">@color/accent</item>
-        <item name="android:radioButtonStyle">@style/Festival.RadioButton</item>
-    </style>
-
-    <style name="Festival.FlatButton" parent="Base.TextAppearance.AppCompat.Button">
-        <item name="android:background">@drawable/selector_btn_flat</item>
-        <item name="android:textColor">@color/flat_button_color</item>
-        <item name="android:textAllCaps">true</item>
-        <item name="android:textAppearance">@style/Festival.Text.RobotoMedium</item>
-        <item name="android:minWidth">@dimen/btn_flat_min_width</item>
-        <item name="android:minHeight">@dimen/btn_flat_min_height</item>
-        <item name="android:paddingLeft">@dimen/btn_flat_padding</item>
-        <item name="android:paddingRight">@dimen/btn_flat_padding</item>
-        <item name="android:layout_marginLeft">@dimen/btn_flat_margin</item>
-        <item name="android:layout_marginRight">@dimen/btn_flat_margin</item>
-    </style>
-
-    <style name="Festival.ButtonRed" parent="Base.TextAppearance.AppCompat.Button">
-        <item name="android:background">@drawable/button_red</item>
-        <item name="android:textColor">@color/text_primary</item>
-        <item name="android:textAllCaps">true</item>
-        <item name="android:textAppearance">@style/Festival.Text.RobotoMedium</item>
-        <item name="android:height">@dimen/btn_flat_min_height</item>
-        <item name="android:minHeight">@dimen/btn_flat_min_height</item>
-        <item name="android:paddingRight">@dimen/btn_flat_padding</item>
-        <item name="android:paddingLeft">@dimen/btn_flat_padding</item>
-    </style>
-
-    <style name="Festival.RadioButton" parent="Base.Widget.AppCompat.CompoundButton.RadioButton">
-        <item name="android:button">@android:color/transparent</item>
-        <item name="android:background">@drawable/selector_viewpager_indicator</item>
-        <item name="android:height">10dp</item>
-        <item name="android:layout_marginRight">5dp</item>
-        <item name="android:layout_marginLeft">5dp</item>
-    </style>
-
-    <style name="Festival.NoActionBar">
-      <item name="windowActionBar">false</item>
-      <item name="windowNoTitle">true</item>
+      <item name="colorPrimary">@color/primary</item>
+      <item name="colorPrimaryDark">@color/primary_dark</item>
+      <item name="colorAccent">@color/accent</item>
+      <item name="android:radioButtonStyle">@style/Festival.RadioButton</item>
+      <item name="radioButtonStyle">@style/Festival.RadioButton</item>
    </style>
 
-    <style name="Festival.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+   <!-- the theme applied to the application or activity -->
+   <style name="Festival.TabbedActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+      <item name="colorPrimary">@color/primary</item>
+      <item name="colorPrimaryDark">@color/primary_dark</item>
+      <item name="colorAccent">@color/accent</item>
+      <item name="android:radioButtonStyle">@style/Festival.RadioButton</item>
+   </style>
 
-    <style name="Festival.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+   <style name="Festival.FlatButton" parent="Base.TextAppearance.AppCompat.Button">
+      <item name="android:background">@drawable/selector_btn_flat</item>
+      <item name="android:textColor">@color/flat_button_color</item>
+      <item name="android:textAllCaps">true</item>
+      <item name="android:textAppearance">@style/Festival.Text.RobotoMedium</item>
+      <item name="android:minWidth">@dimen/btn_flat_min_width</item>
+      <item name="android:minHeight">@dimen/btn_flat_min_height</item>
+      <item name="android:paddingLeft">@dimen/btn_flat_padding</item>
+      <item name="android:paddingRight">@dimen/btn_flat_padding</item>
+      <item name="android:layout_marginLeft">@dimen/btn_flat_margin</item>
+      <item name="android:layout_marginRight">@dimen/btn_flat_margin</item>
+   </style>
 
+   <style name="Festival.ButtonRed" parent="Base.TextAppearance.AppCompat.Button">
+      <item name="android:background">@drawable/button_red</item>
+      <item name="android:textColor">@color/text_primary</item>
+      <item name="android:textAllCaps">true</item>
+      <item name="android:textAppearance">@style/Festival.Text.RobotoMedium</item>
+      <item name="android:height">@dimen/btn_flat_min_height</item>
+      <item name="android:minHeight">@dimen/btn_flat_min_height</item>
+      <item name="android:paddingRight">@dimen/btn_flat_padding</item>
+      <item name="android:paddingLeft">@dimen/btn_flat_padding</item>
+   </style>
+
+   <style name="Festival.RadioButton" parent="Base.Widget.AppCompat.CompoundButton.RadioButton">
+      <item name="android:button">@android:color/transparent</item>
+      <item name="android:background">@drawable/selector_viewpager_indicator</item>
+      <item name="android:height">10dp</item>
+      <item name="android:layout_marginRight">5dp</item>
+      <item name="android:layout_marginLeft">5dp</item>
+   </style>
+
+   <style name="Festival.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+   <style name="Festival.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+   <style name="Festival.FullscreenTheme" parent="Festival">
+      <item name="android:windowActionBarOverlay">true</item>
+      <item name="android:windowBackground">@null</item>
+   </style>
 </resources>
