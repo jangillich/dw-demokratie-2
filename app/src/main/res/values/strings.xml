@@ -28,5 +28,6 @@
    <string name="title_activity_werk_detail">Kunstwerk</string>
    <string name="title_activity_impressum">Impressum</string>
    <string name="title_activity_event_infos">Event Informationen</string>
+   <string name="title_activity_anfahrt">Anfahrt</string>
 
 </resources>

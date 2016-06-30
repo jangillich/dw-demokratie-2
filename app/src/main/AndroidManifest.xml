@@ -51,13 +51,23 @@
             android:name="android.support.PARENT_ACTIVITY"
             android:value="de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.FestivalOverviewActivity" />
       </activity>
-      <activity android:name=".EventInfosActivity"
+      <activity
+         android:name=".EventInfosActivity"
          android:label="@string/title_activity_event_infos"
          android:parentActivityName=".FestivalOverviewActivity"
          android:theme="@style/Festival">
          <meta-data
             android:name="android.support.PARENT_ACTIVITY"
-            android:value="de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.FestivalOverviewActivity" /></activity>
+            android:value="de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.FestivalOverviewActivity" />
+      </activity>
+      <activity android:name=".AnfahrtActivity"
+         android:label="@string/title_activity_anfahrt"
+         android:parentActivityName=".FestivalOverviewActivity"
+         android:theme="@style/Festival">
+         <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.FestivalOverviewActivity" />
+      </activity>
    </application>
 
 </manifest>

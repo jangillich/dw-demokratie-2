@@ -152,6 +152,8 @@ public class SelectFestivalActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_anfahrt) {
+            Intent intent = new Intent(SelectFestivalActivity.this,  AnfahrtActivity.class);
+            startActivity(intent);
             return true;
         } else if (id == R.id.action_festival) {
             Intent intent = new Intent(SelectFestivalActivity.this,  EventInfosActivity.class);
