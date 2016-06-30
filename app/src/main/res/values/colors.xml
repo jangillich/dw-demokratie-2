@@ -22,6 +22,10 @@
    <color name="pager_indicator_selected">#ffffff</color>
    <color name="pager_indicator_unselected">#636363</color>
 
+   <color name="tab_indicator_demokratie">@color/pager_indicator_selected</color>
+   <color name="tab_indicator_macht">@color/macht</color>
+   <color name="tab_indicator_partizipation">@color/partizipation</color>
+
    <color name="transparent">#00000000</color>
    <color name="black_transparent">#26000000</color>
 

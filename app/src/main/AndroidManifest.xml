@@ -18,7 +18,6 @@
       </activity>
       <activity
          android:name=".FestivalOverviewActivity"
-         android:label="@string/title_activity_demokratie_overview"
          android:parentActivityName=".SelectFestivalActivity"
          android:theme="@style/Festival.TabbedActionBar">
          <meta-data

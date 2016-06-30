@@ -16,7 +16,6 @@
       android:elevation="6dp"
       app:titleTextColor="@color/text_primary"
       android:minHeight="?attr/actionBarSize"
-      app:navigationIcon="@drawable/ic_launcher"
       android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
       app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 

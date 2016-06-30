@@ -44,7 +44,6 @@ public class WallImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
    @Override
    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
-      System.out.println(images.get(position));
       ItemViewHolder itemViewHolder = (ItemViewHolder) viewHolder;
       ((TabWallFragment)context).loadBitmap(images.get(position), itemViewHolder.img);
    }

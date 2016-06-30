@@ -27,6 +27,7 @@ public class SelectFestivalDemokratieFragment extends Fragment {
          @Override
          public void onClick(View v) {
             Intent intent = new Intent(getActivity(),  FestivalOverviewActivity.class);
+            intent.putExtra("FESTIVAL", 1);
             intent.putExtra("KUENSTLER_ARRAY", demokratieKuenstler);
             intent.putExtra("WERKE_ARRAY", demokratieWerke);
             startActivity(intent);

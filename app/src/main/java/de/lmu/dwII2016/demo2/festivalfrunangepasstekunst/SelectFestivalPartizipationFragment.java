@@ -28,6 +28,7 @@ public class SelectFestivalPartizipationFragment extends Fragment {
          public void onClick(View v) {
 
             Intent intent = new Intent(getActivity(),  FestivalOverviewActivity.class);
+            intent.putExtra("FESTIVAL", 3);
             intent.putExtra("KUENSTLER_ARRAY", partizipationKuenstler);
             intent.putExtra("WERKE_ARRAY", partizipationWerke);
             startActivity(intent);

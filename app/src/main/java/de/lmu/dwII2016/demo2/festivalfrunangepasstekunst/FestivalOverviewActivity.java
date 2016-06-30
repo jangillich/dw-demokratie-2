@@ -20,6 +20,7 @@ public class FestivalOverviewActivity extends AppCompatActivity {
    @Bind(R.id.toolbar)
    Toolbar toolbar;
 
+   private int festival;
    private int werkeArray;
    private int kuenstlerArray;
 
@@ -56,11 +57,15 @@ public class FestivalOverviewActivity extends AppCompatActivity {
 
       Bundle extras = getIntent().getExtras();
       if (extras != null) {
+         festival = extras.getInt("FESTIVAL");
          kuenstlerArray = extras.getInt("KUENSTLER_ARRAY");
          werkeArray = extras.getInt("WERKE_ARRAY");
          //The key argument here must match that used in the other activity
       }
-      System.out.println("kunstlerArray: " + kuenstlerArray);
+      initToolbar();
+   }
+
+   private void initToolbar() {
 
       setSupportActionBar(toolbar);
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -70,6 +75,23 @@ public class FestivalOverviewActivity extends AppCompatActivity {
       tabLayout.addTab(tabLayout.newTab()
             .setText(getResources().getText(R.string.tab_kuenstler)));
       tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+      switch (festival) {
+         case 2:
+            setTitle(R.string.name_festival_2);
+            // TODO: set different navigation icon
+            tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.tab_indicator_macht));
+            break;
+         case 3:
+            setTitle(R.string.name_festival_3);
+            // TODO: set different navigation icon
+            tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.tab_indicator_partizipation));
+            break;
+         case 1:
+         default:
+            setTitle(R.string.name_festival_1);
+            tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.tab_indicator_demokratie));
+            toolbar.setNavigationIcon(R.drawable.ic_launcher);
+      }
 
       FestivalOverviewPagerAdapter adapter =
             new FestivalOverviewPagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount(), werkeArray, kuenstlerArray);

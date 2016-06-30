@@ -28,6 +28,7 @@ public class SelectFestivalMachtFragment extends Fragment {
          public void onClick(View v) {
 
             Intent intent = new Intent(getActivity(),  FestivalOverviewActivity.class);
+            intent.putExtra("FESTIVAL", 2);
             intent.putExtra("KUENSTLER_ARRAY", machtKuenstler);
             intent.putExtra("WERKE_ARRAY", machtWerke);
             startActivity(intent);

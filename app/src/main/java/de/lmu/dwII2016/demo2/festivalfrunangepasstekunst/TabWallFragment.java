@@ -65,34 +65,19 @@ public class TabWallFragment extends Fragment {
 
       List<Integer> imagesList = new ArrayList<Integer>();
       for (String image : images) {
-         imagesList.add(getResId(image, Drawable.class));
+         imagesList.add(getResId(image));
       }
-      System.out.println(images);
-      System.out.println(imagesList);
       return imagesList;
    }
 
-   public int getResId(String resName, Class<?> c) {
+   public int getResId(String resName) {
       try {
-         //Get the ID
          Field resourceField = R.drawable.class.getDeclaredField(resName);
-         //Here we are getting the String id in R file...But you can change to R.drawable or any other resource you want...
-         int resourceId = resourceField.getInt(resourceField);
-
-         //Here you can use it as usual
-//         String yourString = getContext().getDrawable(resourceId);
-         return resourceId;
+         return resourceField.getInt(resourceField);
       } catch (Exception e) {
          e.printStackTrace();
          return -1;
       }
-//      try {
-//         Field idField = c.getDeclaredField(resName);
-//         return idField.getInt(idField);
-//      } catch (Exception e) {
-//         e.printStackTrace();
-//         return -1;
-//      }
    }
 
 
