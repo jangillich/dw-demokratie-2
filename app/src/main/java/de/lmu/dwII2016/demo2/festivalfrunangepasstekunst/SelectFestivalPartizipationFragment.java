@@ -10,12 +10,15 @@ import android.view.ViewGroup;
 /**
  * Created by bianka.roppelt on 29/06/16.
  */
-public class FestivalViewPagerMachtFragment extends Fragment{
+public class SelectFestivalPartizipationFragment extends Fragment {
+
+   private int partizipationKuenstler = R.array.demokratie_kuenstler;
+   private int partizipationWerke = R.array.demokratie_werke;
 
    @Override
    public View onCreateView(LayoutInflater inflater, ViewGroup container,
          Bundle savedInstanceState) {
-      View v = inflater.inflate(R.layout.fragment_viewpager_macht, container, false);
+      View v = inflater.inflate(R.layout.fragment_select_festival_partizipation, container, false);
       initOnClickListener(v);
       return v;
    }
@@ -24,7 +27,9 @@ public class FestivalViewPagerMachtFragment extends Fragment{
          @Override
          public void onClick(View v) {
 
-            Intent intent = new Intent(getActivity(),  DemokratieOverviewActivity.class);
+            Intent intent = new Intent(getActivity(),  FestivalOverviewActivity.class);
+            intent.putExtra("KUENSTLER_ARRAY", partizipationKuenstler);
+            intent.putExtra("WERKE_ARRAY", partizipationWerke);
             startActivity(intent);
          }
       });

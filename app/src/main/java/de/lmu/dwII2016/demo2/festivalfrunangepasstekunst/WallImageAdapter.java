@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -27,10 +27,10 @@ public class WallImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
    }
 
 
-   private ArrayList<Integer> images;
+   private List<Integer> images;
    private Fragment context;
 
-   public WallImageAdapter(Fragment context,ArrayList<Integer> images) {
+   public WallImageAdapter(Fragment context, List<Integer> images) {
       this.images = images;
       this.context = context;
    }
@@ -44,6 +44,7 @@ public class WallImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
    @Override
    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
+      System.out.println(images.get(position));
       ItemViewHolder itemViewHolder = (ItemViewHolder) viewHolder;
       ((TabWallFragment)context).loadBitmap(images.get(position), itemViewHolder.img);
    }

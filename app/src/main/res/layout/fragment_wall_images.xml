@@ -3,7 +3,7 @@
    xmlns:tools="http://schemas.android.com/tools"
    android:layout_width="match_parent"
    android:layout_height="match_parent"
-   tools:context="de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.KunstwerkeOverviewFragment">
+   tools:context=".FestivalOverviewWerkeFragment">
 
    <android.support.v7.widget.RecyclerView
       android:id="@+id/card_recycler_view"

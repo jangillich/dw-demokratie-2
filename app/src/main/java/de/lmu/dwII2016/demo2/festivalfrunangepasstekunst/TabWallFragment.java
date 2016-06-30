@@ -18,7 +18,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import java.lang.ref.WeakReference;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.ButterKnife;
 
@@ -29,16 +31,13 @@ public class TabWallFragment extends Fragment {
 
 
 
-   private Integer images[]= {
-         R.drawable.kunstwerke_08,
-         R.drawable.kunstwerke_12
-   };
+   private int imagesArray;
 
    private RecyclerView recyclerView;
    private static LruCache<String, Bitmap> mMemoryCache;
 
-   public void setImages(Integer images[]) {
-      this.images = images;
+   public void setImagesArray(int imagesArray) {
+      this.imagesArray = imagesArray;
    }
 
    @Override
@@ -56,21 +55,49 @@ public class TabWallFragment extends Fragment {
       StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
       recyclerView.setLayoutManager(layoutManager);
 
-      ArrayList<Integer> kunstwerkeArray = prepareData();
+      List<Integer> kunstwerkeArray = prepareData();
       WallImageAdapter adapter = new WallImageAdapter(TabWallFragment.this, kunstwerkeArray);
       recyclerView.setAdapter(adapter);
    }
 
-   private ArrayList<Integer> prepareData(){
-      ArrayList<Integer> imagesArray = new ArrayList<>();
-      for(int i = 0; i < getImages().length; i++){
-         imagesArray.add(getImages()[i]);
+   private List<Integer> prepareData(){
+      String[] images = getResources().getStringArray(getImagesArray());
+
+      List<Integer> imagesList = new ArrayList<Integer>();
+      for (String image : images) {
+         imagesList.add(getResId(image, Drawable.class));
       }
-      return imagesArray;
+      System.out.println(images);
+      System.out.println(imagesList);
+      return imagesList;
    }
 
-   protected Integer[] getImages() {
-      return images;
+   public int getResId(String resName, Class<?> c) {
+      try {
+         //Get the ID
+         Field resourceField = R.drawable.class.getDeclaredField(resName);
+         //Here we are getting the String id in R file...But you can change to R.drawable or any other resource you want...
+         int resourceId = resourceField.getInt(resourceField);
+
+         //Here you can use it as usual
+//         String yourString = getContext().getDrawable(resourceId);
+         return resourceId;
+      } catch (Exception e) {
+         e.printStackTrace();
+         return -1;
+      }
+//      try {
+//         Field idField = c.getDeclaredField(resName);
+//         return idField.getInt(idField);
+//      } catch (Exception e) {
+//         e.printStackTrace();
+//         return -1;
+//      }
+   }
+
+
+   protected int getImagesArray() {
+      return imagesArray;
    }
 
    // The following code is for memory
@@ -91,7 +118,6 @@ public class TabWallFragment extends Fragment {
          }
       };
    }
-
    public static void addBitmapToMemoryCache(String key, Bitmap bitmap) {
       if (getBitmapFromMemCache(key) == null) {
          mMemoryCache.put(key, bitmap);

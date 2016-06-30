@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-   <string-array name="demokratie_kunstwerke">
-      <item>08</item>
-      <item>12</item>
-      <item>16</item>
-      <item>22</item>
-      <item>26</item>
-      <item>37</item>
+   <string-array name="demokratie_werke">
+      <item>kunstwerke_08</item>
+      <item>kunstwerke_12</item>
+      <item>kunstwerke_16</item>
+      <item>kunstwerke_22</item>
+      <item>kunstwerke_26</item>
+      <item>kunstwerke_37</item>
+   </string-array>
+   <string-array name="demokratie_kuenstler">
+      <item>kunstwerke_08</item>
+      <item>kunstwerke_12</item>
+      <item>kunstwerke_16</item>
    </string-array>
 </resources>

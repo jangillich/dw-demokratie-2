@@ -9,11 +9,11 @@ import java.util.List;
 /**
  * Created by bianka.roppelt on 29/06/16.
  */
-public class FestivalViewPagerAdapter extends FragmentPagerAdapter {
+public class SelectFestivalPagerAdapter extends FragmentPagerAdapter {
 
    private List<Fragment> fragments;
 
-   public FestivalViewPagerAdapter(FragmentManager fm, List<Fragment> fragments) {
+   public SelectFestivalPagerAdapter(FragmentManager fm, List<Fragment> fragments) {
       super(fm);
       this.fragments = fragments;
    }

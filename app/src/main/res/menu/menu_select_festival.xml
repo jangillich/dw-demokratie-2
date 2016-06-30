@@ -1,6 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".WeekendSelectActivity" >
+    tools:context=".SelectFestivalActivity" >
     <item android:id="@+id/action_events"
         android:title="@string/action_events"
         android:orderInCategory="100"

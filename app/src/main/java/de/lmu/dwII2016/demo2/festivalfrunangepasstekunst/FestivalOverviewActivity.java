@@ -11,7 +11,7 @@ import android.view.MenuItem;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class DemokratieOverviewActivity extends AppCompatActivity {
+public class FestivalOverviewActivity extends AppCompatActivity {
 
    @Bind(R.id.pager)
    ViewPager viewPager;
@@ -20,9 +20,12 @@ public class DemokratieOverviewActivity extends AppCompatActivity {
    @Bind(R.id.toolbar)
    Toolbar toolbar;
 
+   private int werkeArray;
+   private int kuenstlerArray;
+
    @Override
    public boolean onCreateOptionsMenu(Menu menu) {
-      getMenuInflater().inflate(R.menu.menu_demokratie_overview, menu);
+      getMenuInflater().inflate(R.menu.menu_festival_overview, menu);
       return true;
    }
 
@@ -48,11 +51,18 @@ public class DemokratieOverviewActivity extends AppCompatActivity {
    @Override
    protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
-      setContentView(R.layout.activity_demokratie_overview);
+      setContentView(R.layout.activity_festival_overview);
       ButterKnife.bind(this);
 
+      Bundle extras = getIntent().getExtras();
+      if (extras != null) {
+         kuenstlerArray = extras.getInt("KUENSTLER_ARRAY");
+         werkeArray = extras.getInt("WERKE_ARRAY");
+         //The key argument here must match that used in the other activity
+      }
+      System.out.println("kunstlerArray: " + kuenstlerArray);
+
       setSupportActionBar(toolbar);
-      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
       tabLayout.addTab(tabLayout.newTab()
@@ -61,8 +71,8 @@ public class DemokratieOverviewActivity extends AppCompatActivity {
             .setText(getResources().getText(R.string.tab_kuenstler)));
       tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-      DemokratiePagerAdapter adapter =
-            new DemokratiePagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+      FestivalOverviewPagerAdapter adapter =
+            new FestivalOverviewPagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount(), werkeArray, kuenstlerArray);
       viewPager.setAdapter(adapter);
       viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
       tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {

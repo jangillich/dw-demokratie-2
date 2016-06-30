@@ -21,7 +21,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class WeekendSelectActivity extends AppCompatActivity {
+public class SelectFestivalActivity extends AppCompatActivity {
 
     @Bind(R.id.festival_view_pager)
     ViewPager festivalViewPager;
@@ -53,7 +53,7 @@ public class WeekendSelectActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_weekend_select);
+        setContentView(R.layout.activity_select_festival);
         ButterKnife.bind(this);
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
@@ -63,14 +63,14 @@ public class WeekendSelectActivity extends AppCompatActivity {
     }
     private List<Fragment> getViewPagerFraments() {
         List<Fragment> fList = new ArrayList<Fragment>();
-        fList.add(new FestivalViewPagerDemokratieFragment());
-        fList.add(new FestivalViewPagerMachtFragment());
-        fList.add(new FestivalViewPagerPartizipationFragment());
+        fList.add(new SelectFestivalDemokratieFragment());
+        fList.add(new SelectFestivalMachtFragment());
+        fList.add(new SelectFestivalPartizipationFragment());
         return fList;
     }
 
     private void initViewPager() {
-        FestivalViewPagerAdapter adapter = new FestivalViewPagerAdapter(getSupportFragmentManager(), getViewPagerFraments());
+        SelectFestivalPagerAdapter adapter = new SelectFestivalPagerAdapter(getSupportFragmentManager(), getViewPagerFraments());
 
         festivalViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -132,7 +132,7 @@ public class WeekendSelectActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_weekend_select, menu);
+        getMenuInflater().inflate(R.menu.menu_select_festival, menu);
         return true;
     }
 
