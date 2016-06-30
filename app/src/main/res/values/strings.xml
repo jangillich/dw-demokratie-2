@@ -15,10 +15,12 @@
    <string name="date_festival_1">Mai 6 – 8</string>
    <string name="date_festival_2">Juli 15 – 17</string>
    <string name="date_festival_3">Oktober 7 – 9</string>
-
-   <string name="location_festival_1">Galerie LUXESE\nBurggrafenstr. 5\nMünchen</string>
-   <string name="location_festival_2">Unterführung\nNymphenburger Schloss/\nBotanischer Garten\nMünchen</string>
-   <string name="location_festival_3">Haus MUCCA\nSchwere-Reiter-Straße 2\nMünchen</string>
+   <string name="location_festival_1">Galerie LUXESE</string>
+   <string name="location_festival_2">Nymphenburger Schloss/\nBotanischer Garten</string>
+   <string name="location_festival_3">Haus MUCCA</string>
+   <string name="subtitle_festival_1">„Wählen oder nicht wählen?\nDas ist hier die Frage“</string>
+   <string name="subtitle_festival_2">„Uns gehört die Stadt!\nWer ist das Volk?“</string>
+   <string name="subtitle_festival_3">„Wer ist drin\nund wer bleibt draußen?“</string>
 
    <string name="map_marker_festival_1">Galerie LUXESE, Burggrafenstr. 5, München</string>
    <string name="map_marker_festival_2">Unterführung Nymphenburger Schloss/Botanischer Garten, München</string>
