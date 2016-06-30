@@ -1,0 +1,11 @@
+<resources>
+   <!--
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=FF:93:8F:B8:3D:BC:7E:9C:1A:66:CE:F4:FA:41:6B:1B:89:8C:3E:6D%3Bde.lmu.dwII2016.demo2.festivalfrunangepasstekunst
+
+    You can also add your credentials to an existing key, using this line:
+    FF:93:8F:B8:3D:BC:7E:9C:1A:66:CE:F4:FA:41:6B:1B:89:8C:3E:6D;de.lmu.dwII2016.demo2.festivalfrunangepasstekunst
+    -->
+   <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
+      AIzaSyAzLXop4zuKYvOcYy0rd1wF8E8ORnYoc-Q
+   </string>
+</resources>

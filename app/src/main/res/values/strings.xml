@@ -19,6 +19,10 @@
    <string name="location_festival_2">Ort 1</string>
    <string name="location_festival_3">Ort 1</string>
 
+   <string name="map_marker_demokratie">Galerie LUXESE, Burggrafenstr. 5, München</string>
+   <string name="map_marker_macht">Unterführung Nymphenburger Schloss/Botanischer Garten, München</string>
+   <string name="map_marker_partizipation">Haus MUCCA, Schwere-Reiter-Straße 2, München</string>
+
    <string name="tab_kunstwerke">Kunstwerke</string>
    <string name="tab_kuenstler">Künstler</string>
 
