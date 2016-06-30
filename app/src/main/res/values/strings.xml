@@ -15,13 +15,14 @@
    <string name="date_festival_1">Mai 6 – 8</string>
    <string name="date_festival_2">Juli 15 – 17</string>
    <string name="date_festival_3">Oktober 7 – 9</string>
-   <string name="location_festival_1">Ort 1</string>
-   <string name="location_festival_2">Ort 1</string>
-   <string name="location_festival_3">Ort 1</string>
 
-   <string name="map_marker_demokratie">Galerie LUXESE, Burggrafenstr. 5, München</string>
-   <string name="map_marker_macht">Unterführung Nymphenburger Schloss/Botanischer Garten, München</string>
-   <string name="map_marker_partizipation">Haus MUCCA, Schwere-Reiter-Straße 2, München</string>
+   <string name="location_festival_1">Galerie LUXESE\nBurggrafenstr. 5\nMünchen</string>
+   <string name="location_festival_2">Unterführung\nNymphenburger Schloss/\nBotanischer Garten\nMünchen</string>
+   <string name="location_festival_3">Haus MUCCA\nSchwere-Reiter-Straße 2\nMünchen</string>
+
+   <string name="map_marker_festival_1">Galerie LUXESE, Burggrafenstr. 5, München</string>
+   <string name="map_marker_festival_2">Unterführung Nymphenburger Schloss/Botanischer Garten, München</string>
+   <string name="map_marker_festival_3">Haus MUCCA, Schwere-Reiter-Straße 2, München</string>
 
    <string name="tab_kunstwerke">Kunstwerke</string>
    <string name="tab_kuenstler">Künstler</string>

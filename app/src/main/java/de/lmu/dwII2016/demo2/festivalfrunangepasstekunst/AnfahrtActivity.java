@@ -33,7 +33,7 @@ public class AnfahrtActivity extends AppCompatActivity {
          public void onMapReady(GoogleMap googleMap) {
             LatLng demokratie = new LatLng(48.129423, 11.611146);
             googleMap.addMarker(new MarkerOptions().position(demokratie)
-                  .title(getResources().getString(R.string.map_marker_demokratie)));
+                  .title(getResources().getString(R.string.map_marker_festival_1)));
             googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(demokratie, 12.0f));
 
          }
@@ -44,7 +44,7 @@ public class AnfahrtActivity extends AppCompatActivity {
          public void onMapReady(GoogleMap googleMap) {
             LatLng macht = new LatLng(48.160838, 11.500710);
             googleMap.addMarker(new MarkerOptions().position(macht)
-                  .title(getResources().getString(R.string.map_marker_macht)));
+                  .title(getResources().getString(R.string.map_marker_festival_2)));
             googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(macht, 12.0f));
          }
       });
@@ -54,7 +54,7 @@ public class AnfahrtActivity extends AppCompatActivity {
          public void onMapReady(GoogleMap googleMap) {
             LatLng partizipation = new LatLng(48.159847, 11.549667);
             googleMap.addMarker(new MarkerOptions().position(partizipation)
-                  .title(getResources().getString(R.string.map_marker_partizipation)));
+                  .title(getResources().getString(R.string.map_marker_festival_3)));
             googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(partizipation, 12.0f));
          }
       });
