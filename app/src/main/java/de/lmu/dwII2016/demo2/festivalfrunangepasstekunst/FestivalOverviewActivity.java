@@ -1,5 +1,6 @@
 package de.lmu.dwII2016.demo2.festivalfrunangepasstekunst;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -35,14 +36,17 @@ public class FestivalOverviewActivity extends AppCompatActivity {
       int id = item.getItemId();
 
       if (id == R.id.action_events) {
+         onBackPressed();
          return true;
       } else if (id == R.id.action_anfahrt) {
+         Intent intent = new Intent(FestivalOverviewActivity.this,  SelectFestivalActivity.class);
+         startActivity(intent);
          return true;
       } else if (id == R.id.action_festival) {
          return true;
-      } else if (id == R.id.action_gruender) {
-         return true;
       } else if (id == R.id.action_impressum) {
+         Intent intent = new Intent(FestivalOverviewActivity.this,  ImpressumActivity.class);
+         startActivity(intent);
          return true;
       }
 
