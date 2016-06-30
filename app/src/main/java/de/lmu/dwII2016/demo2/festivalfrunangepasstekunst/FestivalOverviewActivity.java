@@ -39,10 +39,13 @@ public class FestivalOverviewActivity extends AppCompatActivity {
          onBackPressed();
          return true;
       } else if (id == R.id.action_anfahrt) {
+         // TODO: correct activity
          Intent intent = new Intent(FestivalOverviewActivity.this,  SelectFestivalActivity.class);
          startActivity(intent);
          return true;
       } else if (id == R.id.action_festival) {
+         Intent intent = new Intent(FestivalOverviewActivity.this,  EventInfosActivity.class);
+         startActivity(intent);
          return true;
       } else if (id == R.id.action_impressum) {
          Intent intent = new Intent(FestivalOverviewActivity.this,  ImpressumActivity.class);

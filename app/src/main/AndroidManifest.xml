@@ -19,7 +19,7 @@
       <activity
          android:name=".FestivalOverviewActivity"
          android:parentActivityName=".SelectFestivalActivity"
-         android:theme="@style/Festival.TabbedActionBar">
+         android:theme="@style/Festival">
          <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".SelectFestivalActivity" />
@@ -28,7 +28,7 @@
          android:name=".WerkDetailActivity"
          android:label="@string/title_activity_werk_detail"
          android:parentActivityName=".FestivalOverviewActivity"
-         android:theme="@style/Festival.TabbedActionBar">
+         android:theme="@style/Festival">
          <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value="de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.FestivalOverviewActivity" />
@@ -42,14 +42,22 @@
             android:name="android.support.PARENT_ACTIVITY"
             android:value="de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.WerkDetailActivity" />
       </activity>
-      <activity android:name=".ImpressumActivity"
+      <activity
+         android:name=".ImpressumActivity"
          android:label="@string/title_activity_impressum"
          android:parentActivityName=".FestivalOverviewActivity"
-         android:theme="@style/Festival.TabbedActionBar">
+         android:theme="@style/Festival">
          <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value="de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.FestivalOverviewActivity" />
       </activity>
+      <activity android:name=".EventInfosActivity"
+         android:label="@string/title_activity_event_infos"
+         android:parentActivityName=".FestivalOverviewActivity"
+         android:theme="@style/Festival">
+         <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.FestivalOverviewActivity" /></activity>
    </application>
 
 </manifest>

@@ -27,5 +27,6 @@
    <string name="notification_button_more">Mehr erfahren</string>
    <string name="title_activity_werk_detail">Kunstwerk</string>
    <string name="title_activity_impressum">Impressum</string>
+   <string name="title_activity_event_infos">Event Informationen</string>
 
 </resources>

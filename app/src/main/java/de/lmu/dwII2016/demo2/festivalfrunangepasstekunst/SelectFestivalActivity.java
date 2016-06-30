@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,6 +25,8 @@ import butterknife.ButterKnife;
 
 public class SelectFestivalActivity extends AppCompatActivity {
 
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
     @Bind(R.id.festival_view_pager)
     ViewPager festivalViewPager;
     @Bind(R.id.vp_indicators)
@@ -56,6 +59,7 @@ public class SelectFestivalActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_festival);
         ButterKnife.bind(this);
+        setSupportActionBar(toolbar);
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
@@ -118,8 +122,11 @@ public class SelectFestivalActivity extends AppCompatActivity {
             notificationButtonMore.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //TODO: go to festival page
                     saveHideNotificationButton();
+                    notificationShadow.setVisibility(View.GONE);
+                    notificationContainer.setVisibility(View.GONE);
+                    Intent intent = new Intent(SelectFestivalActivity.this,  EventInfosActivity.class);
+                    startActivity(intent);
                 }
             });
         }
@@ -147,6 +154,8 @@ public class SelectFestivalActivity extends AppCompatActivity {
         if (id == R.id.action_anfahrt) {
             return true;
         } else if (id == R.id.action_festival) {
+            Intent intent = new Intent(SelectFestivalActivity.this,  EventInfosActivity.class);
+            startActivity(intent);
             return true;
         } else if (id == R.id.action_impressum) {
             Intent intent = new Intent(SelectFestivalActivity.this,  ImpressumActivity.class);

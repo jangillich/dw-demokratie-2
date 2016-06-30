@@ -20,6 +20,8 @@ public class WerkDetailActivity extends AppCompatActivity {
    Toolbar toolbar;
    @Bind(R.id.img)
    ImageView imageView;
+   @Bind(R.id.img_selector)
+   ImageView imgageSelector;
    @Bind(R.id.title)
    TextView titel;
    @Bind(R.id.kuenstler)
@@ -41,7 +43,7 @@ public class WerkDetailActivity extends AppCompatActivity {
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
       setTitle(imageRes);
       imageView.setImageResource(imageRes);
-      imageView.setOnClickListener(new View.OnClickListener() {
+      imgageSelector.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
             Intent intent = new Intent(WerkDetailActivity.this,  FullscreenActivity.class);

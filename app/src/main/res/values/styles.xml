@@ -1,21 +1,18 @@
 <resources>
 
-   <!-- Base application theme. -->
-   <style name="Festival" parent="Theme.AppCompat.Light.DarkActionBar">
+   <style name="Festival" parent="Theme.AppCompat.Light.NoActionBar">
+      <item name="colorPrimary">@color/primary</item>
+      <item name="colorPrimaryDark">@color/primary_dark</item>
+      <item name="colorAccent">@color/accent</item>
+      <item name="android:radioButtonStyle">@style/Festival.RadioButton</item>
+   </style>
 
+   <style name="Festival.DarkActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
       <item name="colorPrimary">@color/primary</item>
       <item name="colorPrimaryDark">@color/primary_dark</item>
       <item name="colorAccent">@color/accent</item>
       <item name="android:radioButtonStyle">@style/Festival.RadioButton</item>
       <item name="radioButtonStyle">@style/Festival.RadioButton</item>
-   </style>
-
-   <!-- the theme applied to the application or activity -->
-   <style name="Festival.TabbedActionBar" parent="Theme.AppCompat.Light.NoActionBar">
-      <item name="colorPrimary">@color/primary</item>
-      <item name="colorPrimaryDark">@color/primary_dark</item>
-      <item name="colorAccent">@color/accent</item>
-      <item name="android:radioButtonStyle">@style/Festival.RadioButton</item>
    </style>
 
    <style name="Festival.FlatButton" parent="Base.TextAppearance.AppCompat.Button">
@@ -54,7 +51,7 @@
 
    <style name="Festival.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-   <style name="Festival.FullscreenTheme" parent="Festival">
+   <style name="Festival.FullscreenTheme" parent="Festival.DarkActionBar">
       <item name="android:windowActionBarOverlay">true</item>
       <item name="android:windowBackground">@null</item>
    </style>
