@@ -24,6 +24,15 @@
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".SelectFestivalActivity" />
       </activity>
+      <activity
+         android:name=".WerkDetailActivity"
+         android:label="@string/title_activity_werk_detail"
+         android:parentActivityName=".FestivalOverviewActivity"
+         android:theme="@style/Festival.TabbedActionBar">
+         <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.FestivalOverviewActivity" />
+      </activity>
    </application>
 
 </manifest>

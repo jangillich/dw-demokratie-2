@@ -25,7 +25,6 @@
       android:layout_height="wrap_content"
       android:layout_below="@+id/toolbar"
       android:background="@color/primary"
-      app:tabIndicatorColor="@color/accent"
       app:tabIndicatorHeight="3dp"
       android:elevation="6dp"
       android:minHeight="?attr/actionBarSize"
