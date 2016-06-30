@@ -17,7 +17,8 @@
 
    <color name="text_primary">#fefefe</color>
    <color name="text_secondary">#66fefefe</color>
-   <color name="text_dark">#ff303030</color>
+   <color name="text_dark_primary">#ff303030</color>
+   <color name="text_dark_secondary">#565656</color>
 
    <color name="black">#000000</color>
    <color name="white">#ffffff</color>

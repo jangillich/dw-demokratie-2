@@ -19,13 +19,90 @@
       android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
       app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-
-   <LinearLayout
-      android:id="@+id/impressum_content"
+   <ScrollView
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:padding="@dimen/activity_horizontal_margin"
-      android:orientation="vertical">
-   </LinearLayout>
+      android:layout_below="@id/toolbar">
 
+      <LinearLayout
+         android:id="@+id/impressum_content"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:padding="@dimen/activity_horizontal_margin"
+         android:orientation="vertical">
+         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:textColor="@color/text_dark_primary"
+            android:textSize="20sp"
+            android:text="@string/impr_titel"/>
+         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:textColor="@color/text_dark_secondary"
+            android:textSize="14sp"
+            android:text="@string/impr_paragraph"/>
+         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:textColor="@color/text_dark_secondary"
+            android:textSize="14sp"
+            android:text="@string/impr_universitaet"/>
+         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_dark_primary"
+            android:textSize="16sp"
+            android:text="@string/impr_vertretung_titel"/>
+         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:textColor="@color/text_dark_secondary"
+            android:textSize="14sp"
+            android:text="@string/impr_vertretung"/>
+         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_dark_primary"
+            android:textSize="16sp"
+            android:text="@string/impr_kontakt_titel"/>
+         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:textColor="@color/text_dark_secondary"
+            android:textSize="14sp"
+            android:text="@string/impr_kontakt"/>
+         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_dark_primary"
+            android:textSize="16sp"
+            android:text="@string/impr_haftung_titel"/>
+         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:textColor="@color/text_dark_secondary"
+            android:textSize="14sp"
+            android:text="@string/impr_haftung"/>
+         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_dark_primary"
+            android:textSize="16sp"
+            android:text="@string/impr_urheberrecht_titel"/>
+         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:textColor="@color/text_dark_secondary"
+            android:textSize="14sp"
+            android:text="@string/impr_urheberrecht"/>
+      </LinearLayout>
+   </ScrollView>
 </RelativeLayout>
