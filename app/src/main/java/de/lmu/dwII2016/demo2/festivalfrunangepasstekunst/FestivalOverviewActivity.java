@@ -84,19 +84,19 @@ public class FestivalOverviewActivity extends AppCompatActivity {
       switch (festival) {
          case 2:
             setTitle(R.string.name_festival_2);
-            // TODO: set different navigation icon
             tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.tab_indicator_macht));
+            toolbar.setNavigationIcon(R.drawable.ic_launcher_macht);
             break;
          case 3:
             setTitle(R.string.name_festival_3);
-            // TODO: set different navigation icon
             tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.tab_indicator_partizipation));
+            toolbar.setNavigationIcon(R.drawable.ic_launcher_partizipation);
             break;
          case 1:
          default:
             setTitle(R.string.name_festival_1);
             tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.tab_indicator_demokratie));
-            toolbar.setNavigationIcon(R.drawable.ic_launcher);
+            toolbar.setNavigationIcon(R.drawable.ic_launcher_demokratie);
       }
 
       FestivalOverviewPagerAdapter adapter =

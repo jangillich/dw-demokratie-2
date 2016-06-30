@@ -192,7 +192,7 @@ public class TabWallFragment extends Fragment {
    public void loadBitmap(int resId, ImageView imageView) {
       if (cancelPotentialWork(resId, imageView)) {
          final BitmapWorkerTask task = new BitmapWorkerTask(getContext(), imageView);
-         Bitmap placeholder = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
+         Bitmap placeholder = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher_demokratie);
          final AsyncDrawable asyncDrawable =
                new AsyncDrawable(getResources(), placeholder, task);
          imageView.setImageDrawable(asyncDrawable);
