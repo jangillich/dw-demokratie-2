@@ -12,7 +12,6 @@
       android:layout_height="wrap_content" />
 
    <ImageView
-      android:id="@+id/selector"
       android:clickable="true"
       android:src="@drawable/selector_kunstwerk_item"
       android:background="@color/transparent"
