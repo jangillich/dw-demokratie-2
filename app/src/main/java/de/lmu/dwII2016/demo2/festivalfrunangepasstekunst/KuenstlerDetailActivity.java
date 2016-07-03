@@ -17,6 +17,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -158,7 +159,8 @@ public class KuenstlerDetailActivity extends AppCompatActivity {
    }
 
    private void initRecyclerView() {
-      recyclerView.setHasFixedSize(true);
+      recyclerView.setNestedScrollingEnabled(false);
+      recyclerView.setHasFixedSize(false);
       GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
       recyclerView.setLayoutManager(layoutManager);
 
@@ -362,5 +364,17 @@ public class KuenstlerDetailActivity extends AppCompatActivity {
          }
       }
       return null;
+   }
+
+
+   @Override
+   public boolean onOptionsItemSelected(MenuItem item) {
+      switch (item.getItemId()) {
+         case android.R.id.home:
+            onBackPressed();
+            return true;
+         default:
+            return super.onOptionsItemSelected(item);
+      }
    }
 }
