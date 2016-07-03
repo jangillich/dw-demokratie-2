@@ -18,4 +18,56 @@
       <item>kunstwerke_12</item>
       <item>kunstwerke_16</item>
    </string-array>
+   <string-array name="kuenstler">
+      <item>adler</item>
+      <item>agrawal</item>
+      <item>annanatascha</item>
+      <item>anra</item>
+      <item>avrel</item>
+      <item>hp</item>
+      <item>hansen</item>
+      <item>dressler</item>
+      <item>duch</item>
+      <item>heininger</item>
+      <item>hofer</item>
+      <item>jpg</item>
+      <item>kang</item>
+      <item>kissik</item>
+      <item>kollmar</item>
+      <item>kurtz</item>
+      <item>optopussies</item>
+      <item>kriester</item>
+      <item>memon</item>
+      <item>lilly</item>
+      <item>staudenmeyer</item>
+      <item>vallendor</item>
+   </string-array>
+   <string-array name="kuenstler_profiles_festival_1">
+      <item>kuenstler_profile_adler</item>
+      <item>kuenstler_profile_agrawal</item>
+      <item>kuenstler_profile_annanatascha</item>
+      <item>kuenstler_profile_anra</item>
+      <item>kuenstler_profile_avrel</item>
+      <item>kuenstler_profile_hp</item>
+   </string-array>
+   <string-array name="kuenstler_profiles_festival_2">
+      <item>kuenstler_profile_hansen</item>
+      <item>kuenstler_profile_dressler</item>
+      <item>kuenstler_profile_duch</item>
+      <item>kuenstler_profile_heininger</item>
+      <item>kuenstler_profile_hofer</item>
+      <item>kuenstler_profile_jpg</item>
+      <item>kuenstler_profile_kang</item>
+      <item>kuenstler_profile_kissik</item>
+      <item>kuenstler_profile_kollmar</item>
+   </string-array>
+   <string-array name="kuenstler_profiles_festival_3">
+      <item>kuenstler_profile_kurtz</item>
+      <item>kuenstler_profile_optopussies</item>
+      <item>kuenstler_profile_kriester</item>
+      <item>kuenstler_profile_memon</item>
+      <item>kuenstler_profile_lilly</item>
+      <item>kuenstler_profile_staudenmeyer</item>
+      <item>kuenstler_profile_vallendor</item>
+   </string-array>
 </resources>

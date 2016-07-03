@@ -3,6 +3,7 @@ package de.lmu.dwII2016.demo2.festivalfrunangepasstekunst;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -58,5 +59,16 @@ public class AnfahrtActivity extends AppCompatActivity {
             googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(partizipation, 12.0f));
          }
       });
+   }
+
+   @Override
+   public boolean onOptionsItemSelected(MenuItem item) {
+      switch (item.getItemId()) {
+         case android.R.id.home:
+            onBackPressed();
+            return true;
+         default:
+            return super.onOptionsItemSelected(item);
+      }
    }
 }
