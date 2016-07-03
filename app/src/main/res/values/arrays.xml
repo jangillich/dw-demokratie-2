@@ -13,4 +13,9 @@
       <item>kunstwerke_12</item>
       <item>kunstwerke_16</item>
    </string-array>
+   <string-array name="images_adler">
+      <item>kunstwerke_08</item>
+      <item>kunstwerke_12</item>
+      <item>kunstwerke_16</item>
+   </string-array>
 </resources>

@@ -27,14 +27,17 @@ import butterknife.ButterKnife;
 /**
  * Created by bianka.roppelt on 29/06/16.
  */
-public class TabWallFragment extends Fragment {
-
+public class TabWallFragment extends Fragment implements WallImageAdapter.OnItemClickListener{
 
 
    private int imagesArray;
 
    private RecyclerView recyclerView;
    private static LruCache<String, Bitmap> mMemoryCache;
+
+   @Override
+   public void onItemClick(View item) {
+   }
 
    public void setImagesArray(int imagesArray) {
       this.imagesArray = imagesArray;
@@ -57,6 +60,7 @@ public class TabWallFragment extends Fragment {
 
       List<Integer> kunstwerkeArray = prepareData();
       WallImageAdapter adapter = new WallImageAdapter(TabWallFragment.this, kunstwerkeArray);
+      adapter.setItemClickListener(this);
       recyclerView.setAdapter(adapter);
    }
 

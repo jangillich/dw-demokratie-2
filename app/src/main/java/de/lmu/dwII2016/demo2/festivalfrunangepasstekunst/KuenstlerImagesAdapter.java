@@ -1,5 +1,6 @@
 package de.lmu.dwII2016.demo2.festivalfrunangepasstekunst;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +14,7 @@ import butterknife.ButterKnife;
 /**
  * Created by bianka.roppelt on 23/06/16.
  */
-public class WallImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-
-
-   public interface OnItemClickListener {
-      void onItemClick(View item);
-   }
+public class KuenstlerImagesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
    public class ItemViewHolder extends RecyclerView.ViewHolder {
       @Bind(R.id.img)
@@ -32,26 +28,22 @@ public class WallImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
 
    private List<Integer> images;
-   private TabWallFragment context;
-   private OnItemClickListener itemClickListener;
+   private KuenstlerDetailActivity context;
 
-   public WallImageAdapter(TabWallFragment context, List<Integer> images) {
+   public KuenstlerImagesAdapter(KuenstlerDetailActivity context, List<Integer> images) {
       this.images = images;
       this.context = context;
    }
 
-   public void setItemClickListener(OnItemClickListener itemClickListener) {
-      this.itemClickListener = itemClickListener;
-   }
    @Override
    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-      View view = context.getActivity().getLayoutInflater().inflate(R.layout.item_wall_image, parent, false);
+      View view = context.getLayoutInflater().inflate(R.layout.item_wall_image, parent, false);
       ItemViewHolder viewHolder = new ItemViewHolder(view);
       return viewHolder;
    }
 
    @Override
-   public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, final int position) {
+   public void onBindViewHolder(final RecyclerView.ViewHolder viewHolder, int position) {
       ItemViewHolder itemViewHolder = (ItemViewHolder) viewHolder;
       context.loadBitmap(images.get(position), itemViewHolder.img);
 
@@ -59,7 +51,9 @@ public class WallImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
       itemViewHolder.img.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
-            itemClickListener.onItemClick(v);
+            Intent intent = new Intent(context,  WerkDetailActivity.class);
+            intent.putExtra("IMAGE", images.get(viewHolder.getAdapterPosition()));
+            context.startActivity(intent);
          }
       });
    }

@@ -62,12 +62,22 @@
             android:name="android.support.PARENT_ACTIVITY"
             android:value="de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.FestivalOverviewActivity" />
       </activity>
+
       <meta-data
          android:name="com.google.android.geo.API_KEY"
          android:value="@string/google_maps_key" />
+
       <activity
          android:name=".AnfahrtActivity"
          android:label="@string/title_activity_anfahrt"
+         android:theme="@style/Festival">
+         <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.FestivalOverviewActivity" />
+      </activity>
+      <activity
+         android:name=".KuenstlerDetailActivity"
+         android:parentActivityName=".FestivalOverviewActivity"
          android:theme="@style/Festival">
          <meta-data
             android:name="android.support.PARENT_ACTIVITY"

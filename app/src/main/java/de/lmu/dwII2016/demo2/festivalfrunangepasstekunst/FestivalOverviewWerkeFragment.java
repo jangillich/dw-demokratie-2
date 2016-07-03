@@ -1,5 +1,6 @@
 package de.lmu.dwII2016.demo2.festivalfrunangepasstekunst;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,14 @@ public class FestivalOverviewWerkeFragment extends TabWallFragment {
    @Override
    protected int getImagesArray() {
       return kunstwerke;
+   }
+
+
+   @Override
+   public void onItemClick(View item) {
+      Intent intent = new Intent(getActivity(),  WerkDetailActivity.class);
+      intent.putExtra("IMAGE", (Integer)item.getTag());
+      getActivity().startActivity(intent);
    }
 
 }

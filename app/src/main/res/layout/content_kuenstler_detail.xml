@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   app:layout_behavior="@string/appbar_scrolling_view_behavior"
+   tools:context="de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.KuenstlerDetailActivity"
+   tools:showIn="@layout/activity_kuenstler_detail">
+
+   <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
+      <android.support.v7.widget.CardView
+         android:id="@+id/kuenstler_text_container"
+         android:layout_margin="10dp"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         app:cardElevation="4dp"
+         app:cardCornerRadius="0dp">
+         <TextView
+            android:id="@+id/kuenstler_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="@dimen/text_margin"
+            android:layout_marginRight="@dimen/text_margin"
+            android:layout_marginTop="@dimen/text_margin" />
+         <ImageView
+            android:id="@+id/icon_collapse_expand"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_expand_more"
+            android:scaleType="fitCenter"
+            android:layout_gravity="bottom"/>
+      </android.support.v7.widget.CardView>
+
+      <android.support.v7.widget.RecyclerView
+         android:layout_margin="8dp"
+         android:id="@+id/card_recycler_view"
+         android:scrollbars="vertical"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent" />
+   </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>
