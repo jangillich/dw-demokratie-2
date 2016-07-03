@@ -27,7 +27,9 @@ public class FestivalOverviewKuenstlerFragment extends TabWallFragment {
    @Override
    public void onItemClick(View item) {
       Intent intent = new Intent(getActivity(),  KuenstlerDetailActivity.class);
-      intent.putExtra("KUENSTLER", (Integer)item.getTag());
+      // TODO: richtiger KuenstlerName
+      intent.putExtra("KUENSTLER_NAME", "kissik");
+//      intent.putExtra("KUENSTLER", (Integer)item.getTag());
       getActivity().startActivity(intent);
    }
 

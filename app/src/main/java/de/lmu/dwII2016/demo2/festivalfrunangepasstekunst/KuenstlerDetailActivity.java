@@ -57,6 +57,7 @@ public class KuenstlerDetailActivity extends AppCompatActivity {
    ImageView iconCollapseExpand;
 
    private int descriptionViewFullHeight;
+   private String kuenstlerName;
 
    @Override
    protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +67,11 @@ public class KuenstlerDetailActivity extends AppCompatActivity {
 
       setSupportActionBar(toolbar);
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+      Bundle extras = getIntent().getExtras();
+      if (extras != null) {
+         kuenstlerName = extras.getString("KUENSTLER_NAME");
+      }
       setTitle("");
 
       initMemoryCache();
@@ -74,10 +80,10 @@ public class KuenstlerDetailActivity extends AppCompatActivity {
 
    private void initViews() {
       // TODO: set correct name
-      imageName.setImageResource(getResId("kuenstler_name_" + "adler", R.drawable.class));
-      imageProfile.setImageResource(getResId("kuenstler_profile_" + "adler", R.drawable.class));
+      imageName.setImageResource(getResId("kuenstler_name_" + kuenstlerName, R.drawable.class));
+      imageProfile.setImageResource(getResId("kuenstler_profile_" + kuenstlerName, R.drawable.class));
       kuenstlerText.setText(
-            getString(getResId("kuenstler_text_" + "annanatascha", R.string.class)));
+            getString(getResId("kuenstler_text_" + kuenstlerName, R.string.class)));
       initRecyclerView();
       initKuenstlerTextView();
    }
@@ -181,7 +187,7 @@ public class KuenstlerDetailActivity extends AppCompatActivity {
             if (scrollRange + verticalOffset == 0) {
                // TODO: set correct name
                toolbarLayout.setTitle(
-                     getString(getResId("kuenstler_name_" + "adler", R.string.class)));
+                     getString(getResId("kuenstler_name_" + kuenstlerName, R.string.class)));
                isShow = true;
             } else if (isShow) {
                toolbarLayout.setTitle("");
