@@ -26,30 +26,49 @@
    <!--</string-array>-->
    <string-array name="kuenstler_festival_1">
       <item>adler</item>
+      <item>kollmar</item>
       <item>agrawal</item>
+      <item>jpg</item>
+      <item>kriester</item>
+      <item>lilly</item>
+      <item>dressler</item>
+      <item>vallendor</item>
+      <item>optopussies</item>
       <item>annanatascha</item>
-      <item>anra</item>
+      <item>hofer</item>
+
+      <!-- unklar -->
       <item>avrel</item>
-      <item>hp</item>
+
+      <!-- fehlen: Penelope Richardson, Fabian Kochendoerfer -->
    </string-array>
    <string-array name="kuenstler_festival_2">
-      <item>hansen</item>
-      <item>dressler</item>
-      <item>duch</item>
-      <item>heininger</item>
-      <item>hofer</item>
+      <item>adler</item>
+      <item>agrawal</item>
       <item>jpg</item>
-      <item>kang</item>
-      <item>kissik</item>
-      <item>kollmar</item>
-   </string-array>
-   <string-array name="kuenstler_festival_3">
-      <item>kurtz</item>
-      <item>optopussies</item>
       <item>kriester</item>
       <item>memon</item>
       <item>lilly</item>
+      <item>anra</item>
+      <item>hp</item>
+      <item>heininger</item>
+   </string-array>
+   <string-array name="kuenstler_festival_3">
+      <item>adler</item>
+      <item>kollmar</item>
+      <item>agrawal</item>
+      <item>jpg</item>
+      <item>kriester</item>
+      <item>memon</item>
+      <item>lilly</item>
+      <item>anra</item>
+      <item>hp</item>
+      <item>duch</item>
+      <item>kissik</item>
+      <item>kurtz</item>
       <item>staudenmeyer</item>
-      <item>vallendor</item>
+      <item>heininger</item>
+      <item>hansen</item>
+      <item>kang</item>
    </string-array>
 </resources>

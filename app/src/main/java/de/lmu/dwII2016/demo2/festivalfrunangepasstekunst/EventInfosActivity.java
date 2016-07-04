@@ -1,13 +1,21 @@
 package de.lmu.dwII2016.demo2.festivalfrunangepasstekunst;
 
+import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.youtube.player.YouTubeInitializationResult;
@@ -21,7 +29,15 @@ public class EventInfosActivity extends AppCompatActivity implements YouTubePlay
 
    @Bind (R.id.toolbar)
    Toolbar toolbar;
+   @Bind (R.id.festival_text_container)
+   CardView festivalTextContainer;
+   @Bind (R.id.festival_text)
+   TextView festivalText;
+   @Bind (R.id.icon_collapse_expand)
+   ImageView iconCollapseExpand;
 
+
+   private int festivalContainerFullHeight;
    private  YouTubePlayerSupportFragment mYoutubePlayerFragment;
 
    private static final int RECOVERY_REQUEST = 1;
@@ -36,6 +52,7 @@ public class EventInfosActivity extends AppCompatActivity implements YouTubePlay
       if (actionBar != null) {
          actionBar.setDisplayHomeAsUpEnabled(true);
       }
+      initKuenstlerTextView();
       initializeYoutubePlayer();
 
    }
@@ -87,4 +104,85 @@ public class EventInfosActivity extends AppCompatActivity implements YouTubePlay
             return super.onOptionsItemSelected(item);
       }
    }
+
+
+   private void initKuenstlerTextView() {
+      festivalText.setText(getString(R.string.festival_info_text));
+      festivalTextContainer.getViewTreeObserver()
+            .addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+               @Override
+               public boolean onPreDraw() {
+                  festivalText.getViewTreeObserver()
+                        .removeOnPreDrawListener(this);
+                  // save the full height
+                  festivalContainerFullHeight =
+                        festivalText.getHeight() +
+                              ((FrameLayout.LayoutParams) festivalText.getLayoutParams())
+                                    .bottomMargin +
+                              ((FrameLayout.LayoutParams) festivalText.getLayoutParams())
+                                    .topMargin;
+
+                  // initially changing the height to min height
+                  ViewGroup.LayoutParams layoutParams = festivalTextContainer.getLayoutParams();
+                  layoutParams.height =
+                        (int) getResources().getDimension(R.dimen.kuenstler_description_min_height);
+                  festivalTextContainer.setLayoutParams(layoutParams);
+
+                  return true;
+               }
+            });
+      festivalTextContainer.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+            toggleFestivalTextHeight();
+         }
+      });
+      iconCollapseExpand.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+            toggleFestivalTextHeight();
+         }
+      });
+   }
+
+
+
+   private void toggleFestivalTextHeight() {
+      int descriptionViewMinHeight =
+            (int) getResources().getDimension(R.dimen.kuenstler_description_min_height);
+      if (festivalTextContainer.getHeight() == descriptionViewMinHeight) {
+         // expand
+         iconCollapseExpand.setImageResource(R.drawable.ic_expand_less);
+         ValueAnimator anim =
+               ValueAnimator.ofInt(festivalTextContainer.getMeasuredHeightAndState(),
+                     festivalContainerFullHeight);
+         anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+               int val = (Integer) valueAnimator.getAnimatedValue();
+               ViewGroup.LayoutParams layoutParams = festivalTextContainer.getLayoutParams();
+               layoutParams.height = val;
+               festivalTextContainer.setLayoutParams(layoutParams);
+            }
+         });
+         anim.start();
+      } else {
+         // collapse
+         iconCollapseExpand.setImageResource(R.drawable.ic_expand_more);
+         ValueAnimator anim =
+               ValueAnimator.ofInt(festivalTextContainer.getMeasuredHeightAndState(),
+                     descriptionViewMinHeight);
+         anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+               int val = (Integer) valueAnimator.getAnimatedValue();
+               ViewGroup.LayoutParams layoutParams = festivalTextContainer.getLayoutParams();
+               layoutParams.height = val;
+               festivalTextContainer.setLayoutParams(layoutParams);
+            }
+         });
+         anim.start();
+      }
+   }
+
 }

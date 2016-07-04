@@ -23,10 +23,40 @@
       android:layout_below="@id/toolbar"
       android:layout_height="match_parent"
       android:layout_width="match_parent">
-      <FrameLayout
-         android:id="@+id/fragment_youtube_player"
+      <LinearLayout
+         android:orientation="vertical"
          android:layout_width="match_parent"
-         android:layout_height="wrap_content"/>
+         android:layout_height="wrap_content">
+
+         <FrameLayout
+            android:id="@+id/fragment_youtube_player"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+         <android.support.v7.widget.CardView
+            android:id="@+id/festival_text_container"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="0dp">
+            <TextView
+               android:id="@+id/festival_text"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginBottom="30dp"
+               android:layout_marginLeft="@dimen/text_margin"
+               android:layout_marginRight="@dimen/text_margin"
+               android:layout_marginTop="@dimen/text_margin" />
+            <ImageView
+               android:id="@+id/icon_collapse_expand"
+               android:layout_width="match_parent"
+               android:layout_height="30dp"
+               android:src="@drawable/ic_expand_more"
+               android:scaleType="fitCenter"
+               android:layout_gravity="bottom"/>
+         </android.support.v7.widget.CardView>
+      </LinearLayout>
 
    </ScrollView>
 
