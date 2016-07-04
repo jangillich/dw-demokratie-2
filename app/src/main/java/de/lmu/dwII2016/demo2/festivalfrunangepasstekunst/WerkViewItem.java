@@ -8,6 +8,7 @@ public class WerkViewItem extends ImageView {
 
    private String kuenstlerName;
    private String werkTitle;
+   private boolean quadratic = false;
 
    public WerkViewItem(Context context) {
       super(context);
@@ -34,6 +35,21 @@ public class WerkViewItem extends ImageView {
 
    public void setWerkTitle(String werkTitle) {
       this.werkTitle = werkTitle;
+   }
+
+
+   public void setQuadratic() {
+      this.quadratic = true;
+      setScaleType(ScaleType.CENTER_CROP);
+      requestLayout();
+   }
+
+   @Override
+   protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+      super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+      if(quadratic) {
+         setMeasuredDimension(getMeasuredWidth(), getMeasuredWidth());
+      }
    }
 
 }

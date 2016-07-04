@@ -36,6 +36,7 @@ public class FestivalOverviewKuenstlerFragment extends TabWallFragment {
             layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
       recyclerView.setLayoutManager(layoutManager);
 
+
       WallImageKuenstlerAdapter
             adapter = new WallImageKuenstlerAdapter(FestivalOverviewKuenstlerFragment.this, getKuenstlerProfilesList(), getKuenstlerList());
       recyclerView.setAdapter(adapter);

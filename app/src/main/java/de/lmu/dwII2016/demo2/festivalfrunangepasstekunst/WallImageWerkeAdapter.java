@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import java.util.List;
 
@@ -15,6 +16,8 @@ public class WallImageWerkeAdapter extends RecyclerView.Adapter<RecyclerView.Vie
    public class ItemViewHolder extends RecyclerView.ViewHolder {
       @Bind(R.id.img)
       WerkViewItem img;
+      @Bind(R.id.img_selector)
+      ImageView imgSelector;
 
       public ItemViewHolder(View view) {
          super(view);
@@ -44,13 +47,13 @@ public class WallImageWerkeAdapter extends RecyclerView.Adapter<RecyclerView.Vie
       context.loadBitmap(images.get(position), itemViewHolder.img);
 
       itemViewHolder.img.setKuenstlerName(kuenstlerNames.get(position));
-      itemViewHolder.img.setOnClickListener(new View.OnClickListener() {
+      itemViewHolder.imgSelector.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
 
             Intent intent = new Intent(context.getActivity(),  WerkDetailActivity.class);
-            intent.putExtra("KUENSTLER_NAME", ((WerkViewItem) v).getKuenstlerName());
-            intent.putExtra("WERK_TITLE", ((WerkViewItem) v).getWerkTitle());
+            intent.putExtra("KUENSTLER_NAME", itemViewHolder.img.getKuenstlerName());
+            intent.putExtra("WERK_TITLE", itemViewHolder.img.getWerkTitle());
             intent.putExtra("IMAGE", images.get(itemViewHolder.getAdapterPosition()));
             context.getActivity().startActivity(intent);
          }
