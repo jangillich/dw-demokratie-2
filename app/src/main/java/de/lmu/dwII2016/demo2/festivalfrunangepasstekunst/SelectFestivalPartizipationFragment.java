@@ -12,7 +12,7 @@ import android.view.ViewGroup;
  */
 public class SelectFestivalPartizipationFragment extends Fragment {
 
-   private int partizipationKuenstler = R.array.kuenstler_profiles_festival_3;
+   private int partizipationKuenstler = R.array.kuenstler_festival_3;
    private int partizipationWerke = R.array.demokratie_werke;
 
    @Override

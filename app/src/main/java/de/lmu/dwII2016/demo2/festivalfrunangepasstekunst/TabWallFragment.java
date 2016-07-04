@@ -10,8 +10,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.util.LruCache;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,76 +17,31 @@ import android.widget.ImageView;
 
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.ButterKnife;
 
 /**
  * Created by bianka.roppelt on 29/06/16.
  */
-public class TabWallFragment extends Fragment implements WallImageAdapter.OnItemClickListener{
+public class TabWallFragment  extends Fragment {
 
-
-   private int imagesArray;
-
-   private RecyclerView recyclerView;
    private static LruCache<String, Bitmap> mMemoryCache;
-
-   @Override
-   public void onItemClick(View item) {
-   }
-
-   public void setImagesArray(int imagesArray) {
-      this.imagesArray = imagesArray;
-   }
 
    @Override
    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
       View rootView = inflater.inflate(R.layout.fragment_wall_images, container, false);
       ButterKnife.bind(this, rootView);
-      recyclerView = (RecyclerView) rootView.findViewById(R.id.card_recycler_view);
       initMemoryCache();
-      initViews();
       return rootView;
    }
-
-   private void initViews() {
-      recyclerView.setHasFixedSize(true);
-      StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-      recyclerView.setLayoutManager(layoutManager);
-
-      List<Integer> kunstwerkeArray = prepareData();
-      WallImageAdapter adapter = new WallImageAdapter(TabWallFragment.this, kunstwerkeArray);
-      adapter.setItemClickListener(this);
-      recyclerView.setAdapter(adapter);
-   }
-
-   private List<Integer> prepareData(){
-      String[] images = getResources().getStringArray(getImagesArray());
-
-      List<Integer> imagesList = new ArrayList<Integer>();
-      for (String image : images) {
-         imagesList.add(getResId(image));
-      }
-      return imagesList;
-   }
-
-   public int getResId(String resName) {
+   public int getResId(String resName, Class resClass) {
       try {
-         Field resourceField = R.drawable.class.getDeclaredField(resName);
+         Field resourceField = resClass.getDeclaredField(resName);
          return resourceField.getInt(resourceField);
       } catch (Exception e) {
-         e.printStackTrace();
          return -1;
       }
    }
-
-
-   protected int getImagesArray() {
-      return imagesArray;
-   }
-
    // The following code is for memory
 
    private void initMemoryCache() {

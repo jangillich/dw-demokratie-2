@@ -47,6 +47,8 @@ public class KuenstlerDetailActivity extends AppCompatActivity {
    RecyclerView recyclerView;
    @Bind (R.id.image_name)
    ImageView imageName;
+   @Bind (R.id.image_name_text)
+   TextView imageNameText;
    @Bind (R.id.image_profile)
    ImageView imageProfile;
    @Bind (R.id.kuenstler_text_container)
@@ -80,12 +82,24 @@ public class KuenstlerDetailActivity extends AppCompatActivity {
 
    private void initViews() {
       // TODO: set correct name
-      imageName.setImageResource(getResId("kuenstler_name_" + kuenstlerName, R.drawable.class));
+      int kuenstlerNameImageId = getResId("kuenstler_name_" + kuenstlerName, R.drawable.class);
+      if(kuenstlerNameImageId < 0) {
+         imageName.setVisibility(View.GONE);
+         imageNameText.setVisibility(View.VISIBLE);
+         imageNameText.setText(getString(getResId("kuenstler_name_" + kuenstlerName, R.string.class)));
+      } else {
+         imageName.setImageResource(kuenstlerNameImageId);
+      }
       imageProfile.setImageResource(getResId("kuenstler_profile_" + kuenstlerName, R.drawable.class));
-      kuenstlerText.setText(
-            getString(getResId("kuenstler_text_" + kuenstlerName, R.string.class)));
+
+      int kuenstlerTextId = getResId("kuenstler_text_" + kuenstlerName, R.string.class);
+      if(kuenstlerTextId < 0) {
+         kuenstlerTextContainer.setVisibility(View.GONE);
+      } else {
+         kuenstlerText.setText(getString(kuenstlerTextId));
+         initKuenstlerTextView();
+      }
       initRecyclerView();
-      initKuenstlerTextView();
    }
 
    private void initKuenstlerTextView() {
@@ -203,7 +217,7 @@ public class KuenstlerDetailActivity extends AppCompatActivity {
 
       List<Integer> imagesList = new ArrayList<Integer>();
       for (String image : images) {
-         imagesList.add(getResId(image, R.drawable.class));
+         imagesList.add(getResId("werk_" + image, R.drawable.class));
       }
       return imagesList;
    }
@@ -213,7 +227,6 @@ public class KuenstlerDetailActivity extends AppCompatActivity {
          Field resourceField = resType.getDeclaredField(resName);
          return resourceField.getInt(resourceField);
       } catch (Exception e) {
-         e.printStackTrace();
          return -1;
       }
    }
