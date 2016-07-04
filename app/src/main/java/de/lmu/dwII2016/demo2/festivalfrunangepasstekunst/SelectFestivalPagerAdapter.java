@@ -6,9 +6,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import java.util.List;
 
-/**
- * Created by bianka.roppelt on 29/06/16.
- */
 public class SelectFestivalPagerAdapter extends FragmentPagerAdapter {
 
    private List<Fragment> fragments;

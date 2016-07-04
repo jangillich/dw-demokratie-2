@@ -11,7 +11,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class KuenstlerImagesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class WallImageWerkeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
    public class ItemViewHolder extends RecyclerView.ViewHolder {
       @Bind(R.id.img)
@@ -22,39 +22,40 @@ public class KuenstlerImagesAdapter extends RecyclerView.Adapter<RecyclerView.Vi
       public ItemViewHolder(View view) {
          super(view);
          ButterKnife.bind(this, view);
-         img.setQuadratic();
       }
    }
 
-
    private List<Integer> images;
-   private String kuenstler;
-   private KuenstlerDetailActivity context;
+   private List<String> kuenstlerNames;
+   private TabWallFragment context;
 
-   public KuenstlerImagesAdapter(KuenstlerDetailActivity context, List<Integer> images, String kuenstler) {
+   public WallImageWerkeAdapter(TabWallFragment context, List<Integer> images, List<String> kuenstlerNames) {
       this.images = images;
-      this.kuenstler = kuenstler;
+      this.kuenstlerNames = kuenstlerNames;
       this.context = context;
    }
 
    @Override
    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-      View view = context.getLayoutInflater().inflate(R.layout.item_wall_image_werk, parent, false);
+      View view = context.getActivity().getLayoutInflater().inflate(R.layout.item_wall_image_werk, parent, false);
       return new ItemViewHolder(view);
    }
 
    @Override
-   public void onBindViewHolder(final RecyclerView.ViewHolder viewHolder, int position) {
+   public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
       final ItemViewHolder itemViewHolder = (ItemViewHolder) viewHolder;
       context.loadBitmap(images.get(position), itemViewHolder.img);
+
+      itemViewHolder.img.setKuenstlerName(kuenstlerNames.get(position));
       itemViewHolder.imgSelector.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
-            Intent intent = new Intent(context,  WerkDetailActivity.class);
-            intent.putExtra("IMAGE", images.get(viewHolder.getAdapterPosition()));
-            intent.putExtra("KUENSTLER_NAME", kuenstler);
+
+            Intent intent = new Intent(context.getActivity(),  WerkDetailActivity.class);
+            intent.putExtra("KUENSTLER_NAME", itemViewHolder.img.getKuenstlerName());
             intent.putExtra("WERK_TITLE", itemViewHolder.img.getWerkTitle());
-            context.startActivity(intent);
+            intent.putExtra("IMAGE", images.get(itemViewHolder.getAdapterPosition()));
+            context.getActivity().startActivity(intent);
          }
       });
    }

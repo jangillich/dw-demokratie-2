@@ -1,13 +1,14 @@
 package de.lmu.dwII2016.demo2.festivalfrunangepasstekunst;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import butterknife.Bind;
@@ -15,8 +16,6 @@ import butterknife.ButterKnife;
 
 public class FullscreenActivity extends AppCompatActivity {
 
-   private static final boolean AUTO_HIDE = true;
-   private static final int AUTO_HIDE_DELAY_MILLIS = 3000;
    private static final int UI_ANIMATION_DELAY = 300;
    private final Handler mHideHandler = new Handler();
    private final Runnable mHidePart2Runnable = new Runnable() {
@@ -35,8 +34,12 @@ public class FullscreenActivity extends AppCompatActivity {
    ImageView mImageView;
    @Bind(R.id.fullscreen_content_controls)
    View mControlsView;
+   @Bind(R.id.kuenstler_button)
+   Button kuenstlerButton;
 
    private int imageRes;
+   private String kuenstlerName;
+   private String werkTitle;
 
    private final Runnable mShowPart2Runnable = new Runnable() {
       @Override
@@ -54,19 +57,6 @@ public class FullscreenActivity extends AppCompatActivity {
       @Override
       public void run() {
          hide();
-      }
-   };
-   /**
-    * Touch listener to use for in-layout UI controls to delay hiding the system UI. This is to
-    * prevent the jarring behavior of controls going away while interacting with activity UI.
-    */
-   private final View.OnTouchListener mDelayHideTouchListener = new View.OnTouchListener() {
-      @Override
-      public boolean onTouch(View view, MotionEvent motionEvent) {
-         if (AUTO_HIDE) {
-            delayedHide(AUTO_HIDE_DELAY_MILLIS);
-         }
-         return false;
       }
    };
 
@@ -93,6 +83,8 @@ public class FullscreenActivity extends AppCompatActivity {
       Bundle extras = getIntent().getExtras();
       if (extras != null) {
          imageRes = extras.getInt("IMAGE");
+         kuenstlerName = extras.getString("KUENSTLER_NAME");
+         werkTitle = extras.getString("WERK_TITLE");
       }
 
       setTitle(imageRes);
@@ -104,8 +96,20 @@ public class FullscreenActivity extends AppCompatActivity {
             toggle();
          }
       });
-
-      findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
+      kuenstlerButton.setText(kuenstlerName);
+      kuenstlerButton.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+            Intent intent = new Intent(FullscreenActivity.this,  KuenstlerDetailActivity.class);
+            intent.putExtra("KUENSTLER_NAME", kuenstlerName);
+            startActivity(intent);
+         }
+      });
+      if(werkTitle.isEmpty()) {
+         setTitle("Werk "  + getString(ResHelper.getResId("kuenstler_name_" + kuenstlerName, R.string.class)));
+      } else {
+         setTitle(werkTitle);
+      }
    }
 
    @Override

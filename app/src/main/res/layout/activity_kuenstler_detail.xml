@@ -46,6 +46,19 @@
                android:scaleType="centerInside"
                android:background="@color/text_secondary"
                android:padding="5dp"/>
+            <TextView
+               android:id="@+id/image_name_text"
+               android:visibility="gone"
+               android:textColor="@color/text_dark_secondary"
+               android:textSize="30sp"
+               android:textAllCaps="true"
+               android:textAppearance="@style/Festival.Text.RobotoLight"
+               android:gravity="center"
+               android:layout_width="0dp"
+               android:layout_height="match_parent"
+               android:layout_weight="3"
+               android:background="@color/text_secondary"
+               android:padding="5dp"/>
          </LinearLayout>
 
          <android.support.v7.widget.Toolbar

@@ -30,12 +30,11 @@
          tools:ignore="UselessParent">
 
          <Button
-            android:id="@+id/dummy_button"
+            android:id="@+id/kuenstler_button"
             style="@style/Festival.FlatButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="Beispiel Künstler" />
+            android:textSize="20sp" />
 
       </LinearLayout>
    </FrameLayout>

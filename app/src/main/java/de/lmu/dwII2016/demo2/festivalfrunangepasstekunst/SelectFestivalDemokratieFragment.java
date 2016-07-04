@@ -7,13 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * Created by bianka.roppelt on 29/06/16.
- */
 public class SelectFestivalDemokratieFragment extends Fragment {
 
-   private int demokratieKuenstler = R.array.kuenstler_profiles_festival_1;
-   private int demokratieWerke = R.array.demokratie_werke;
+   private int demokratieKuenstler = R.array.kuenstler_festival_1;
 
    @Override
    public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,7 +25,6 @@ public class SelectFestivalDemokratieFragment extends Fragment {
             Intent intent = new Intent(getActivity(),  FestivalOverviewActivity.class);
             intent.putExtra("FESTIVAL", 1);
             intent.putExtra("KUENSTLER_ARRAY", demokratieKuenstler);
-            intent.putExtra("WERKE_ARRAY", demokratieWerke);
             startActivity(intent);
          }
       });

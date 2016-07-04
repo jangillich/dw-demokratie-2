@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.util.LruCache;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
@@ -47,6 +48,8 @@ public class KuenstlerDetailActivity extends AppCompatActivity {
    RecyclerView recyclerView;
    @Bind (R.id.image_name)
    ImageView imageName;
+   @Bind (R.id.image_name_text)
+   TextView imageNameText;
    @Bind (R.id.image_profile)
    ImageView imageProfile;
    @Bind (R.id.kuenstler_text_container)
@@ -66,7 +69,10 @@ public class KuenstlerDetailActivity extends AppCompatActivity {
       ButterKnife.bind(this);
 
       setSupportActionBar(toolbar);
-      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+      ActionBar actionBar = getSupportActionBar();
+      if (actionBar != null) {
+         actionBar.setDisplayHomeAsUpEnabled(true);
+      }
 
       Bundle extras = getIntent().getExtras();
       if (extras != null) {
@@ -79,13 +85,24 @@ public class KuenstlerDetailActivity extends AppCompatActivity {
    }
 
    private void initViews() {
-      // TODO: set correct name
-      imageName.setImageResource(getResId("kuenstler_name_" + kuenstlerName, R.drawable.class));
-      imageProfile.setImageResource(getResId("kuenstler_profile_" + kuenstlerName, R.drawable.class));
-      kuenstlerText.setText(
-            getString(getResId("kuenstler_text_" + kuenstlerName, R.string.class)));
+      int kuenstlerNameImageId = ResHelper.getResId("kuenstler_name_" + kuenstlerName, R.drawable.class);
+      if(kuenstlerNameImageId < 0) {
+         imageName.setVisibility(View.GONE);
+         imageNameText.setVisibility(View.VISIBLE);
+         imageNameText.setText(getString(ResHelper.getResId("kuenstler_name_" + kuenstlerName, R.string.class)));
+      } else {
+         imageName.setImageResource(kuenstlerNameImageId);
+      }
+      imageProfile.setImageResource(ResHelper.getResId("kuenstler_profile_" + kuenstlerName, R.drawable.class));
+
+      int kuenstlerTextId = ResHelper.getResId("kuenstler_text_" + kuenstlerName, R.string.class);
+      if(kuenstlerTextId < 0) {
+         kuenstlerTextContainer.setVisibility(View.GONE);
+      } else {
+         kuenstlerText.setText(getString(kuenstlerTextId));
+         initKuenstlerTextView();
+      }
       initRecyclerView();
-      initKuenstlerTextView();
    }
 
    private void initKuenstlerTextView() {
@@ -172,7 +189,7 @@ public class KuenstlerDetailActivity extends AppCompatActivity {
 
       List<Integer> kunstwerkeArray = prepareData();
       KuenstlerImagesAdapter adapter =
-            new KuenstlerImagesAdapter(KuenstlerDetailActivity.this, kunstwerkeArray);
+            new KuenstlerImagesAdapter(KuenstlerDetailActivity.this, kunstwerkeArray, kuenstlerName);
       recyclerView.setAdapter(adapter);
 
       appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
@@ -185,9 +202,8 @@ public class KuenstlerDetailActivity extends AppCompatActivity {
                scrollRange = appBarLayout.getTotalScrollRange();
             }
             if (scrollRange + verticalOffset == 0) {
-               // TODO: set correct name
                toolbarLayout.setTitle(
-                     getString(getResId("kuenstler_name_" + kuenstlerName, R.string.class)));
+                     getString(ResHelper.getResId("kuenstler_name_" + kuenstlerName, R.string.class)));
                isShow = true;
             } else if (isShow) {
                toolbarLayout.setTitle("");
@@ -198,24 +214,19 @@ public class KuenstlerDetailActivity extends AppCompatActivity {
    }
 
    private List<Integer> prepareData() {
-      // TODO: instead of "adler" the correct artist
-      String[] images = getResources().getStringArray(getResId("images_" + "adler", R.array.class));
+      Field[] fields = R.drawable.class.getFields();
 
-      List<Integer> imagesList = new ArrayList<Integer>();
-      for (String image : images) {
-         imagesList.add(getResId(image, R.drawable.class));
+      List<Integer> werkeArray = new ArrayList<>();
+      for (Field field : fields) {
+         if (field.getName().startsWith(kuenstlerName + "_")) {
+            try {
+               werkeArray.add(field.getInt(null));
+            } catch (IllegalAccessException e) {
+               e.printStackTrace();
+            }
+         }
       }
-      return imagesList;
-   }
-
-   public int getResId(String resName, Class resType) {
-      try {
-         Field resourceField = resType.getDeclaredField(resName);
-         return resourceField.getInt(resourceField);
-      } catch (Exception e) {
-         e.printStackTrace();
-         return -1;
-      }
+      return werkeArray;
    }
 
    // The following code is for memory
@@ -292,7 +303,7 @@ public class KuenstlerDetailActivity extends AppCompatActivity {
 
       public BitmapWorkerTask(Context context, ImageView imageView) {
          // Use a WeakReference to ensure the ImageView can be garbage collected
-         imageViewReference = new WeakReference<ImageView>(imageView);
+         imageViewReference = new WeakReference<>(imageView);
          this.context = context;
       }
 
@@ -310,10 +321,10 @@ public class KuenstlerDetailActivity extends AppCompatActivity {
             bitmap = null;
          }
 
-         if (imageViewReference != null && bitmap != null) {
+         if (bitmap != null) {
             final ImageView imageView = imageViewReference.get();
             final BitmapWorkerTask bitmapWorkerTask = getBitmapWorkerTask(imageView);
-            if (this == bitmapWorkerTask && imageView != null) {
+            if (this == bitmapWorkerTask) {
                imageView.setImageBitmap(bitmap);
             }
          }
@@ -336,7 +347,7 @@ public class KuenstlerDetailActivity extends AppCompatActivity {
 
       public AsyncDrawable(Resources res, Bitmap bitmap, BitmapWorkerTask bitmapWorkerTask) {
          super(res, bitmap);
-         bitmapWorkerTaskReference = new WeakReference<BitmapWorkerTask>(bitmapWorkerTask);
+         bitmapWorkerTaskReference = new WeakReference<>(bitmapWorkerTask);
       }
 
       public BitmapWorkerTask getBitmapWorkerTask() {

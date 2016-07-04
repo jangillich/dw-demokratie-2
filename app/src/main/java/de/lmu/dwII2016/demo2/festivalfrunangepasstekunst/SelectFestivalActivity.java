@@ -13,7 +13,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -37,8 +36,6 @@ public class SelectFestivalActivity extends AppCompatActivity {
     RadioButton vpIndicator2;
     @Bind(R.id.vp_indicator3)
     RadioButton vpIndicator3;
-    @Bind(R.id.viewpager_container)
-    FrameLayout viewpagerContainer;
 
     @Bind(R.id.notification_container)
     CardView notificationContainer;
@@ -67,7 +64,7 @@ public class SelectFestivalActivity extends AppCompatActivity {
         initViewPager();
     }
     private List<Fragment> getViewPagerFraments() {
-        List<Fragment> fList = new ArrayList<Fragment>();
+        List<Fragment> fList = new ArrayList<>();
         fList.add(new SelectFestivalDemokratieFragment());
         fList.add(new SelectFestivalMachtFragment());
         fList.add(new SelectFestivalPartizipationFragment());
@@ -77,7 +74,7 @@ public class SelectFestivalActivity extends AppCompatActivity {
     private void initViewPager() {
         SelectFestivalPagerAdapter adapter = new SelectFestivalPagerAdapter(getSupportFragmentManager(), getViewPagerFraments());
 
-        festivalViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        festivalViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 

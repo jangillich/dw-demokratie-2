@@ -4,14 +4,16 @@
    android:layout_height="wrap_content"
    android:padding="2dp">
 
-   <ImageView
+   <de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.KuenstlerViewItem
       android:id="@+id/img"
-      android:scaleType="centerCrop"
+      android:scaleType="fitCenter"
       android:fitsSystemWindows="true"
+      android:adjustViewBounds="true"
       android:layout_width="match_parent"
       android:layout_height="wrap_content" />
 
    <ImageView
+      android:id="@+id/img_selector"
       android:src="@drawable/selector_kunstwerk_item"
       android:background="@color/transparent"
       android:layout_width="match_parent"

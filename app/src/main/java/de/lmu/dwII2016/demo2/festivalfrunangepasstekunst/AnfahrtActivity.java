@@ -1,6 +1,9 @@
 package de.lmu.dwII2016.demo2.festivalfrunangepasstekunst;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -27,11 +30,23 @@ public class AnfahrtActivity extends AppCompatActivity {
       ButterKnife.bind(this);
 
       setSupportActionBar(toolbar);
-      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+      ActionBar actionBar = getSupportActionBar();
+      if (actionBar != null) {
+         actionBar.setDisplayHomeAsUpEnabled(true);
+      }
       SupportMapFragment mapFragmentDemokratie = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_festival1);
       mapFragmentDemokratie.getMapAsync(new OnMapReadyCallback() {
          @Override
          public void onMapReady(GoogleMap googleMap) {
+            googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+               @Override
+               public void onMapClick(LatLng latLng) {
+                  Uri gmmIntentUri = Uri.parse("geo:0,0?q=48.129423,11.611146?z=12(" + getString(R.string.map_marker_festival_1)+")");
+                  Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                  mapIntent.setPackage("com.google.android.apps.maps");
+                  startActivity(mapIntent);
+               }
+            });
             LatLng demokratie = new LatLng(48.129423, 11.611146);
             googleMap.addMarker(new MarkerOptions().position(demokratie)
                   .title(getResources().getString(R.string.map_marker_festival_1)));
@@ -43,6 +58,16 @@ public class AnfahrtActivity extends AppCompatActivity {
       mapFragmentMacht.getMapAsync(new OnMapReadyCallback() {
          @Override
          public void onMapReady(GoogleMap googleMap) {
+            googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+               @Override
+               public void onMapClick(LatLng latLng) {
+
+                  Uri gmmIntentUri = Uri.parse("geo:0,0?q=48.160838,11.500710?z=12(" + getString(R.string.map_marker_festival_2)+")");
+                  Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                  mapIntent.setPackage("com.google.android.apps.maps");
+                  startActivity(mapIntent);
+               }
+            });
             LatLng macht = new LatLng(48.160838, 11.500710);
             googleMap.addMarker(new MarkerOptions().position(macht)
                   .title(getResources().getString(R.string.map_marker_festival_2)));
@@ -53,6 +78,16 @@ public class AnfahrtActivity extends AppCompatActivity {
       mapFragmentPartizipation.getMapAsync(new OnMapReadyCallback() {
          @Override
          public void onMapReady(GoogleMap googleMap) {
+            googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+               @Override
+               public void onMapClick(LatLng latLng) {
+
+                  Uri gmmIntentUri = Uri.parse("geo:0,0?q=48.159847,11.549667?z=12(" + getString(R.string.map_marker_festival_3)+")");
+                  Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                  mapIntent.setPackage("com.google.android.apps.maps");
+                  startActivity(mapIntent);
+               }
+            });
             LatLng partizipation = new LatLng(48.159847, 11.549667);
             googleMap.addMarker(new MarkerOptions().position(partizipation)
                   .title(getResources().getString(R.string.map_marker_festival_3)));
