@@ -3,7 +3,9 @@ package de.lmu.dwII2016.demo2.festivalfrunangepasstekunst;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -22,7 +24,6 @@ public class FestivalOverviewActivity extends AppCompatActivity {
    Toolbar toolbar;
 
    private int festival;
-   private int werkeArray;
    private int kuenstlerArray;
 
    @Override
@@ -65,8 +66,7 @@ public class FestivalOverviewActivity extends AppCompatActivity {
       if (extras != null) {
          festival = extras.getInt("FESTIVAL");
          kuenstlerArray = extras.getInt("KUENSTLER_ARRAY");
-         werkeArray = extras.getInt("WERKE_ARRAY");
-         //The key argument here must match that used in the other activity
+
       }
       initToolbar();
    }
@@ -74,7 +74,10 @@ public class FestivalOverviewActivity extends AppCompatActivity {
    private void initToolbar() {
 
       setSupportActionBar(toolbar);
-      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+      ActionBar actionBar = getSupportActionBar();
+      if (actionBar != null) {
+         actionBar.setDisplayHomeAsUpEnabled(true);
+      }
 
       tabLayout.addTab(tabLayout.newTab()
             .setText(getResources().getText(R.string.tab_kunstwerke)));
@@ -84,23 +87,23 @@ public class FestivalOverviewActivity extends AppCompatActivity {
       switch (festival) {
          case 2:
             setTitle(R.string.name_festival_2);
-            tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.tab_indicator_macht));
+            tabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(this, R.color.tab_indicator_macht));
             toolbar.setNavigationIcon(R.drawable.ic_launcher_macht);
             break;
          case 3:
             setTitle(R.string.name_festival_3);
-            tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.tab_indicator_partizipation));
+            tabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(this, R.color.tab_indicator_partizipation));
             toolbar.setNavigationIcon(R.drawable.ic_launcher_partizipation);
             break;
          case 1:
          default:
             setTitle(R.string.name_festival_1);
-            tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.tab_indicator_demokratie));
+            tabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(this, R.color.tab_indicator_demokratie));
             toolbar.setNavigationIcon(R.drawable.ic_launcher_demokratie);
       }
 
       FestivalOverviewPagerAdapter adapter =
-            new FestivalOverviewPagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount(), werkeArray, kuenstlerArray);
+            new FestivalOverviewPagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount(), kuenstlerArray);
       viewPager.setAdapter(adapter);
       viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
       tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {

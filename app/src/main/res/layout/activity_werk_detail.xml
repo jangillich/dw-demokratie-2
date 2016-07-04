@@ -35,8 +35,7 @@
          android:gravity="center_horizontal"
          android:textAppearance="@style/Festival.Text.RobotoLight"
          android:layout_marginBottom="@dimen/activity_vertical_margin"
-         android:textSize="20sp"
-         android:text="Test Title"/>
+         android:textSize="20sp"/>
 
       <Button
          android:id="@+id/kuenstler"
@@ -45,8 +44,7 @@
          android:layout_gravity="center_horizontal"
          android:textAppearance="@style/Festival.Text.RobotoLight"
          android:textSize="20sp"
-         style="@style/Festival.FlatButton"
-         android:text="Test Kuenstler"/>
+         style="@style/Festival.FlatButton"/>
    </LinearLayout>
    <ImageView
       android:id="@+id/img"

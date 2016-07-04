@@ -7,13 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * Created by bianka.roppelt on 29/06/16.
- */
 public class SelectFestivalMachtFragment extends Fragment {
 
    private int machtKuenstler = R.array.kuenstler_festival_2;
-   private int machtWerke = R.array.demokratie_werke;
 
    @Override
    public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -30,7 +26,6 @@ public class SelectFestivalMachtFragment extends Fragment {
             Intent intent = new Intent(getActivity(),  FestivalOverviewActivity.class);
             intent.putExtra("FESTIVAL", 2);
             intent.putExtra("KUENSTLER_ARRAY", machtKuenstler);
-            intent.putExtra("WERKE_ARRAY", machtWerke);
             startActivity(intent);
          }
       });

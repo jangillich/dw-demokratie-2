@@ -10,9 +10,6 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-/**
- * Created by bianka.roppelt on 23/06/16.
- */
 public class WallImageKuenstlerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
 
@@ -40,16 +37,13 @@ public class WallImageKuenstlerAdapter extends RecyclerView.Adapter<RecyclerView
    @Override
    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
       View view = context.getActivity().getLayoutInflater().inflate(R.layout.item_wall_image_kuenstler, parent, false);
-      ItemViewHolder viewHolder = new ItemViewHolder(view);
-      return viewHolder;
+      return new ItemViewHolder(view);
    }
 
    @Override
    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, final int position) {
       ItemViewHolder itemViewHolder = (ItemViewHolder) viewHolder;
       context.loadBitmap(images.get(position), itemViewHolder.img);
-
-      itemViewHolder.img.setTag(images.get(position));
       itemViewHolder.img.setKuenstlerName(kuenstlerNames.get(position));
       itemViewHolder.img.setOnClickListener(new View.OnClickListener() {
          @Override

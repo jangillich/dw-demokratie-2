@@ -1,6 +1,7 @@
 package de.lmu.dwII2016.demo2.festivalfrunangepasstekunst;
 
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -27,7 +28,10 @@ public class AnfahrtActivity extends AppCompatActivity {
       ButterKnife.bind(this);
 
       setSupportActionBar(toolbar);
-      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+      ActionBar actionBar = getSupportActionBar();
+      if (actionBar != null) {
+         actionBar.setDisplayHomeAsUpEnabled(true);
+      }
       SupportMapFragment mapFragmentDemokratie = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_festival1);
       mapFragmentDemokratie.getMapAsync(new OnMapReadyCallback() {
          @Override

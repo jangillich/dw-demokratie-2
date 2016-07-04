@@ -4,28 +4,36 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-public class KuenstlerViewItem extends ImageView {
+public class WerkViewItem extends ImageView {
 
    private String kuenstlerName;
+   private String werkTitle;
 
-   public KuenstlerViewItem(Context context) {
+   public WerkViewItem(Context context) {
       super(context);
    }
 
-   public KuenstlerViewItem(Context context, AttributeSet attrs) {
+   public WerkViewItem(Context context, AttributeSet attrs) {
       super(context, attrs);
    }
 
-   public KuenstlerViewItem(Context context, AttributeSet attrs, int defStyleAttr) {
+   public WerkViewItem(Context context, AttributeSet attrs, int defStyleAttr) {
       super(context, attrs, defStyleAttr);
    }
-
    public String getKuenstlerName() {
       return  kuenstlerName;
    }
 
    public void setKuenstlerName(String kuenstlerName) {
       this.kuenstlerName = kuenstlerName;
+   }
+
+   public String getWerkTitle() {
+      return  werkTitle;
+   }
+
+   public void setWerkTitle(String werkTitle) {
+      this.werkTitle = werkTitle;
    }
 
 }

@@ -2,6 +2,7 @@ package de.lmu.dwII2016.demo2.festivalfrunangepasstekunst;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -28,6 +29,8 @@ public class WerkDetailActivity extends AppCompatActivity {
    Button kuenstler;
 
    private int imageRes;
+   private String kuenstlerName;
+   private String werkTitle;
 
    @Override
    protected void onCreate(Bundle savedInstanceState) {
@@ -38,19 +41,45 @@ public class WerkDetailActivity extends AppCompatActivity {
       Bundle extras = getIntent().getExtras();
       if (extras != null) {
          imageRes = extras.getInt("IMAGE");
+         kuenstlerName = extras.getString("KUENSTLER_NAME");
+         werkTitle = extras.getString("WERK_TITLE","");
       }
       setSupportActionBar(toolbar);
-      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-      setTitle(imageRes);
+      ActionBar actionBar = getSupportActionBar();
+      if (actionBar != null) {
+         actionBar.setDisplayHomeAsUpEnabled(true);
+      }
+      initViews();
+   }
+
+   private void initViews() {
       imageView.setImageResource(imageRes);
       imgageSelector.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
             Intent intent = new Intent(WerkDetailActivity.this,  FullscreenActivity.class);
+            intent.putExtra("KUENSTLER_NAME", kuenstlerName);
+            intent.putExtra("WERK_TITLE", werkTitle);
             intent.putExtra("IMAGE", imageRes);
             startActivity(intent);
          }
       });
+      kuenstler.setText(getString(ResHelper.getResId("kuenstler_name_" + kuenstlerName, R.string.class)));
+      kuenstler.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+            Intent intent = new Intent(WerkDetailActivity.this,  KuenstlerDetailActivity.class);
+            intent.putExtra("KUENSTLER_NAME", kuenstlerName);
+            startActivity(intent);
+         }
+      });
+      if(werkTitle.isEmpty()) {
+         titel.setVisibility(View.GONE);
+         setTitle("Werk "  + getString(ResHelper.getResId("kuenstler_name_" + kuenstlerName, R.string.class)));
+      } else {
+         setTitle(werkTitle);
+         titel.setText(werkTitle);
+      }
    }
 
    @Override

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import butterknife.Bind;
@@ -43,9 +44,9 @@ public class FestivalOverviewKuenstlerFragment extends TabWallFragment {
    private List<Integer> getKuenstlerProfilesList(){
       String[] kuenstlerList = getResources().getStringArray(kuenstlerArray);
 
-      List<Integer> imagesList = new ArrayList<Integer>();
+      List<Integer> imagesList = new ArrayList<>();
       for (String kuenstler : kuenstlerList) {
-         imagesList.add(getResId("kuenstler_profile_" + kuenstler, R.drawable.class));
+         imagesList.add(ResHelper.getResId("kuenstler_profile_" + kuenstler, R.drawable.class));
       }
       return imagesList;
    }
@@ -53,10 +54,8 @@ public class FestivalOverviewKuenstlerFragment extends TabWallFragment {
    private List<String> getKuenstlerList(){
       String[] kuenstlers = getResources().getStringArray(kuenstlerArray);
 
-      List<String> kuenstlerList = new ArrayList<String>();
-      for (String kuenstler : kuenstlers) {
-         kuenstlerList.add(kuenstler);
-      }
+      List<String> kuenstlerList = new ArrayList<>();
+      Collections.addAll(kuenstlerList, kuenstlers);
       return kuenstlerList;
    }
 

@@ -16,13 +16,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import java.lang.ref.WeakReference;
-import java.lang.reflect.Field;
 
 import butterknife.ButterKnife;
 
-/**
- * Created by bianka.roppelt on 29/06/16.
- */
 public class TabWallFragment  extends Fragment {
 
    private static LruCache<String, Bitmap> mMemoryCache;
@@ -33,14 +29,6 @@ public class TabWallFragment  extends Fragment {
       ButterKnife.bind(this, rootView);
       initMemoryCache();
       return rootView;
-   }
-   public int getResId(String resName, Class resClass) {
-      try {
-         Field resourceField = resClass.getDeclaredField(resName);
-         return resourceField.getInt(resourceField);
-      } catch (Exception e) {
-         return -1;
-      }
    }
    // The following code is for memory
 
@@ -115,7 +103,7 @@ public class TabWallFragment  extends Fragment {
 
       public BitmapWorkerTask(Context context, ImageView imageView) {
          // Use a WeakReference to ensure the ImageView can be garbage collected
-         imageViewReference = new WeakReference<ImageView>(imageView);
+         imageViewReference = new WeakReference<>(imageView);
          this.context = context;
       }
 
@@ -133,11 +121,11 @@ public class TabWallFragment  extends Fragment {
             bitmap = null;
          }
 
-         if (imageViewReference != null && bitmap != null) {
+         if (bitmap != null) {
             final ImageView imageView = imageViewReference.get();
             final BitmapWorkerTask bitmapWorkerTask =
                   getBitmapWorkerTask(imageView);
-            if (this == bitmapWorkerTask && imageView != null) {
+            if (this == bitmapWorkerTask) {
                imageView.setImageBitmap(bitmap);
             }
          }
@@ -164,7 +152,7 @@ public class TabWallFragment  extends Fragment {
             BitmapWorkerTask bitmapWorkerTask) {
          super(res, bitmap);
          bitmapWorkerTaskReference =
-               new WeakReference<BitmapWorkerTask>(bitmapWorkerTask);
+               new WeakReference<>(bitmapWorkerTask);
       }
 
       public BitmapWorkerTask getBitmapWorkerTask() {

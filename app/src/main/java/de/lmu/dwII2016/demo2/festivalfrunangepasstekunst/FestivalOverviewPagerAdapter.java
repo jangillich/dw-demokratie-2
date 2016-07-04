@@ -7,13 +7,11 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 public class FestivalOverviewPagerAdapter extends FragmentStatePagerAdapter {
    int mNumOfTabs;
-   int werkeArray;
    int kuenstlerArray;
 
-   public FestivalOverviewPagerAdapter(FragmentManager fm, int NumOfTabs, int werkeArray, int kuenstlerArray) {
+   public FestivalOverviewPagerAdapter(FragmentManager fm, int NumOfTabs, int kuenstlerArray) {
       super(fm);
       this.mNumOfTabs = NumOfTabs;
-      this.werkeArray = werkeArray;
       this.kuenstlerArray = kuenstlerArray;
    }
 
@@ -24,7 +22,7 @@ public class FestivalOverviewPagerAdapter extends FragmentStatePagerAdapter {
          case 0:
             FestivalOverviewWerkeFragment tab1 = new FestivalOverviewWerkeFragment();
             Bundle bundle1 = new Bundle();
-            bundle1.putInt("WERKE_ARRAY", werkeArray);
+            bundle1.putInt("KUENSTLER_ARRAY", kuenstlerArray);
             tab1.setArguments(bundle1);
             return tab1;
          case 1:

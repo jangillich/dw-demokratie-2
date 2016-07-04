@@ -4,7 +4,7 @@
    android:layout_height="wrap_content"
    android:padding="2dp">
 
-   <ImageView
+   <de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.WerkViewItem
       android:id="@+id/img"
       android:scaleType="centerCrop"
       android:fitsSystemWindows="true"
