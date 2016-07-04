@@ -3,16 +3,19 @@
    xmlns:android="http://schemas.android.com/apk/res/android">
 
    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+   <uses-permission android:name="android.permission.INTERNET" />
 
    <application
-       android:name="android.support.multidex.MultiDexApplication"
+      android:name="android.support.multidex.MultiDexApplication"
       android:allowBackup="true"
       android:icon="@drawable/ic_launcher_demokratie"
       android:label="@string/app_name"
-      android:theme="@style/Festival">
+      android:theme="@style/Festival"
+      android:screenOrientation="portrait">
       <activity
          android:name=".SelectFestivalActivity"
-         android:label="@string/app_name">
+         android:label="@string/app_name"
+         android:screenOrientation="portrait">
          <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
@@ -22,7 +25,8 @@
       <activity
          android:name=".FestivalOverviewActivity"
          android:parentActivityName=".SelectFestivalActivity"
-         android:theme="@style/Festival">
+         android:theme="@style/Festival"
+         android:screenOrientation="portrait">
          <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".SelectFestivalActivity" />
@@ -31,7 +35,8 @@
          android:name=".WerkDetailActivity"
          android:label="@string/title_activity_werk_detail"
          android:parentActivityName=".FestivalOverviewActivity"
-         android:theme="@style/Festival">
+         android:theme="@style/Festival"
+         android:screenOrientation="portrait">
          <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value="de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.FestivalOverviewActivity" />
@@ -49,7 +54,8 @@
          android:name=".ImpressumActivity"
          android:label="@string/title_activity_impressum"
          android:parentActivityName=".FestivalOverviewActivity"
-         android:theme="@style/Festival">
+         android:theme="@style/Festival"
+         android:screenOrientation="portrait">
          <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value="de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.FestivalOverviewActivity" />
@@ -58,7 +64,8 @@
          android:name=".EventInfosActivity"
          android:label="@string/title_activity_event_infos"
          android:parentActivityName=".FestivalOverviewActivity"
-         android:theme="@style/Festival">
+         android:theme="@style/Festival"
+         android:screenOrientation="portrait">
          <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value="de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.FestivalOverviewActivity" />
@@ -71,7 +78,8 @@
       <activity
          android:name=".AnfahrtActivity"
          android:label="@string/title_activity_anfahrt"
-         android:theme="@style/Festival">
+         android:theme="@style/Festival"
+         android:screenOrientation="portrait">
          <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value="de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.FestivalOverviewActivity" />
@@ -79,7 +87,8 @@
       <activity
          android:name=".KuenstlerDetailActivity"
          android:parentActivityName=".FestivalOverviewActivity"
-         android:theme="@style/Festival">
+         android:theme="@style/Festival"
+         android:screenOrientation="portrait">
          <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value="de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.FestivalOverviewActivity" />
