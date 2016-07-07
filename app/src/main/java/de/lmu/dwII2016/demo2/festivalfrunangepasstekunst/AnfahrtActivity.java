@@ -12,11 +12,13 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.adapters.DWMapInfoViewAdapter;
 
 public class AnfahrtActivity extends AppCompatActivity {
 
@@ -38,10 +40,11 @@ public class AnfahrtActivity extends AppCompatActivity {
       mapFragmentDemokratie.getMapAsync(new OnMapReadyCallback() {
          @Override
          public void onMapReady(GoogleMap googleMap) {
+            googleMap.setInfoWindowAdapter(new DWMapInfoViewAdapter(AnfahrtActivity.this));
             googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
                @Override
                public void onMapClick(LatLng latLng) {
-                  Uri gmmIntentUri = Uri.parse("geo:0,0?q=48.129423,11.611146?z=12(" + getString(R.string.map_marker_festival_1)+")");
+                  Uri gmmIntentUri = Uri.parse("geo:0,0?q=48.129423,11.611146?z=12(" + getString(R.string.map_marker_festival_1_title)+")");
                   Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
                   mapIntent.setPackage("com.google.android.apps.maps");
                   startActivity(mapIntent);
@@ -49,49 +52,25 @@ public class AnfahrtActivity extends AppCompatActivity {
             });
             LatLng demokratie = new LatLng(48.129423, 11.611146);
             googleMap.addMarker(new MarkerOptions().position(demokratie)
-                  .title(getResources().getString(R.string.map_marker_festival_1)));
-            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(demokratie, 12.0f));
-
-         }
-      });
-      SupportMapFragment mapFragmentMacht = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_festival2);
-      mapFragmentMacht.getMapAsync(new OnMapReadyCallback() {
-         @Override
-         public void onMapReady(GoogleMap googleMap) {
-            googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-               @Override
-               public void onMapClick(LatLng latLng) {
-
-                  Uri gmmIntentUri = Uri.parse("geo:0,0?q=48.160838,11.500710?z=12(" + getString(R.string.map_marker_festival_2)+")");
-                  Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-                  mapIntent.setPackage("com.google.android.apps.maps");
-                  startActivity(mapIntent);
-               }
-            });
+                  .title(getResources().getString(R.string.map_marker_festival_1_title))
+                  .snippet(getResources().getString(R.string.map_marker_festival_1_desc))
+                    .icon (BitmapDescriptorFactory.fromResource(R.drawable.map_marker_demokratie)));
             LatLng macht = new LatLng(48.160838, 11.500710);
             googleMap.addMarker(new MarkerOptions().position(macht)
-                  .title(getResources().getString(R.string.map_marker_festival_2)));
-            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(macht, 12.0f));
-         }
-      });
-      SupportMapFragment mapFragmentPartizipation = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_festival3);
-      mapFragmentPartizipation.getMapAsync(new OnMapReadyCallback() {
-         @Override
-         public void onMapReady(GoogleMap googleMap) {
-            googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-               @Override
-               public void onMapClick(LatLng latLng) {
-
-                  Uri gmmIntentUri = Uri.parse("geo:0,0?q=48.159847,11.549667?z=12(" + getString(R.string.map_marker_festival_3)+")");
-                  Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-                  mapIntent.setPackage("com.google.android.apps.maps");
-                  startActivity(mapIntent);
-               }
-            });
+                    .title(getResources().getString(R.string.map_marker_festival_2_title))
+                    .snippet(getResources().getString(R.string.map_marker_festival_2_desc))
+                    .icon (BitmapDescriptorFactory.fromResource(R.drawable.map_marker_macht)));
             LatLng partizipation = new LatLng(48.159847, 11.549667);
             googleMap.addMarker(new MarkerOptions().position(partizipation)
-                  .title(getResources().getString(R.string.map_marker_festival_3)));
-            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(partizipation, 12.0f));
+                    .title(getResources().getString(R.string.map_marker_festival_3_title))
+                    .snippet(getResources().getString(R.string.map_marker_festival_3_desc))
+                    .icon (BitmapDescriptorFactory.fromResource(R.drawable.map_marker_partizipation)));
+
+            double lat = (demokratie.latitude + macht.latitude + partizipation.latitude) / 3.0;
+            double lng = (demokratie.longitude + macht.longitude + partizipation.longitude) / 3.0;
+            LatLng center = new LatLng(lat, lng);
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(center, 8.0f));
+            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(center, 11.5f));
          }
       });
    }
