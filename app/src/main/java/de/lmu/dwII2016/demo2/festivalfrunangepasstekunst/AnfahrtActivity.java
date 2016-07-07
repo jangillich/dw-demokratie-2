@@ -14,6 +14,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import butterknife.Bind;
@@ -41,10 +42,12 @@ public class AnfahrtActivity extends AppCompatActivity {
          @Override
          public void onMapReady(GoogleMap googleMap) {
             googleMap.setInfoWindowAdapter(new DWMapInfoViewAdapter(AnfahrtActivity.this));
-            googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            googleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
                @Override
-               public void onMapClick(LatLng latLng) {
-                  Uri gmmIntentUri = Uri.parse("geo:0,0?q=48.129423,11.611146?z=12(" + getString(R.string.map_marker_festival_1_title)+")");
+               public void onInfoWindowClick(Marker marker) {
+                  double lat = marker.getPosition().latitude;
+                  double lng = marker.getPosition().longitude;
+                  Uri gmmIntentUri = Uri.parse("geo:"+ lat + "," + lng + "?q=" + lat + "," + lng + "?z=12(" + Uri.encode(marker.getTitle()) + ")");
                   Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
                   mapIntent.setPackage("com.google.android.apps.maps");
                   startActivity(mapIntent);
