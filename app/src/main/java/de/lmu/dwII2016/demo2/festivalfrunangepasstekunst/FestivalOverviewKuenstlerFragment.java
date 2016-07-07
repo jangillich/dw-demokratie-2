@@ -1,6 +1,7 @@
 package de.lmu.dwII2016.demo2.festivalfrunangepasstekunst;
 
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.adapters.ArtistViewAdapter;
 
 public class FestivalOverviewKuenstlerFragment extends TabWallFragment {
 
@@ -31,14 +33,15 @@ public class FestivalOverviewKuenstlerFragment extends TabWallFragment {
    }
 
    private void initViews() {
-      recyclerView.setHasFixedSize(true);
-      StaggeredGridLayoutManager
-            layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-      recyclerView.setLayoutManager(layoutManager);
+//      recyclerView.setHasFixedSize(true);
+//      StaggeredGridLayoutManager
+//            layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+//      recyclerView.setLayoutManager(layoutManager);
 
+      recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
 
-      WallImageKuenstlerAdapter
-            adapter = new WallImageKuenstlerAdapter(FestivalOverviewKuenstlerFragment.this, getKuenstlerProfilesList(), getKuenstlerList());
+      ArtistViewAdapter
+            adapter = new ArtistViewAdapter(FestivalOverviewKuenstlerFragment.this, getKuenstlerProfilesList(), getKuenstlerList());
       recyclerView.setAdapter(adapter);
    }
 
