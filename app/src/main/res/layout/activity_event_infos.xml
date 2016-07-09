@@ -30,12 +30,14 @@
 
          <FrameLayout
             android:id="@+id/fragment_youtube_player"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
          <android.support.v7.widget.CardView
             android:id="@+id/festival_text_container"
-            android:layout_margin="10dp"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardElevation="4dp"
@@ -59,5 +61,12 @@
       </LinearLayout>
 
    </ScrollView>
+   <View
+      android:id="@+id/shadow_toolbar"
+      android:layout_width="match_parent"
+      android:layout_height="6dp"
+      android:alpha="0.5"
+      android:background="@drawable/shadow_toolbar"
+      android:layout_below="@id/toolbar"/>
 
 </RelativeLayout>

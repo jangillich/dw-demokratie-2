@@ -1,4 +1,4 @@
-package de.lmu.dwII2016.demo2.festivalfrunangepasstekunst;
+package de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

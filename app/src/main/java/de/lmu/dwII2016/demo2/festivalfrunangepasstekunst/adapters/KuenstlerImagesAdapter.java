@@ -1,4 +1,4 @@
-package de.lmu.dwII2016.demo2.festivalfrunangepasstekunst;
+package de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.adapters;
 
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +10,10 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.KuenstlerDetailActivity;
+import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.R;
+import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.WerkDetailActivity;
+import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.WerkViewItem;
 
 public class KuenstlerImagesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -40,6 +44,7 @@ public class KuenstlerImagesAdapter extends RecyclerView.Adapter<RecyclerView.Vi
    @Override
    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
       View view = context.getLayoutInflater().inflate(R.layout.item_wall_image_werk, parent, false);
+      view.setPadding(0,0,0,0);
       return new ItemViewHolder(view);
    }
 

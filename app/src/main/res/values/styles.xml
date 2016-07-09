@@ -51,8 +51,6 @@
 
    <style name="Festival.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-   <style name="Festival.FullscreenTheme" parent="Festival.DarkActionBar">
-      <item name="android:windowActionBarOverlay">true</item>
-      <item name="android:windowBackground">@null</item>
+   <style name="Festival.TransparentStatusBar" parent="@style/Festival">
    </style>
 </resources>

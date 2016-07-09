@@ -22,9 +22,9 @@
    <string name="subtitle_festival_2">„Uns gehört die Stadt!\nWer ist das Volk?“</string>
    <string name="subtitle_festival_3">„Wer ist drin\nund wer bleibt draußen?“</string>
 
-   <string name="map_marker_festival_1_title">Demokratie, Mai 6-8</string>
-   <string name="map_marker_festival_2_title">Macht, Juli 15-17</string>
-   <string name="map_marker_festival_3_title">Partizipation, Oktober 7-9</string>
+   <string name="map_marker_festival_1_title">Demokratie, Mai 6–8</string>
+   <string name="map_marker_festival_2_title">Macht, Juli 15–17</string>
+   <string name="map_marker_festival_3_title">Partizipation, Oktober 7–9</string>
 
    <string name="map_marker_festival_1_desc">Galerie LUXESE\nBurggrafenstr. 5\nMünchen</string>
    <string name="map_marker_festival_2_desc">Unterführung Nymphenburger Schloss/Botanischer Garten\nMünchen</string>

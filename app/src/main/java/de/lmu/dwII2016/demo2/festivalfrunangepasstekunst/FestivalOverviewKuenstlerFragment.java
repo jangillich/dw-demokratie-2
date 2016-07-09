@@ -16,6 +16,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.adapters.ArtistViewAdapter;
 
+
 public class FestivalOverviewKuenstlerFragment extends TabWallFragment {
 
    private int kuenstlerArray;

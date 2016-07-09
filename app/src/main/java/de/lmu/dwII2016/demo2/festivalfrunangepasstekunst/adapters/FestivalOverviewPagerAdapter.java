@@ -1,9 +1,12 @@
-package de.lmu.dwII2016.demo2.festivalfrunangepasstekunst;
+package de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.adapters;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+
+import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.FestivalOverviewKuenstlerFragment;
+import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.FestivalOverviewWerkeFragment;
 
 public class FestivalOverviewPagerAdapter extends FragmentStatePagerAdapter {
    int mNumOfTabs;
