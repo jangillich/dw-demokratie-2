@@ -40,6 +40,7 @@ public class KuenstlerImagesAdapter extends RecyclerView.Adapter<RecyclerView.Vi
    @Override
    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
       View view = context.getLayoutInflater().inflate(R.layout.item_wall_image_werk, parent, false);
+      view.setPadding(0,0,0,0);
       return new ItemViewHolder(view);
    }
 
