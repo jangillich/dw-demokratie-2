@@ -13,7 +13,6 @@
        android:layout_height="wrap_content"
        android:layout_alignParentTop="true"
        android:background="@color/primary"
-       android:elevation="6dp"
        app:titleTextColor="@color/text_primary"
        android:minHeight="?attr/actionBarSize"
        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
@@ -116,4 +115,11 @@
        android:visibility="gone"
        android:background="@drawable/shadow_notification"
        android:layout_above="@id/notification_container"/>
+    <View
+       android:id="@+id/shadow_toolbar"
+       android:layout_width="match_parent"
+       android:layout_height="6dp"
+       android:alpha="0.5"
+       android:background="@drawable/shadow_toolbar"
+       android:layout_below="@id/toolbar"/>
 </RelativeLayout>

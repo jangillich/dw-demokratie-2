@@ -21,6 +21,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.adapters.SelectFestivalPagerAdapter;
 
 public class SelectFestivalActivity extends AppCompatActivity {
 

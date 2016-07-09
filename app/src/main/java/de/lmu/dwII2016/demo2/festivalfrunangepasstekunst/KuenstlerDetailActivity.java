@@ -33,6 +33,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.adapters.KuenstlerImagesAdapter;
 
 public class KuenstlerDetailActivity extends AppCompatActivity {
 
@@ -120,27 +121,32 @@ public class KuenstlerDetailActivity extends AppCompatActivity {
                               ((FrameLayout.LayoutParams) kuenstlerText.getLayoutParams())
                                     .topMargin;
 
-                  // initially changing the height to min height
-                  ViewGroup.LayoutParams layoutParams = kuenstlerTextContainer.getLayoutParams();
-                  layoutParams.height =
-                        (int) getResources().getDimension(R.dimen.kuenstler_description_min_height);
-                  kuenstlerTextContainer.setLayoutParams(layoutParams);
+                  if(descriptionViewFullHeight > 500) {
+                     // initially changing the height to min height
+                     ViewGroup.LayoutParams layoutParams = kuenstlerTextContainer.getLayoutParams();
+                     layoutParams.height = (int) getResources().getDimension(R.dimen
+                           .kuenstler_description_min_height);
+                     kuenstlerTextContainer.setLayoutParams(layoutParams);
+
+                     kuenstlerTextContainer.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                           toggleProductDescriptionHeight();
+                        }
+                     });
+                     iconCollapseExpand.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                           toggleProductDescriptionHeight();
+                        }
+                     });
+                  } else {
+                     iconCollapseExpand.setVisibility(View.GONE);
+                  }
 
                   return true;
                }
             });
-      kuenstlerTextContainer.setOnClickListener(new View.OnClickListener() {
-         @Override
-         public void onClick(View v) {
-            toggleProductDescriptionHeight();
-         }
-      });
-      iconCollapseExpand.setOnClickListener(new View.OnClickListener() {
-         @Override
-         public void onClick(View v) {
-            toggleProductDescriptionHeight();
-         }
-      });
    }
 
    private void toggleProductDescriptionHeight() {

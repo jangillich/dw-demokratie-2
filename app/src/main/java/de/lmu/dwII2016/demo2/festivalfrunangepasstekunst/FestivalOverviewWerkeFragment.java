@@ -13,6 +13,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.adapters.WallImageWerkeAdapter;
 
 public class FestivalOverviewWerkeFragment extends TabWallFragment {
 

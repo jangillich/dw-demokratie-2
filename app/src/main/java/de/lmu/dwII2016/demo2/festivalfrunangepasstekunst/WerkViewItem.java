@@ -6,8 +6,8 @@ import android.widget.ImageView;
 
 public class WerkViewItem extends ImageView {
 
-   private String kuenstlerName;
-   private String werkTitle;
+   private String kuenstlerName = "";
+   private String werkTitle = "";
    private boolean quadratic = false;
 
    public WerkViewItem(Context context) {

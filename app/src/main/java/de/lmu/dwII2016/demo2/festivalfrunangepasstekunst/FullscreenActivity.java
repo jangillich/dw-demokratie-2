@@ -2,14 +2,19 @@ package de.lmu.dwII2016.demo2.festivalfrunangepasstekunst;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -30,12 +35,16 @@ public class FullscreenActivity extends AppCompatActivity {
       }
    };
 
+   @Bind(R.id.toolbar)
+   Toolbar toolbar;
    @Bind(R.id.fullscreen_content)
    ImageView mImageView;
    @Bind(R.id.fullscreen_content_controls)
    View mControlsView;
    @Bind(R.id.kuenstler_button)
    Button kuenstlerButton;
+   @Bind(R.id.title)
+   TextView imageTitle;
 
    private int imageRes;
    private String kuenstlerName;
@@ -73,13 +82,14 @@ public class FullscreenActivity extends AppCompatActivity {
    @Override
    protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
-
       setContentView(R.layout.activity_fullscreen);
       ButterKnife.bind(this);
+      setSupportActionBar(toolbar);
       ActionBar actionBar = getSupportActionBar();
       if (actionBar != null) {
          actionBar.setDisplayHomeAsUpEnabled(true);
       }
+      setTitle("");
       Bundle extras = getIntent().getExtras();
       if (extras != null) {
          imageRes = extras.getInt("IMAGE");
@@ -87,7 +97,6 @@ public class FullscreenActivity extends AppCompatActivity {
          werkTitle = extras.getString("WERK_TITLE");
       }
 
-      setTitle(imageRes);
       mVisible = true;
       mImageView.setImageResource(imageRes);
       mImageView.setOnClickListener(new View.OnClickListener() {
@@ -105,10 +114,9 @@ public class FullscreenActivity extends AppCompatActivity {
             startActivity(intent);
          }
       });
-      if(werkTitle.isEmpty()) {
-         setTitle("Werk "  + getString(ResHelper.getResId("kuenstler_name_" + kuenstlerName, R.string.class)));
-      } else {
-         setTitle(werkTitle);
+      if(!werkTitle.isEmpty()) {
+         imageTitle.setText(werkTitle);
+         imageTitle.setVisibility(View.VISIBLE);
       }
    }
 

@@ -45,7 +45,7 @@
          android:name=".FullscreenActivity"
          android:configChanges="orientation|keyboardHidden|screenSize"
          android:parentActivityName=".WerkDetailActivity"
-         android:theme="@style/Festival.FullscreenTheme">
+         android:theme="@style/Festival.TransparentStatusBar">
          <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value="de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.WerkDetailActivity" />
@@ -87,7 +87,7 @@
       <activity
          android:name=".KuenstlerDetailActivity"
          android:parentActivityName=".FestivalOverviewActivity"
-         android:theme="@style/Festival"
+         android:theme="@style/Festival.TransparentStatusBar"
          android:screenOrientation="portrait">
          <meta-data
             android:name="android.support.PARENT_ACTIVITY"
