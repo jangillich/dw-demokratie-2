@@ -64,8 +64,12 @@ public class ArtistViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
         itemViewHolder.img.setKuenstlerName(kuenstlerNameId);
         itemViewHolder.artistName.setText(kuenstlerName);
-        if(kuenstlerSubtitle != null && !kuenstlerSubtitle.isEmpty())
+        if(kuenstlerSubtitle != null && !kuenstlerSubtitle.isEmpty()) {
             itemViewHolder.artistSubtitle.setText(kuenstlerSubtitle);
+            itemViewHolder.artistSubtitle.setVisibility(View.VISIBLE);
+        }
+        else
+            itemViewHolder.artistSubtitle.setVisibility(View.GONE);
         itemViewHolder.imgSelector.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
