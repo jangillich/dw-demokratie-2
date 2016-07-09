@@ -17,7 +17,7 @@
             android:layout_height="100dp"
             android:background="@color/demokratie">
 
-            <de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.KuenstlerViewItem
+            <de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.RandomCropKuenstlerViewItem
                 android:id="@+id/img"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
