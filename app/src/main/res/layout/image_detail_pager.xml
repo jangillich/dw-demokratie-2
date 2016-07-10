@@ -26,4 +26,34 @@
       android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
       app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
+   <LinearLayout
+      android:id="@+id/fullscreen_content_controls"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center_vertical"
+      android:layout_alignParentBottom="true"
+      android:paddingTop="@dimen/padding_small"
+      android:paddingBottom="@dimen/padding_small"
+      android:paddingLeft="@dimen/activity_vertical_margin"
+      android:paddingRight="@dimen/activity_vertical_margin"
+      android:background="@color/white_transparent"
+      android:orientation="horizontal"
+      tools:ignore="UselessParent">
+      <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:textSize="20sp"
+         android:textAppearance="@style/Festival.Text.RobotoLight"
+         android:text="@string/image_detail_kuenstler_title"
+         android:textColor="@color/text_dark_primary"/>
+      <Button
+         android:id="@+id/kuenstler_button"
+         style="@style/Festival.FlatButton"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginLeft="@dimen/activity_vertical_margin"
+         android:textSize="20sp" />
+
+   </LinearLayout>
+
 </RelativeLayout>

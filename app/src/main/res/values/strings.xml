@@ -48,4 +48,5 @@
 
    <string name="imageview_description">Image Thumbnail</string>
    <string name="no_network_connection_toast">No network connection found</string>
+   <string name="image_detail_kuenstler_title">Künstler:</string>
 </resources>

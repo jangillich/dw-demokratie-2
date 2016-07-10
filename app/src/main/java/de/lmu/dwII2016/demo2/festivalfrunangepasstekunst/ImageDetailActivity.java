@@ -1,6 +1,7 @@
 package de.lmu.dwII2016.demo2.festivalfrunangepasstekunst;
 
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager.LayoutParams;
+import android.widget.Button;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -24,6 +26,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.util.ImageCache;
 import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.util.ImageFetcher;
+import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.util.ResHelper;
 import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.util.Utils;
 
 public class ImageDetailActivity extends AppCompatActivity implements OnClickListener {
@@ -34,6 +37,10 @@ public class ImageDetailActivity extends AppCompatActivity implements OnClickLis
    Toolbar toolbar;
    @Bind (R.id.pager)
    ViewPager mPager;
+   @Bind(R.id.fullscreen_content_controls)
+   View mControlsView;
+   @Bind(R.id.kuenstler_button)
+   Button kuenstlerButton;
 
    private ImagePagerAdapter mAdapter;
    private ImageFetcher mImageFetcher;
@@ -104,9 +111,35 @@ public class ImageDetailActivity extends AppCompatActivity implements OnClickLis
          public void onSystemUiVisibilityChange(int vis) {
             if ((vis & View.SYSTEM_UI_FLAG_LOW_PROFILE) != 0) {
                actionBar.hide();
+               mControlsView.setVisibility(View.GONE);
             } else {
                actionBar.show();
+               mControlsView.setVisibility(View.VISIBLE);
             }
+         }
+      });
+      mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+         @Override
+         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+         }
+
+         @Override
+         public void onPageSelected(int position) {
+            kuenstlerButton.setText(ResHelper.getResId("kuenstler_name_" + kuenstlerArray.get(position), R.string.class));
+         }
+
+         @Override
+         public void onPageScrollStateChanged(int state) {
+
+         }
+      });
+      kuenstlerButton.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+            Intent intent = new Intent(ImageDetailActivity.this,  KuenstlerDetailActivity.class);
+            intent.putExtra("KUENSTLER_NAME", kuenstlerArray.get(mPager.getCurrentItem()));
+            startActivity(intent);
          }
       });
 
@@ -115,6 +148,7 @@ public class ImageDetailActivity extends AppCompatActivity implements OnClickLis
       if (actionBar != null) {
          actionBar.hide();
       }
+      mControlsView.setVisibility(View.GONE);
 
       // Set the current item based on the extra passed in to this activity
       final int extraCurrentItem = getIntent().getIntExtra(EXTRA_IMAGE, -1);
@@ -198,7 +232,8 @@ public class ImageDetailActivity extends AppCompatActivity implements OnClickLis
       @Override
       public Fragment getItem(int position) {
          return ImageDetailFragment.newInstance(
-               getResources().getResourceEntryName(werkeArray.get(position)));
+               getResources().getResourceEntryName(werkeArray.get(position)),
+               kuenstlerArray.get(position));
       }
    }
 
