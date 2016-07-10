@@ -438,7 +438,7 @@ public abstract class ImageWorker {
                             drawable
                     });
             // Set background to loading bitmap
-            imageView.setBackgroundDrawable(
+            imageView.setImageDrawable(
                     new BitmapDrawable(mResources, mLoadingBitmap));
 
             imageView.setImageDrawable(td);
