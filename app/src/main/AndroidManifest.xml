@@ -37,25 +37,6 @@
             android:value=".SelectFestivalActivity" />
       </activity>
       <activity
-         android:name=".WerkDetailActivity"
-         android:label="@string/title_activity_werk_detail"
-         android:parentActivityName=".FestivalOverviewActivity"
-         android:theme="@style/Festival"
-         android:screenOrientation="portrait">
-         <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.FestivalOverviewActivity" />
-      </activity>
-      <activity
-         android:name=".FullscreenActivity"
-         android:configChanges="orientation|keyboardHidden|screenSize"
-         android:parentActivityName=".WerkDetailActivity"
-         android:theme="@style/Festival.TransparentStatusBar">
-         <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.WerkDetailActivity" />
-      </activity>
-      <activity
          android:name=".ImpressumActivity"
          android:label="@string/title_activity_impressum"
          android:parentActivityName=".FestivalOverviewActivity"

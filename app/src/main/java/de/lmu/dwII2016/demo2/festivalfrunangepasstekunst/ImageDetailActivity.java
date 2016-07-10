@@ -48,6 +48,7 @@ public class ImageDetailActivity extends AppCompatActivity implements OnClickLis
    private int kuenstlerArrayId;
    private List<Integer> werkeArray = new ArrayList<>();
    private List<String> kuenstlerArray = new ArrayList<>();
+   private String kuenstlerName;
 
    @TargetApi (VERSION_CODES.HONEYCOMB)
    @Override
@@ -68,7 +69,8 @@ public class ImageDetailActivity extends AppCompatActivity implements OnClickLis
 
       Bundle extras = getIntent().getExtras();
       if (extras != null) {
-         kuenstlerArrayId = extras.getInt("KUENSTLER_ARRAY");
+         kuenstlerArrayId = extras.getInt("KUENSTLER_ARRAY", -1);
+         kuenstlerName = extras.getString("KUENSTLER_NAME", "");
          initializeWerkeArray();
       }
 
@@ -158,15 +160,29 @@ public class ImageDetailActivity extends AppCompatActivity implements OnClickLis
    }
 
    private void initializeWerkeArray() {
-      String[] kuenstlers = getResources().getStringArray(kuenstlerArrayId);
-      Field[] fields = R.drawable.class.getFields();
-      for (String kuenstler : kuenstlers) {
+      if(kuenstlerArrayId > 0) {
+         String[] kuenstlers = getResources().getStringArray(kuenstlerArrayId);
+         Field[] fields = R.drawable.class.getFields();
+         for (String kuenstler : kuenstlers) {
+            for (Field field : fields) {
+               if (field.getName()
+                     .startsWith(kuenstler + "_")) {
+                  try {
+                     werkeArray.add(field.getInt(null));
+                     kuenstlerArray.add(kuenstler);
+                  } catch (IllegalAccessException e) {
+                     e.printStackTrace();
+                  }
+               }
+            }
+         }
+      } else if(!kuenstlerName.isEmpty()) {
+         Field[] fields = R.drawable.class.getFields();
          for (Field field : fields) {
-            if (field.getName()
-                  .startsWith(kuenstler + "_")) {
+            if (field.getName().startsWith(kuenstlerName + "_")) {
                try {
                   werkeArray.add(field.getInt(null));
-                  kuenstlerArray.add(kuenstler);
+                  kuenstlerArray.add(kuenstlerName);
                } catch (IllegalAccessException e) {
                   e.printStackTrace();
                }
@@ -232,8 +248,7 @@ public class ImageDetailActivity extends AppCompatActivity implements OnClickLis
       @Override
       public Fragment getItem(int position) {
          return ImageDetailFragment.newInstance(
-               getResources().getResourceEntryName(werkeArray.get(position)),
-               kuenstlerArray.get(position));
+               getResources().getResourceEntryName(werkeArray.get(position)));
       }
    }
 

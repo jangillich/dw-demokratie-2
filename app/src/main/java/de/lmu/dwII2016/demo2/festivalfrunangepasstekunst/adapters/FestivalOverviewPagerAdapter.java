@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.FestivalOverviewKuenstlerFragment;
-import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.FestivalOverviewWerkeGridFragment;
+import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.FestivalOverviewWerkeFragment;
 
 public class FestivalOverviewPagerAdapter extends FragmentStatePagerAdapter {
    int mNumOfTabs;
@@ -25,9 +25,9 @@ public class FestivalOverviewPagerAdapter extends FragmentStatePagerAdapter {
          case 0:
 
 //            final FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-//            ft.add(android.R.id.content, new FestivalOverviewWerkeGridFragment(), TAG);
+//            ft.add(android.R.id.content, new FestivalOverviewWerkeFragment(), TAG);
 //            ft.commit();
-            FestivalOverviewWerkeGridFragment tab1 = new FestivalOverviewWerkeGridFragment();
+            FestivalOverviewWerkeFragment tab1 = new FestivalOverviewWerkeFragment();
             Bundle bundle1 = new Bundle();
             bundle1.putInt("KUENSTLER_ARRAY", kuenstlerArray);
             tab1.setArguments(bundle1);

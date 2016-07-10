@@ -23,7 +23,6 @@ public class ImageDetailFragment extends Fragment implements ImageWorker.OnImage
     private static final String IMAGE_DATA_EXTRA = "extra_image_data";
     private static final String KUENSTLER_DATA_EXTRA = "extra_kuenstler_data";
     private String mImageUrl;
-    private String mKuenstlerName;
     private ImageView mImageView;
     private ProgressBar mProgressBar;
     private ImageFetcher mImageFetcher;
@@ -34,12 +33,11 @@ public class ImageDetailFragment extends Fragment implements ImageWorker.OnImage
      * @param imageUrl The image resource to load
      * @return A new instance of ImageDetailFragment with imageNum extras
      */
-    public static ImageDetailFragment newInstance(String imageUrl, String kuenstler) {
+    public static ImageDetailFragment newInstance(String imageUrl) {
         final ImageDetailFragment f = new ImageDetailFragment();
 
         final Bundle args = new Bundle();
         args.putString(IMAGE_DATA_EXTRA, imageUrl);
-        args.putString(KUENSTLER_DATA_EXTRA, kuenstler);
         f.setArguments(args);
 
         return f;
@@ -52,13 +50,12 @@ public class ImageDetailFragment extends Fragment implements ImageWorker.OnImage
 
     /**
      * Populate image using a url from extras, use the convenience factory method
-     * {@link ImageDetailFragment#newInstance(String, String)} to create this fragment.
+     * {@link ImageDetailFragment#newInstance(String)} to create this fragment.
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mImageUrl = getArguments() != null ? getArguments().getString(IMAGE_DATA_EXTRA) : null;
-        mKuenstlerName = getArguments() != null ? getArguments().getString(KUENSTLER_DATA_EXTRA) : null;
     }
 
     @Override
