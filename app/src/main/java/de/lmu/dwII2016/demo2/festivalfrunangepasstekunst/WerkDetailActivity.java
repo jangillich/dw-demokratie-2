@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.util.ResHelper;
 
 public class WerkDetailActivity extends AppCompatActivity {
 

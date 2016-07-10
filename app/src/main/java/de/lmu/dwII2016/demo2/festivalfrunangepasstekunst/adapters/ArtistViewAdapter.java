@@ -14,7 +14,7 @@ import butterknife.ButterKnife;
 import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.KuenstlerDetailActivity;
 import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.KuenstlerViewItem;
 import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.R;
-import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.ResHelper;
+import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.util.ResHelper;
 import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.TabWallFragment;
 
 /**

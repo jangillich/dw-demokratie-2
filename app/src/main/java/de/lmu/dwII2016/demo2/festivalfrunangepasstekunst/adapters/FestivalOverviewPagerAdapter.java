@@ -4,9 +4,11 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 
 import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.FestivalOverviewKuenstlerFragment;
 import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.FestivalOverviewWerkeFragment;
+import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.ImageGridFragment;
 
 public class FestivalOverviewPagerAdapter extends FragmentStatePagerAdapter {
    int mNumOfTabs;
@@ -23,7 +25,11 @@ public class FestivalOverviewPagerAdapter extends FragmentStatePagerAdapter {
 
       switch (position) {
          case 0:
-            FestivalOverviewWerkeFragment tab1 = new FestivalOverviewWerkeFragment();
+
+//            final FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+//            ft.add(android.R.id.content, new ImageGridFragment(), TAG);
+//            ft.commit();
+            ImageGridFragment tab1 = new ImageGridFragment();
             Bundle bundle1 = new Bundle();
             bundle1.putInt("KUENSTLER_ARRAY", kuenstlerArray);
             tab1.setArguments(bundle1);

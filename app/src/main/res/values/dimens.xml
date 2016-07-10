@@ -19,8 +19,11 @@
    <dimen name="btn_flat_margin">4dp</dimen>
 
    <dimen name="actionbar_and_tab_height">104dp</dimen>
+   <dimen name="tab_height">47dp</dimen>
 
    <dimen name="spacing">1dp</dimen>
+   <dimen name="image_thumbnail_size">100dp</dimen>
+
    <dimen name="fab_margin">16dp</dimen>
    <dimen name="app_bar_height">180dp</dimen>
    <dimen name="text_margin">16dp</dimen>

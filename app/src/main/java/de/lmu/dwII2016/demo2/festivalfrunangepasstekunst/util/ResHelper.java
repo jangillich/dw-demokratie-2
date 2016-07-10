@@ -1,4 +1,4 @@
-package de.lmu.dwII2016.demo2.festivalfrunangepasstekunst;
+package de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.util;
 
 import java.lang.reflect.Field;
 

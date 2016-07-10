@@ -53,4 +53,13 @@
 
    <style name="Festival.TransparentStatusBar" parent="@style/Festival">
    </style>
+
+
+   <style name="PhotoGridLayout">
+      <item name="android:drawSelectorOnTop">true</item>
+      <item name="android:listSelector">@drawable/selector_kunstwerk_item</item>
+   </style>
+
+   <style name="AppThemeDark.FullScreen" parent="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
+
 </resources>

@@ -3,7 +3,6 @@ package de.lmu.dwII2016.demo2.festivalfrunangepasstekunst;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.adapters.ArtistViewAdapter;
-
+import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.util.ResHelper;
 
 public class FestivalOverviewKuenstlerFragment extends TabWallFragment {
 

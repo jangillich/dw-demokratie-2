@@ -34,6 +34,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.adapters.KuenstlerImagesAdapter;
+import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.util.ResHelper;
 
 public class KuenstlerDetailActivity extends AppCompatActivity {
 
@@ -239,8 +240,7 @@ public class KuenstlerDetailActivity extends AppCompatActivity {
 
    private void initMemoryCache() {
 
-      final int maxMemory = (int) (Runtime.getRuntime()
-            .maxMemory() / 1024);
+      final int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
 
       // Use 1/8th of the available memory for this memory cache.
       final int cacheSize = maxMemory / 8;
@@ -254,7 +254,6 @@ public class KuenstlerDetailActivity extends AppCompatActivity {
          }
       };
    }
-
    public static void addBitmapToMemoryCache(String key, Bitmap bitmap) {
       if (getBitmapFromMemCache(key) == null) {
          mMemoryCache.put(key, bitmap);
@@ -265,8 +264,9 @@ public class KuenstlerDetailActivity extends AppCompatActivity {
       return mMemoryCache.get(key);
    }
 
-   public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId, int reqWidth,
-         int reqHeight) {
+
+   public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId,
+         int reqWidth, int reqHeight) {
 
       // First decode with inJustDecodeBounds=true to check dimensions
       final BitmapFactory.Options options = new BitmapFactory.Options();
@@ -280,8 +280,8 @@ public class KuenstlerDetailActivity extends AppCompatActivity {
       return BitmapFactory.decodeResource(res, resId, options);
    }
 
-   public static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth,
-         int reqHeight) {
+   public static int calculateInSampleSize(
+         BitmapFactory.Options options, int reqWidth, int reqHeight) {
       // Raw height and width of image
       final int height = options.outHeight;
       final int width = options.outWidth;
@@ -294,14 +294,14 @@ public class KuenstlerDetailActivity extends AppCompatActivity {
 
          // Calculate the largest inSampleSize value that is a power of 2 and keeps both
          // height and width larger than the requested height and width.
-         while ((halfHeight / inSampleSize) > reqHeight && (halfWidth / inSampleSize) > reqWidth) {
+         while ((halfHeight / inSampleSize) > reqHeight
+               && (halfWidth / inSampleSize) > reqWidth) {
             inSampleSize *= 2;
          }
       }
 
       return inSampleSize;
    }
-
    static class BitmapWorkerTask extends AsyncTask<Integer, Void, Bitmap> {
       private final WeakReference<ImageView> imageViewReference;
       private int data = 0;
@@ -315,8 +315,8 @@ public class KuenstlerDetailActivity extends AppCompatActivity {
 
       @Override
       protected Bitmap doInBackground(Integer... params) {
-         final Bitmap bitmap =
-               decodeSampledBitmapFromResource(context.getResources(), params[0], 100, 100);
+         final Bitmap bitmap = decodeSampledBitmapFromResource(
+               context.getResources(), params[0], 100, 100);
          addBitmapToMemoryCache(String.valueOf(params[0]), bitmap);
          return bitmap;
       }
@@ -329,7 +329,8 @@ public class KuenstlerDetailActivity extends AppCompatActivity {
 
          if (bitmap != null) {
             final ImageView imageView = imageViewReference.get();
-            final BitmapWorkerTask bitmapWorkerTask = getBitmapWorkerTask(imageView);
+            final BitmapWorkerTask bitmapWorkerTask =
+                  getBitmapWorkerTask(imageView);
             if (this == bitmapWorkerTask) {
                imageView.setImageBitmap(bitmap);
             }
@@ -337,23 +338,43 @@ public class KuenstlerDetailActivity extends AppCompatActivity {
       }
    }
 
+
+
    public void loadBitmap(int resId, ImageView imageView) {
-      if (cancelPotentialWork(resId, imageView)) {
-         final BitmapWorkerTask task = new BitmapWorkerTask(this, imageView);
-         Bitmap placeholder =
-               BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher_demokratie);
-         final AsyncDrawable asyncDrawable = new AsyncDrawable(getResources(), placeholder, task);
+
+      final String imageKey = String.valueOf(resId);
+
+      final Bitmap bitmap = getBitmapFromMemCache(imageKey);
+      if (bitmap != null) {
+         imageView.setImageBitmap(bitmap);
+      } else {
+//         imageView.setImageResource(R.drawable.ic_launcher_demokratie);
+         BitmapWorkerTask task = new BitmapWorkerTask(this, imageView);
+         Bitmap placeholder = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher_demokratie);
+         final AsyncDrawable asyncDrawable =
+               new AsyncDrawable(getResources(), placeholder, task);
          imageView.setImageDrawable(asyncDrawable);
          task.execute(resId);
       }
+
+//      if (cancelPotentialWork(resId, imageView)) {
+//         final BitmapWorkerTask task = new BitmapWorkerTask(getBaseContext(), imageView);
+//         Bitmap placeholder = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher_demokratie);
+//         final AsyncDrawable asyncDrawable =
+//               new AsyncDrawable(getResources(), placeholder, task);
+//         imageView.setImageDrawable(asyncDrawable);
+//         task.execute(resId);
+//      }
    }
 
    static class AsyncDrawable extends BitmapDrawable {
       private final WeakReference<BitmapWorkerTask> bitmapWorkerTaskReference;
 
-      public AsyncDrawable(Resources res, Bitmap bitmap, BitmapWorkerTask bitmapWorkerTask) {
+      public AsyncDrawable(Resources res, Bitmap bitmap,
+            BitmapWorkerTask bitmapWorkerTask) {
          super(res, bitmap);
-         bitmapWorkerTaskReference = new WeakReference<>(bitmapWorkerTask);
+         bitmapWorkerTaskReference =
+               new WeakReference<>(bitmapWorkerTask);
       }
 
       public BitmapWorkerTask getBitmapWorkerTask() {
