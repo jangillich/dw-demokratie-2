@@ -58,7 +58,7 @@ public class AnfahrtActivity extends AppCompatActivity {
                   .title(getResources().getString(R.string.map_marker_festival_1_title))
                   .snippet(getResources().getString(R.string.map_marker_festival_1_desc))
                     .icon (BitmapDescriptorFactory.fromResource(R.drawable.map_marker_demokratie)));
-            LatLng macht = new LatLng(48.160838, 11.500710);
+            LatLng macht = new LatLng(48.163693, 11.506873);
             googleMap.addMarker(new MarkerOptions().position(macht)
                     .title(getResources().getString(R.string.map_marker_festival_2_title))
                     .snippet(getResources().getString(R.string.map_marker_festival_2_desc))
