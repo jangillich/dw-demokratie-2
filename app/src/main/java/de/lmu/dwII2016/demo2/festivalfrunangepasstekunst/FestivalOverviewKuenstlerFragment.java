@@ -23,7 +23,6 @@ import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.util.Utils;
 
 public class FestivalOverviewKuenstlerFragment extends Fragment {
 
-   private static final String TAG = "FOWerkeFragment";
    private static final String IMAGE_CACHE_DIR = "thumbs";
 
    private int mImageThumbSize;

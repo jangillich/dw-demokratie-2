@@ -33,13 +33,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:textColor="@color/text_dark_primary"
-            android:textSize="20sp"
-            android:text="@string/impr_titel"/>
-         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:textColor="@color/text_dark_secondary"
             android:textSize="14sp"
             android:text="@string/impr_paragraph"/>
