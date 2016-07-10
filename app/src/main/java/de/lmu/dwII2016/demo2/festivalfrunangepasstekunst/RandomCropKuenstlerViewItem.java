@@ -28,10 +28,6 @@ public class RandomCropKuenstlerViewItem extends KuenstlerViewItem {
         super(context, attrs);
     }
 
-    public RandomCropKuenstlerViewItem(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-    }
-
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);

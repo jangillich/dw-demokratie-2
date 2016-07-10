@@ -293,8 +293,6 @@ public class FestivalOverviewWerkeFragment extends Fragment
          // Finally load the image asynchronously into the ImageView, this also takes care of
          // setting a placeholder image while the background thread runs
 
-         //            String imageUrl = "drawable://" + images[position - mNumColumns];
-
          mImageFetcher.loadImage(
                getResources().getResourceEntryName(images.get(position - mNumColumns)), imageView);
          return imageView;

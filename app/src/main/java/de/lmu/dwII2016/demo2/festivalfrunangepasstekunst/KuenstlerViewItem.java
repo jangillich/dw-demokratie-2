@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-public class KuenstlerViewItem extends ImageView {
+public class KuenstlerViewItem extends RecyclingImageView {
 
    private String kuenstlerName;
 
@@ -14,10 +14,6 @@ public class KuenstlerViewItem extends ImageView {
 
    public KuenstlerViewItem(Context context, AttributeSet attrs) {
       super(context, attrs);
-   }
-
-   public KuenstlerViewItem(Context context, AttributeSet attrs, int defStyleAttr) {
-      super(context, attrs, defStyleAttr);
    }
 
    public String getKuenstlerName() {
