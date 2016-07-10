@@ -28,15 +28,9 @@ import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.util.ImageCache;
 import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.util.ImageFetcher;
 import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.util.Utils;
 
-/**
- * The main fragment that powers the ImageGridActivity screen. Fairly straight forward GridView
- * implementation with the key addition being the ImageWorker class w/ImageCache to load children
- * asynchronously, keeping the UI nice and smooth and caching thumbnails for quick retrieval. The
- * cache is retained over configuration changes like orientation change so the images are populated
- * quickly if, for example, the user rotates the device.
- */
-public class ImageGridFragment extends Fragment implements AdapterView.OnItemClickListener {
-   private static final String TAG = "ImageGridFragment";
+public class FestivalOverviewWerkeGridFragment extends Fragment
+      implements AdapterView.OnItemClickListener {
+   private static final String TAG = "FestivalOverviewWerkeGridFragment";
    private static final String IMAGE_CACHE_DIR = "thumbs";
 
    private int mImageThumbSize;
@@ -44,16 +38,14 @@ public class ImageGridFragment extends Fragment implements AdapterView.OnItemCli
    private ImageAdapter mAdapter;
    private ImageFetcher mImageFetcher;
 
-
    private int kuenstlerArrayId;
    private List<Integer> werkeArray = new ArrayList<>();
    private List<String> kuenstlerArray = new ArrayList<>();
 
-
    /**
     * Empty constructor as per the Fragment documentation
     */
-   public ImageGridFragment() {
+   public FestivalOverviewWerkeGridFragment() {
    }
 
    @Override
@@ -63,7 +55,6 @@ public class ImageGridFragment extends Fragment implements AdapterView.OnItemCli
 
       kuenstlerArrayId = getArguments().getInt("KUENSTLER_ARRAY");
       initializeWerkeArray();
-
 
       mImageThumbSize = getResources().getDimensionPixelSize(R.dimen.image_thumbnail_size);
       mImageThumbSpacing = getResources().getDimensionPixelSize(R.dimen.spacing);
@@ -184,13 +175,13 @@ public class ImageGridFragment extends Fragment implements AdapterView.OnItemCli
       }
    }
 
-
-   private void initializeWerkeArray(){
+   private void initializeWerkeArray() {
       String[] kuenstlers = getResources().getStringArray(kuenstlerArrayId);
       Field[] fields = R.drawable.class.getFields();
       for (String kuenstler : kuenstlers) {
          for (Field field : fields) {
-            if (field.getName().startsWith(kuenstler + "_")) {
+            if (field.getName()
+                  .startsWith(kuenstler + "_")) {
                try {
                   werkeArray.add(field.getInt(null));
                   kuenstlerArray.add(kuenstler);
@@ -202,26 +193,8 @@ public class ImageGridFragment extends Fragment implements AdapterView.OnItemCli
       }
    }
 
-   //    @Override
-   //    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-   //        inflater.inflate(R.menu.main_menu, menu);
-   //    }
-   //
-   //    @Override
-   //    public boolean onOptionsItemSelected(MenuItem item) {
-   //        switch (item.getItemId()) {
-   //            case R.id.clear_cache:
-   //                mImageFetcher.clearCache();
-   //                Toast.makeText(getActivity(), R.string.clear_cache_complete_toast,
-   //                        Toast.LENGTH_SHORT).show();
-   //                return true;
-   //        }
-   //        return super.onOptionsItemSelected(item);
-   //    }
-
    /**
-    * The main adapter that backs the GridView. This is fairly standard except the number of
-    * columns
+    * The main adapter that backs the GridView. This is fairly standard except the number of columns
     * in the GridView is used to create a fake top row of empty views as we use a transparent
     * ActionBar and don't want the real top row of images to start off covered by it.
     */
@@ -232,7 +205,6 @@ public class ImageGridFragment extends Fragment implements AdapterView.OnItemCli
       private int mNumColumns = 0;
       private int mActionBarHeight = 0;
       private GridView.LayoutParams mImageViewLayoutParams;
-
 
       private List<Integer> images;
       private List<String> kuenstlerNames;
@@ -325,14 +297,14 @@ public class ImageGridFragment extends Fragment implements AdapterView.OnItemCli
 
          //            String imageUrl = "drawable://" + images[position - mNumColumns];
 
-         mImageFetcher.loadImage(getResources().getResourceEntryName(images.get(position - mNumColumns)), imageView);
+         mImageFetcher.loadImage(
+               getResources().getResourceEntryName(images.get(position - mNumColumns)), imageView);
          return imageView;
          //END_INCLUDE(load_gridview_item)
       }
 
       /**
-       * Sets the item height. Useful for when we know the column width so the height can be
-       * set to
+       * Sets the item height. Useful for when we know the column width so the height can be set to
        * match.
        */
       public void setItemHeight(int height) {

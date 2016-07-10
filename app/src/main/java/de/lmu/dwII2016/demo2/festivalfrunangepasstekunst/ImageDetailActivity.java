@@ -1,19 +1,15 @@
 package de.lmu.dwII2016.demo2.festivalfrunangepasstekunst;
 
 import android.annotation.TargetApi;
-import android.app.ActionBar;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
-import android.support.annotation.DrawableRes;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.DrawableUtils;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,24 +20,27 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.util.ImageCache;
 import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.util.ImageFetcher;
 import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.util.Utils;
 
-public class ImageDetailActivity extends FragmentActivity implements OnClickListener {
+public class ImageDetailActivity extends AppCompatActivity implements OnClickListener {
    private static final String IMAGE_CACHE_DIR = "images";
    public static final String EXTRA_IMAGE = "extra_image";
 
+   @Bind (R.id.toolbar)
+   Toolbar toolbar;
+   @Bind (R.id.pager)
+   ViewPager mPager;
+
    private ImagePagerAdapter mAdapter;
    private ImageFetcher mImageFetcher;
-   private ViewPager mPager;
-
-
 
    private int kuenstlerArrayId;
    private List<Integer> werkeArray = new ArrayList<>();
    private List<String> kuenstlerArray = new ArrayList<>();
-
 
    @TargetApi (VERSION_CODES.HONEYCOMB)
    @Override
@@ -51,6 +50,14 @@ public class ImageDetailActivity extends FragmentActivity implements OnClickList
       }
       super.onCreate(savedInstanceState);
       setContentView(R.layout.image_detail_pager);
+      ButterKnife.bind(this);
+
+      setSupportActionBar(toolbar);
+      final ActionBar actionBar = getSupportActionBar();
+      if (actionBar != null) {
+         actionBar.setDisplayHomeAsUpEnabled(true);
+         actionBar.setDisplayShowTitleEnabled(false);
+      }
 
       Bundle extras = getIntent().getExtras();
       if (extras != null) {
@@ -84,7 +91,6 @@ public class ImageDetailActivity extends FragmentActivity implements OnClickList
 
       // Set up ViewPager and backing adapter
       mAdapter = new ImagePagerAdapter(getSupportFragmentManager(), werkeArray.size());
-      mPager = (ViewPager) findViewById(R.id.pager);
       mPager.setAdapter(mAdapter);
       mPager.setPageMargin((int) getResources().getDimension(R.dimen.spacing));
       mPager.setOffscreenPageLimit(2);
@@ -92,39 +98,22 @@ public class ImageDetailActivity extends FragmentActivity implements OnClickList
       // Set up activity to go full screen
       getWindow().addFlags(LayoutParams.FLAG_FULLSCREEN);
 
-      // Enable some additional newer visibility and ActionBar features to create a more
-      // immersive photo viewing experience
-      if (Utils.hasHoneycomb()) {
-         final ActionBar actionBar = getActionBar();
-
-         // Hide title text and set home as up
-         if (actionBar != null) {
-            actionBar.setDisplayShowTitleEnabled(false);
-            actionBar.setDisplayHomeAsUpEnabled(true);
+      // Hide and show the ActionBar as the visibility changes
+      mPager.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
+         @Override
+         public void onSystemUiVisibilityChange(int vis) {
+            if ((vis & View.SYSTEM_UI_FLAG_LOW_PROFILE) != 0) {
+               actionBar.hide();
+            } else {
+               actionBar.show();
+            }
          }
+      });
 
-         // Hide and show the ActionBar as the visibility changes
-         mPager.setOnSystemUiVisibilityChangeListener(
-               new View.OnSystemUiVisibilityChangeListener() {
-                  @Override
-                  public void onSystemUiVisibilityChange(int vis) {
-                     if ((vis & View.SYSTEM_UI_FLAG_LOW_PROFILE) != 0) {
-                        if (actionBar != null) {
-                           actionBar.hide();
-                        }
-                     } else {
-                        if (actionBar != null) {
-                           actionBar.show();
-                        }
-                     }
-                  }
-               });
-
-         // Start low profile mode and hide ActionBar
-         mPager.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
-         if (actionBar != null) {
-            actionBar.hide();
-         }
+      // Start low profile mode and hide ActionBar
+      mPager.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
+      if (actionBar != null) {
+         actionBar.hide();
       }
 
       // Set the current item based on the extra passed in to this activity
@@ -134,15 +123,13 @@ public class ImageDetailActivity extends FragmentActivity implements OnClickList
       }
    }
 
-
-
-
-   private void initializeWerkeArray(){
+   private void initializeWerkeArray() {
       String[] kuenstlers = getResources().getStringArray(kuenstlerArrayId);
       Field[] fields = R.drawable.class.getFields();
       for (String kuenstler : kuenstlers) {
          for (Field field : fields) {
-            if (field.getName().startsWith(kuenstler + "_")) {
+            if (field.getName()
+                  .startsWith(kuenstler + "_")) {
                try {
                   werkeArray.add(field.getInt(null));
                   kuenstlerArray.add(kuenstler);
@@ -175,19 +162,13 @@ public class ImageDetailActivity extends FragmentActivity implements OnClickList
 
    @Override
    public boolean onOptionsItemSelected(MenuItem item) {
-      switch (item.getItemId()) {
-         case android.R.id.home:
-            NavUtils.navigateUpFromSameTask(this);
-            return true;
+      int id = item.getItemId();
+      if (id == android.R.id.home) {
+         onBackPressed();
+         return true;
       }
       return super.onOptionsItemSelected(item);
    }
-
-   //    @Override
-   //    public boolean onCreateOptionsMenu(Menu menu) {
-   //        getMenuInflater().inflate(R.menu.main_menu, menu);
-   //        return true;
-   //    }
 
    /**
     * Called by the ViewPager child fragments to load images via the one ImageFetcher
@@ -216,7 +197,8 @@ public class ImageDetailActivity extends FragmentActivity implements OnClickList
 
       @Override
       public Fragment getItem(int position) {
-         return ImageDetailFragment.newInstance(getResources().getResourceEntryName(werkeArray.get(position)));
+         return ImageDetailFragment.newInstance(
+               getResources().getResourceEntryName(werkeArray.get(position)));
       }
    }
 

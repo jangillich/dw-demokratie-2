@@ -98,18 +98,13 @@
             android:name="android.support.PARENT_ACTIVITY"
             android:value="de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.FestivalOverviewActivity" />
       </activity>
-
-      <activity android:name=".ImageGridActivity"
-         android:label="@string/app_name">
-      </activity>
-
       <activity
          android:name=".ImageDetailActivity"
          android:label="@string/app_name"
-         android:parentActivityName=".ImageGridActivity"
-         android:theme="@style/AppThemeDark.FullScreen" >
+         android:parentActivityName=".FestivalOverviewActivity"
+         android:theme="@style/Festival.FullScreen" >
          <meta-data android:name="android.support.PARENT_ACTIVITY"
-            android:value=".ImageGridActivity" />
+            android:value=".FestivalOverviewActivity" />
       </activity>
    </application>
 
