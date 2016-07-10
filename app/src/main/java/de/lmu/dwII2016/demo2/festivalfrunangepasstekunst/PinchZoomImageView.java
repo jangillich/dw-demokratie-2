@@ -36,8 +36,6 @@ public class PinchZoomImageView extends RecyclingImageView implements View.OnTou
     float lastDragY = 0;
     float dragDist = 0f;
 
-    double scaleFactor = 1.0;
-
     public PinchZoomImageView(Context context) {
         this(context, null, 0);
     }
@@ -127,7 +125,6 @@ public class PinchZoomImageView extends RecyclingImageView implements View.OnTou
                     if (newDist > 10f) {
                         matrix.set(savedMatrix);
                         float scale = newDist / oldDist;
-                        scaleFactor = scaleFactor * scale;
 
                         matrix.postScale(scale, scale, mid.x, mid.y);
                         float[] matrixArray = new float[9];
