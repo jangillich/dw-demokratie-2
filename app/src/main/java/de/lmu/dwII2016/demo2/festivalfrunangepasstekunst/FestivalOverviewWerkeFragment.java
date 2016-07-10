@@ -22,6 +22,7 @@ import android.widget.ImageView;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.util.ImageCache;
@@ -191,6 +192,7 @@ public class FestivalOverviewWerkeFragment extends Fragment
             }
          }
       }
+      Collections.shuffle(werkeArray);
    }
 
    /**
