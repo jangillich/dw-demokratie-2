@@ -1,13 +1,11 @@
 package de.lmu.dwII2016.demo2.festivalfrunangepasstekunst;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Matrix;
-import android.graphics.Point;
 import android.graphics.PointF;
+import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.util.FloatMath;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,12 +13,14 @@ import android.widget.ImageView;
 /**
  * Created by Jan on 10.07.2016.
  */
-public class PinchZoomImageView extends ImageView implements View.OnTouchListener {
+public class PinchZoomImageView extends RecyclingImageView implements View.OnTouchListener {
 
 
     // These matrices will be used to move and zoom image
     Matrix matrix = new Matrix();
     Matrix savedMatrix = new Matrix();
+
+    Matrix initialMatrix = new Matrix ();
 
     // We can be in one of these 3 states
     static final int NONE = 0;
@@ -35,7 +35,8 @@ public class PinchZoomImageView extends ImageView implements View.OnTouchListene
     float lastDragX = 0;
     float lastDragY = 0;
     float dragDist = 0f;
-    String savedItemClicked;
+
+    double scaleFactor = 1.0;
 
     public PinchZoomImageView(Context context) {
         this(context, null, 0);
@@ -48,6 +49,36 @@ public class PinchZoomImageView extends ImageView implements View.OnTouchListene
     public PinchZoomImageView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         this.setOnTouchListener(this);
+
+        post(new Runnable() {
+            @Override
+            public void run() {
+                if(getDrawable() != null) {
+                    RectF drawableRect = new RectF(0, 0, getDrawable().getIntrinsicWidth(), getDrawable().getIntrinsicHeight());
+                    RectF viewRect = new RectF(0, 0, getWidth(), getHeight());
+                    if(drawableRect.width() != 0 && drawableRect.height() != 0) {
+                        matrix.setRectToRect(drawableRect, viewRect, Matrix.ScaleToFit.CENTER);
+                        initialMatrix.set(matrix);
+                        setImageMatrix(matrix);
+                    }
+                }
+            }
+        });
+
+    }
+
+    @Override
+    public void setImageDrawable(Drawable drawable) {
+        if(drawable != null) {
+            RectF drawableRect = new RectF(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+            RectF viewRect = new RectF(0, 0, getWidth(), getHeight());
+            if(drawableRect.width() != 0 && drawableRect.height() != 0) {
+                matrix.setRectToRect(drawableRect, viewRect, Matrix.ScaleToFit.CENTER);
+                initialMatrix.set(matrix);
+                setImageMatrix(matrix);
+            }
+        }
+        super.setImageDrawable(drawable);
     }
 
     @Override
@@ -77,19 +108,17 @@ public class PinchZoomImageView extends ImageView implements View.OnTouchListene
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_POINTER_UP:
                 mode = NONE;
-                if(dragDist < 100f){
+                if (dragDist == 0) {
                     callOnClick();
                 }
                 break;
             case MotionEvent.ACTION_MOVE:
+                float dx = lastDragX - event.getX();
+                float dy = lastDragY - event.getY();
+                dragDist = (float) Math.sqrt((double) dx * dx + dy * dy);
+                lastDragX = event.getX();
+                lastDragY = event.getY();
                 if (mode == DRAG) {
-
-                    float dx = lastDragX - event.getX();
-                    float dy = lastDragY - event.getY();
-                    dragDist = (float) Math.sqrt((double) dx * dx + dy * dy);
-                    lastDragX = event.getX();
-                    lastDragY = event.getY();
-
                     matrix.set(savedMatrix);
                     matrix.postTranslate(event.getX() - start.x, event.getY()
                             - start.y);
@@ -98,19 +127,24 @@ public class PinchZoomImageView extends ImageView implements View.OnTouchListene
                     if (newDist > 10f) {
                         matrix.set(savedMatrix);
                         float scale = newDist / oldDist;
+                        scaleFactor = scaleFactor * scale;
+
                         matrix.postScale(scale, scale, mid.x, mid.y);
+                        float[] matrixArray = new float[9];
+                        matrix.getValues(matrixArray);
+                        if(matrixArray[0] < 1.0)
+                            matrix.set(initialMatrix);
                     }
                 }
                 break;
         }
-
         view.setImageMatrix(matrix);
         return true;
     }
 
     private void dumpEvent(MotionEvent event) {
-        String names[] = { "DOWN", "UP", "MOVE", "CANCEL", "OUTSIDE",
-                "POINTER_DOWN", "POINTER_UP", "7?", "8?", "9?" };
+        String names[] = {"DOWN", "UP", "MOVE", "CANCEL", "OUTSIDE",
+                "POINTER_DOWN", "POINTER_UP", "7?", "8?", "9?"};
         StringBuilder sb = new StringBuilder();
         int action = event.getAction();
         int actionCode = action & MotionEvent.ACTION_MASK;
@@ -133,14 +167,18 @@ public class PinchZoomImageView extends ImageView implements View.OnTouchListene
         sb.append("]");
     }
 
-    /** Determine the space between the first two fingers */
+    /**
+     * Determine the space between the first two fingers
+     */
     private float spacing(MotionEvent event) {
         float x = event.getX(0) - event.getX(1);
         float y = event.getY(0) - event.getY(1);
         return (float) Math.sqrt((double) x * x + y * y);
     }
 
-    /** Calculate the mid point of the first two fingers */
+    /**
+     * Calculate the mid point of the first two fingers
+     */
     private void midPoint(PointF point, MotionEvent event) {
         float x = event.getX(0) + event.getX(1);
         float y = event.getY(0) + event.getY(1);
