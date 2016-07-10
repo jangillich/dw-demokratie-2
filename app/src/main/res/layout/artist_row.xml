@@ -15,7 +15,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:background="@color/demokratie">
+            android:background="@color/black">
 
             <de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.RandomCropKuenstlerViewItem
                 android:id="@+id/img"
@@ -23,12 +23,23 @@
                 android:layout_height="100dp"
                 android:adjustViewBounds="true"
                 android:fitsSystemWindows="true"
+                android:background="@color/text_secondary"
                 android:scaleType="centerCrop" />
 
-            <RelativeLayout
+            <ImageView
+                android:id="@+id/image_name"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="4dp"
+                android:scaleType="centerInside"
+                android:background="@color/text_secondary"
+                android:layout_toRightOf="@id/img"
+                android:padding="5dp"/>
+
+            <RelativeLayout
+                android:id="@+id/artist_text"
+                android:background="@color/text_secondary"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_toRightOf="@id/img">
 
                 <RelativeLayout
@@ -42,7 +53,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
                         android:textAlignment="center"
-                        android:textColor="@color/text_primary"
+                        android:textColor="@color/text_dark_primary"
                         android:textSize="20sp" />
 
                     <TextView
@@ -52,7 +63,7 @@
                         android:layout_below="@id/artist_name"
                         android:layout_centerHorizontal="true"
                         android:textAlignment="center"
-                        android:textColor="@color/text_secondary"
+                        android:textColor="@color/text_dark_secondary"
                         android:textSize="12sp" />
                 </RelativeLayout>
             </RelativeLayout>

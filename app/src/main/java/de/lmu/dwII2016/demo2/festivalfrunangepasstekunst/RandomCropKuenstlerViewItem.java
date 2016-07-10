@@ -16,7 +16,7 @@ import java.util.Random;
  */
 public class RandomCropKuenstlerViewItem extends KuenstlerViewItem {
 
-    private static final int MAX_OFFSET = 25;
+    private static final int MAX_OFFSET = 40;
 
     private String kuenstlerName;
 
@@ -30,25 +30,9 @@ public class RandomCropKuenstlerViewItem extends KuenstlerViewItem {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-
-        //create a second canvas
-        Bitmap mask = Bitmap.createBitmap(canvas.getWidth(), canvas.getHeight(), Bitmap.Config.ARGB_8888);
-        Canvas c = new Canvas(mask);
-
-        Paint p = new Paint();
-        p.setAntiAlias(true);
-        p.setColor(getResources().getColor(R.color.demokratie));
-
         Path path = createCropPath();
-        c.drawPath(path, p);
-
-        p.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN)); //change transfer mode
-
-        c.drawRect(0, 0, getWidth(), getHeight(), p);
-
-        canvas.drawBitmap(mask, 0, 0, null); //draw the result back onto the canvas
-
+        canvas.clipPath(path);
+        super.onDraw(canvas);
     }
 
     private Path createCropPath () {
@@ -58,11 +42,11 @@ public class RandomCropKuenstlerViewItem extends KuenstlerViewItem {
         int offsetBot = MAX_OFFSET - offsetTop;
 
         Path path = new Path();
-        path.moveTo(getWidth(), 0);
+        path.moveTo(0, 0);
         path.lineTo(getWidth() - offsetTop, 0);
         path.lineTo(getWidth() - offsetBot, getHeight());
-        path.lineTo(getWidth(), getHeight());
-        path.lineTo(getWidth(), 0);
+        path.lineTo(0, getHeight());
+        path.lineTo(0, 0);
 
         return path;
     }

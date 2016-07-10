@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -25,10 +26,14 @@ public class ArtistViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
       KuenstlerViewItem img;
       @Bind (R.id.img_selector)
       ImageView imgSelector;
+      @Bind(R.id.artist_text)
+      RelativeLayout artistText;
       @Bind (R.id.artist_name)
       TextView artistName;
       @Bind (R.id.artist_subtitle)
       TextView artistSubtitle;
+      @Bind (R.id.image_name)
+      ImageView imageName;
 
       public ArtistViewHolder(View view) {
          super(view);
@@ -68,13 +73,27 @@ public class ArtistViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             ResHelper.getResId("kuenstler_subtitle_" + kuenstlerNameId, R.string.class));
 
       itemViewHolder.img.setKuenstlerName(kuenstlerNameId);
-      itemViewHolder.artistName.setText(kuenstlerName);
-      if (kuenstlerSubtitle != null && !kuenstlerSubtitle.isEmpty()) {
-         itemViewHolder.artistSubtitle.setText(kuenstlerSubtitle);
-         itemViewHolder.artistSubtitle.setVisibility(View.VISIBLE);
+
+
+      int kuenstlerNameImageId =
+              ResHelper.getResId("kuenstler_name_" + kuenstlerNameId, R.drawable.class);
+      if (kuenstlerNameImageId < 0) {
+         itemViewHolder.imageName.setVisibility(View.GONE);
+         itemViewHolder.artistText.setVisibility(View.VISIBLE);
+         itemViewHolder.artistName.setText(kuenstlerName);
+         if (kuenstlerSubtitle != null && !kuenstlerSubtitle.isEmpty()) {
+            itemViewHolder.artistSubtitle.setText(kuenstlerSubtitle);
+            itemViewHolder.artistSubtitle.setVisibility(View.VISIBLE);
+         } else {
+            itemViewHolder.artistSubtitle.setVisibility(View.GONE);
+         }
       } else {
-         itemViewHolder.artistSubtitle.setVisibility(View.GONE);
+         itemViewHolder.imageName.setImageResource(kuenstlerNameImageId);
+         itemViewHolder.imageName.setVisibility(View.VISIBLE);
+         itemViewHolder.artistText.setVisibility(View.GONE);
       }
+
+
       itemViewHolder.imgSelector.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
