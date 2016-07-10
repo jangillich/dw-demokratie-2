@@ -11,10 +11,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center" />
 
-    <de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.RecyclingImageView
+    <de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.PinchZoomImageView
         android:id="@+id/imageView"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:scaleType="matrix"
         android:contentDescription="@string/imageview_description" />
 
 </FrameLayout>
