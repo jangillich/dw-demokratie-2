@@ -68,6 +68,8 @@ public class KuenstlerDetailActivity extends AppCompatActivity {
    TextView kuenstlerText;
    @Bind (R.id.icon_collapse_expand)
    ImageView iconCollapseExpand;
+   @Bind(R.id.empty_state_view)
+   View emptyStateView;
 
    private int descriptionViewFullHeight;
    private String kuenstlerName;
@@ -133,6 +135,9 @@ public class KuenstlerDetailActivity extends AppCompatActivity {
          kuenstlerText.setText(getString(kuenstlerTextId));
          initKuenstlerTextView();
       }
+
+      if(kuenstlerTextId < 0 && werkeArray.isEmpty())
+         emptyStateView.setVisibility(View.VISIBLE);
       initRecyclerView();
    }
 
