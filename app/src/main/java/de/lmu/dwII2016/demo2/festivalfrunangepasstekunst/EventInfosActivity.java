@@ -15,7 +15,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-import android.widget.AbsListView;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -31,10 +30,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.adapters.ArtistViewAdapter;
-import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.util.ImageCache;
-import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.util.ImageFetcher;
 import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.util.ResHelper;
-import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.util.Utils;
 
 public class EventInfosActivity extends AppCompatActivity
       implements YouTubePlayer.OnInitializedListener {
@@ -85,11 +81,6 @@ public class EventInfosActivity extends AppCompatActivity
    private int partizipationContainerFullHeight;
    private YouTubePlayerSupportFragment mYoutubePlayerFragment;
 
-   private static final String IMAGE_CACHE_DIR = "thumbs";
-
-   private int mImageThumbSize;
-   private int mImageThumbSpacing;
-   private ImageFetcher mImageFetcher;
    private ArtistViewAdapter mAdapter;
 
    private List<Integer> gruenderProfileImagesList = new ArrayList<>();
@@ -108,28 +99,13 @@ public class EventInfosActivity extends AppCompatActivity
       if (actionBar != null) {
          actionBar.setDisplayHomeAsUpEnabled(true);
       }
-
-      mImageThumbSize = getResources().getDimensionPixelSize(R.dimen.image_thumbnail_size);
-      mImageThumbSpacing = getResources().getDimensionPixelSize(R.dimen.spacing);
-
-      ImageCache.ImageCacheParams cacheParams =
-            new ImageCache.ImageCacheParams(this, IMAGE_CACHE_DIR);
-
-      cacheParams.setMemCacheSizePercent(0.25f); // Set memory cache to 25% of app memory
-
-      // The ImageFetcher takes care of loading images into our ImageView children asynchronously
-      mImageFetcher = new ImageFetcher(this, mImageThumbSize);
-      mImageFetcher.setLoadingImage(R.drawable.ic_launcher_demokratie);
-      mImageFetcher.addImageCache(getSupportFragmentManager(), cacheParams);
-
       gruenderProfileImagesList.add(
             ResHelper.getResId("kuenstler_profile_adler", R.drawable.class));
       gruenderProfileImagesList.add(ResHelper.getResId("kuenstler_profile_jpg", R.drawable.class));
       kuenstlerList.add("adler");
       kuenstlerList.add("jpg");
 
-      mAdapter =
-            new ArtistViewAdapter(this, mImageFetcher, gruenderProfileImagesList, kuenstlerList);
+      mAdapter = new ArtistViewAdapter(this, gruenderProfileImagesList, kuenstlerList);
 
       initGruenderRecyclerView();
       initFestivalTextView();
@@ -143,20 +119,6 @@ public class EventInfosActivity extends AppCompatActivity
       recyclerViewGruender.setLayoutManager(
             new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
       recyclerViewGruender.setAdapter(mAdapter);
-      recyclerViewGruender.addOnScrollListener(new RecyclerView.OnScrollListener() {
-         @Override
-         public void onScrollStateChanged(RecyclerView recyclerView, int scrollState) {
-            // Pause fetcher to ensure smoother scrolling when flinging
-            if (scrollState == AbsListView.OnScrollListener.SCROLL_STATE_FLING) {
-               // Before Honeycomb pause image loading on scroll to help with performance
-               if (!Utils.hasHoneycomb()) {
-                  mImageFetcher.setPauseWork(true);
-               }
-            } else {
-               mImageFetcher.setPauseWork(false);
-            }
-         }
-      });
    }
 
    private void initializeYoutubePlayer() {
@@ -171,22 +133,7 @@ public class EventInfosActivity extends AppCompatActivity
    @Override
    public void onResume() {
       super.onResume();
-      mImageFetcher.setExitTasksEarly(false);
       mAdapter.notifyDataSetChanged();
-   }
-
-   @Override
-   public void onPause() {
-      super.onPause();
-      mImageFetcher.setPauseWork(false);
-      mImageFetcher.setExitTasksEarly(true);
-      mImageFetcher.flushCache();
-   }
-
-   @Override
-   public void onDestroy() {
-      super.onDestroy();
-      mImageFetcher.closeCache();
    }
 
    @Override
