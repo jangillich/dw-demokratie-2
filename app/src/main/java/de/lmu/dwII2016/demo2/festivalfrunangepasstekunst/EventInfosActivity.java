@@ -105,7 +105,7 @@ public class EventInfosActivity extends AppCompatActivity
       kuenstlerList.add("adler");
       kuenstlerList.add("jpg");
 
-      mAdapter = new ArtistViewAdapter(this, gruenderProfileImagesList, kuenstlerList);
+      mAdapter = new ArtistViewAdapter(this, gruenderProfileImagesList, kuenstlerList, R.color.white);
 
       initGruenderRecyclerView();
       initFestivalTextView();
@@ -344,14 +344,21 @@ public class EventInfosActivity extends AppCompatActivity
                         ((FrameLayout.LayoutParams) machtInfos.getLayoutParams()).bottomMargin +
                         ((FrameLayout.LayoutParams) machtInfos.getLayoutParams()).topMargin;
 
-                  // initially changing the height to min height
-                  ViewGroup.LayoutParams layoutParams = machtInfosContainer.getLayoutParams();
-                  layoutParams.height = machtInfosTitle.getHeight() +
-                        ((FrameLayout.LayoutParams) machtInfosTitle.getLayoutParams())
-                              .bottomMargin +
-                        ((FrameLayout.LayoutParams) machtInfosTitle.getLayoutParams()).topMargin +
-                        iconCollapseExpandMacht.getHeight();
-                  machtInfosContainer.setLayoutParams(layoutParams);
+                  // initially changing the height to full height
+                  iconCollapseExpandMacht.setImageResource(R.drawable.ic_expand_less);
+                  ValueAnimator anim = ValueAnimator.ofInt(machtInfosContainer.getMeasuredHeightAndState(),
+                        machtContainerFullHeight);
+                  anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                     @Override
+                     public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                        int val = (Integer) valueAnimator.getAnimatedValue();
+                        ViewGroup.LayoutParams layoutParams = machtInfosContainer.getLayoutParams();
+                        layoutParams.height = val;
+                        machtInfosContainer.setLayoutParams(layoutParams);
+                     }
+                  });
+                  anim.start();
+
 
                   return true;
                }

@@ -51,6 +51,8 @@
    <string name="image_detail_kuenstler_title">Künstler</string>
 
    <string name="festival_info_gruender_title">Gründer</string>
+   <string name="festival_info_beschreibung_title">Beschreibung</string>
+   <string name="festival_info_termine_title">Termine</string>
    <string name="festival_desc_demokratie">6. bis 8. Mai 2016\nin der Galerie LUXESE zwischen Luxus und Askese in Berg am Laim, Burggrafenstr. 5 direkt hinterm Ostbahnhof\n\nVernissage: Freitag, 6. Mai 20 Uhr\n\nAusstellung: Sa. u. So. 15 bis 18 Uhr\n\nEintritt: 5€</string>
    <string name="festival_desc_macht">15. bis 17. Juli 2016\nOpen Air in der Unterführung Nymphenburger Schloss/Botanischer Garten\n\nVernissage: Freitag, 15. Juli, 18 Uhr\n\nAusstellung: Sa. u. So. 15 bis 18 Uhr\n\nEintritt: 5€</string>
    <string name="festival_desc_partizipation">7. bis 9. Oktober 2016\nim Haus MUCCA, Münchner Kreativquartier, Schwere-Reiter-Straße 2\n\nVernissage: Freitag, 07. Oktober, 18 Uhr mit Katalog und DVD-Vorstellung\n\nAusstellung: Fr. 20 Uhr, Sa. u. So. 15 bis 18 Uhr\n\nEintritt: 5€</string>

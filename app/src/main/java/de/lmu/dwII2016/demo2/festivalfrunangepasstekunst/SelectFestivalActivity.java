@@ -113,6 +113,7 @@ public class SelectFestivalActivity extends AppCompatActivity {
             notificationButtonOk.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    saveHideNotificationButton();
                     ViewAnimationUtils.collapse(notificationContainer);
                     notificationShadow.setVisibility(View.GONE);
                 }

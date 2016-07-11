@@ -9,6 +9,7 @@
       android:id="@+id/card_recycler_view"
       android:layout_marginTop="@dimen/actionbar_and_tab_height"
       android:paddingTop="@dimen/padding_small"
+      android:paddingBottom="@dimen/padding_small"
       android:clipToPadding="false"
       android:scrollbars="vertical"
       android:layout_width="match_parent"

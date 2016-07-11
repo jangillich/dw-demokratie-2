@@ -2,6 +2,7 @@ package de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.adapters;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,21 +34,30 @@ public class ArtistViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
       TextView artistSubtitle;
       @Bind (R.id.image_name)
       ImageView imageName;
+      @Bind (R.id.artist_container)
+      RelativeLayout artistContainer;
 
       public ArtistViewHolder(View view) {
          super(view);
          ButterKnife.bind(this, view);
+         artistContainer.setBackgroundResource(cardColorRes);
       }
    }
 
    private List<Integer> images;
    private List<String> kuenstlerNames;
    private Activity activity;
+   private int cardColorRes = R.color.grey;
 
    public ArtistViewAdapter(Activity activity, List<Integer> images, List<String> kuenstlerNames) {
       this.images = images;
       this.kuenstlerNames = kuenstlerNames;
       this.activity = activity;
+   }
+
+   public ArtistViewAdapter(Activity activity, List<Integer> images, List<String> kuenstlerNames, int cardColorRes) {
+      this(activity, images, kuenstlerNames);
+      this.cardColorRes = cardColorRes;
    }
 
    @Override
