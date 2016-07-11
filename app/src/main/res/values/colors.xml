@@ -32,9 +32,14 @@
 
    <color name="transparent">#00000000</color>
    <color name="black_transparent">#26000000</color>
+   <color name="black_half_transparent">#80000000</color>
    <color name="white_transparent">#baffffff</color>
 
-   <color name="flat_button_color">#9c0000</color>
+   <color name="flat_button_color">@color/macht</color>
    <color name="flat_button_color_pressed">#730000</color>
    <color name="flat_button_background_pressed">#7c9c0000</color>
+
+   <color name="flat_button_yellow_color">@color/partizipation</color>
+   <color name="flat_button_yellow_color_pressed">#c28200</color>
+   <color name="flat_button_yellow_background_pressed">#7cf5a400</color>
 </resources>

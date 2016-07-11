@@ -70,6 +70,7 @@ public class ImageDetailActivity extends AppCompatActivity implements OnClickLis
          kuenstlerArray = extras.getStringArrayList("KUENSTLER_ARRAY");
          kuenstlerName = extras.getString("KUENSTLER_NAME", "");
          werkeArray = extras.getIntegerArrayList("WERKE_LIST");
+         kuenstlerButton.setText(kuenstlerName);
       }
 
       // Fetch screen height and width, to use as our max size when loading images as this

@@ -28,6 +28,11 @@
       <item name="android:layout_marginRight">@dimen/btn_flat_margin</item>
    </style>
 
+   <style name="Festival.FlatButton.Yellow" parent="Festival.FlatButton">
+      <item name="android:background">@drawable/selector_btn_flat_yellow</item>
+      <item name="android:textColor">@color/flat_button_yellow_color</item>
+   </style>
+
    <style name="Festival.ButtonRed" parent="Base.TextAppearance.AppCompat.Button">
       <item name="android:background">@drawable/button_red</item>
       <item name="android:textColor">@color/text_primary</item>
@@ -55,13 +60,12 @@
 
    </style>
 
-
    <style name="PhotoGridLayout">
       <item name="android:drawSelectorOnTop">true</item>
       <item name="android:listSelector">@drawable/selector_kunstwerk_item</item>
    </style>
 
-   <style name="Festival.FullScreen" parent="@style/Festival.TransparentStatusBar" >
+   <style name="Festival.FullScreen" parent="@style/Festival.TransparentStatusBar">
       <item name="android:windowFullscreen">true</item>
       <item name="android:windowContentOverlay">@null</item>
    </style>
