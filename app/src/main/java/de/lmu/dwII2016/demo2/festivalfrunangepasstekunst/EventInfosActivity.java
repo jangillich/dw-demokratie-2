@@ -119,7 +119,7 @@ public class EventInfosActivity extends AppCompatActivity
 
       // The ImageFetcher takes care of loading images into our ImageView children asynchronously
       mImageFetcher = new ImageFetcher(this, mImageThumbSize);
-      mImageFetcher.setLoadingImage(R.drawable.ic_launcher_demokratie);
+      mImageFetcher.setLoadingImage(R.drawable.loader);
       mImageFetcher.addImageCache(getSupportFragmentManager(), cacheParams);
 
       gruenderProfileImagesList.add(
