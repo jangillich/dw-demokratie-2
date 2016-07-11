@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-   android:id="@+id/main_layout"
+<RelativeLayout android:id="@+id/main_layout"
    xmlns:android="http://schemas.android.com/apk/res/android"
    xmlns:app="http://schemas.android.com/apk/res-auto"
    xmlns:tools="http://schemas.android.com/tools"
@@ -9,13 +8,13 @@
    android:background="@color/black"
    tools:context="de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.FullscreenActivity">
 
-
-   <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
-       android:id="@+id/pager"
-       android:layout_width="fill_parent"
-       android:layout_height="fill_parent" >
+   <android.support.v4.view.ViewPager android:id="@+id/pager"
+      xmlns:android="http://schemas.android.com/apk/res/android"
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent">
 
    </android.support.v4.view.ViewPager>
+
    <android.support.v7.widget.Toolbar
       android:id="@+id/toolbar"
       android:layout_width="match_parent"
@@ -24,34 +23,35 @@
       android:background="@color/transparent"
       android:minHeight="?attr/actionBarSize"
       android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-      app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+      app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
    <LinearLayout
       android:id="@+id/fullscreen_content_controls"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:gravity="center_vertical"
       android:layout_alignParentBottom="true"
-      android:paddingTop="@dimen/padding_small"
+      android:background="@color/black_half_transparent"
+      android:gravity="center"
+      android:orientation="vertical"
       android:paddingBottom="@dimen/padding_small"
       android:paddingLeft="@dimen/activity_vertical_margin"
       android:paddingRight="@dimen/activity_vertical_margin"
-      android:background="@color/white_transparent"
-      android:orientation="horizontal"
+      android:paddingTop="@dimen/padding_small"
       tools:ignore="UselessParent">
+
       <TextView
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
-         android:textSize="20sp"
-         android:textAppearance="@style/Festival.Text.RobotoLight"
          android:text="@string/image_detail_kuenstler_title"
-         android:textColor="@color/text_dark_primary"/>
+         android:textAppearance="@style/Festival.Text.RobotoLight"
+         android:textColor="@color/text_secondary"
+         android:textSize="14sp" />
+
       <Button
          android:id="@+id/kuenstler_button"
-         style="@style/Festival.FlatButton"
+         style="@style/Festival.FlatButton.Yellow"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
-         android:layout_marginLeft="@dimen/activity_vertical_margin"
          android:textSize="20sp" />
 
    </LinearLayout>

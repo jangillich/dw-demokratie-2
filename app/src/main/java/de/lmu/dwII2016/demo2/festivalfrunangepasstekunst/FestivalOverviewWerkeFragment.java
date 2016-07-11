@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.util.Pair;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -40,8 +41,8 @@ public class FestivalOverviewWerkeFragment extends Fragment
    private ImageFetcher mImageFetcher;
 
    private int kuenstlerArrayId;
-   private List<Integer> werkeArray = new ArrayList<>();
-   private List<String> kuenstlerArray = new ArrayList<>();
+   private ArrayList<Integer> werkeArray = new ArrayList<>();
+   private ArrayList<String> kuenstlerArray = new ArrayList<>();
 
    /**
     * Empty constructor as per the Fragment documentation
@@ -163,7 +164,8 @@ public class FestivalOverviewWerkeFragment extends Fragment
       final Intent i = new Intent(getActivity(), ImageDetailActivity.class);
       i.putExtra(ImageDetailActivity.EXTRA_IMAGE, (int) id);
       i.putExtra("KUENSTLER_NAME", kuenstlerArray.get(position - mAdapter.getNumColumns()));
-      i.putExtra("KUENSTLER_ARRAY", kuenstlerArrayId);
+      i.putStringArrayListExtra("KUENSTLER_ARRAY", kuenstlerArray);
+      i.putIntegerArrayListExtra("WERKE_LIST", werkeArray);
       if (Utils.hasJellyBean()) {
          // makeThumbnailScaleUpAnimation() looks kind of ugly here as the loading spinner may
          // show plus the thumbnail image in GridView is cropped. so using
@@ -179,20 +181,26 @@ public class FestivalOverviewWerkeFragment extends Fragment
    private void initializeWerkeArray() {
       String[] kuenstlers = getResources().getStringArray(kuenstlerArrayId);
       Field[] fields = R.drawable.class.getFields();
+
+      List<Pair<Integer, String>> werkeKuenstlerList = new ArrayList<>();
+
       for (String kuenstler : kuenstlers) {
          for (Field field : fields) {
             if (field.getName()
                   .startsWith(kuenstler + "_")) {
                try {
-                  werkeArray.add(field.getInt(null));
-                  kuenstlerArray.add(kuenstler);
+                  werkeKuenstlerList.add(new Pair<>(field.getInt(null), kuenstler));
                } catch (IllegalAccessException e) {
                   e.printStackTrace();
                }
             }
          }
       }
-      Collections.shuffle(werkeArray);
+      Collections.shuffle(werkeKuenstlerList);
+      for (Pair<Integer, String> werkeKuenstler : werkeKuenstlerList) {
+         werkeArray.add(werkeKuenstler.first);
+         kuenstlerArray.add(werkeKuenstler.second);
+      }
    }
 
    /**

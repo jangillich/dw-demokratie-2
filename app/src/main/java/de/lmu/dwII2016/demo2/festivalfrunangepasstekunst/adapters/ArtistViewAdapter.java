@@ -16,7 +16,6 @@ import butterknife.ButterKnife;
 import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.KuenstlerDetailActivity;
 import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.KuenstlerViewItem;
 import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.R;
-import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.util.ImageFetcher;
 import de.lmu.dwII2016.demo2.festivalfrunangepasstekunst.util.ResHelper;
 
 public class ArtistViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -26,7 +25,7 @@ public class ArtistViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
       KuenstlerViewItem img;
       @Bind (R.id.img_selector)
       ImageView imgSelector;
-      @Bind(R.id.artist_text)
+      @Bind (R.id.artist_text)
       RelativeLayout artistText;
       @Bind (R.id.artist_name)
       TextView artistName;
@@ -44,14 +43,11 @@ public class ArtistViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
    private List<Integer> images;
    private List<String> kuenstlerNames;
    private Activity activity;
-   private ImageFetcher imageFetcher;
 
-   public ArtistViewAdapter(Activity activity, ImageFetcher imageFetcher, List<Integer> images,
-         List<String> kuenstlerNames) {
+   public ArtistViewAdapter(Activity activity, List<Integer> images, List<String> kuenstlerNames) {
       this.images = images;
       this.kuenstlerNames = kuenstlerNames;
       this.activity = activity;
-      this.imageFetcher = imageFetcher;
    }
 
    @Override
@@ -64,8 +60,7 @@ public class ArtistViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
    @Override
    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, final int position) {
       final ArtistViewHolder itemViewHolder = (ArtistViewHolder) viewHolder;
-      imageFetcher.loadImage(activity.getResources()
-            .getResourceEntryName(images.get(position)), itemViewHolder.img);
+      itemViewHolder.img.setImageResource(images.get(position));
       String kuenstlerNameId = kuenstlerNames.get(position);
       String kuenstlerName = activity.getString(
             ResHelper.getResId("kuenstler_name_" + kuenstlerNameId, R.string.class));
@@ -74,9 +69,8 @@ public class ArtistViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
       itemViewHolder.img.setKuenstlerName(kuenstlerNameId);
 
-
       int kuenstlerNameImageId =
-              ResHelper.getResId("kuenstler_name_" + kuenstlerNameId, R.drawable.class);
+            ResHelper.getResId("kuenstler_name_" + kuenstlerNameId, R.drawable.class);
       if (kuenstlerNameImageId < 0) {
          itemViewHolder.imageName.setVisibility(View.GONE);
          itemViewHolder.artistText.setVisibility(View.VISIBLE);
@@ -92,7 +86,6 @@ public class ArtistViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
          itemViewHolder.imageName.setVisibility(View.VISIBLE);
          itemViewHolder.artistText.setVisibility(View.GONE);
       }
-
 
       itemViewHolder.imgSelector.setOnClickListener(new View.OnClickListener() {
          @Override

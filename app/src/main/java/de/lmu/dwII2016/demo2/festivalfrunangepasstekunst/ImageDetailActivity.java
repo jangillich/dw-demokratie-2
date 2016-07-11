@@ -18,7 +18,6 @@ import android.view.View.OnClickListener;
 import android.view.WindowManager.LayoutParams;
 import android.widget.Button;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,16 +36,15 @@ public class ImageDetailActivity extends AppCompatActivity implements OnClickLis
    Toolbar toolbar;
    @Bind (R.id.pager)
    ViewPager mPager;
-   @Bind(R.id.fullscreen_content_controls)
+   @Bind (R.id.fullscreen_content_controls)
    View mControlsView;
-   @Bind(R.id.kuenstler_button)
+   @Bind (R.id.kuenstler_button)
    Button kuenstlerButton;
 
    private ImagePagerAdapter mAdapter;
    private ImageFetcher mImageFetcher;
 
-   private int kuenstlerArrayId;
-   private List<Integer> werkeArray = new ArrayList<>();
+   private ArrayList<Integer> werkeArray = new ArrayList<>();
    private List<String> kuenstlerArray = new ArrayList<>();
    private String kuenstlerName;
 
@@ -69,9 +67,10 @@ public class ImageDetailActivity extends AppCompatActivity implements OnClickLis
 
       Bundle extras = getIntent().getExtras();
       if (extras != null) {
-         kuenstlerArrayId = extras.getInt("KUENSTLER_ARRAY", -1);
+         kuenstlerArray = extras.getStringArrayList("KUENSTLER_ARRAY");
          kuenstlerName = extras.getString("KUENSTLER_NAME", "");
-         initializeWerkeArray();
+         werkeArray = extras.getIntegerArrayList("WERKE_LIST");
+         kuenstlerButton.setText(kuenstlerName);
       }
 
       // Fetch screen height and width, to use as our max size when loading images as this
@@ -128,7 +127,9 @@ public class ImageDetailActivity extends AppCompatActivity implements OnClickLis
 
          @Override
          public void onPageSelected(int position) {
-            kuenstlerButton.setText(ResHelper.getResId("kuenstler_name_" + kuenstlerArray.get(position), R.string.class));
+            kuenstlerButton.setText(
+                  ResHelper.getResId("kuenstler_name_" + kuenstlerArray.get(position),
+                        R.string.class));
          }
 
          @Override
@@ -139,7 +140,7 @@ public class ImageDetailActivity extends AppCompatActivity implements OnClickLis
       kuenstlerButton.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
-            Intent intent = new Intent(ImageDetailActivity.this,  KuenstlerDetailActivity.class);
+            Intent intent = new Intent(ImageDetailActivity.this, KuenstlerDetailActivity.class);
             intent.putExtra("KUENSTLER_NAME", kuenstlerArray.get(mPager.getCurrentItem()));
             startActivity(intent);
          }
@@ -156,38 +157,6 @@ public class ImageDetailActivity extends AppCompatActivity implements OnClickLis
       final int extraCurrentItem = getIntent().getIntExtra(EXTRA_IMAGE, -1);
       if (extraCurrentItem != -1) {
          mPager.setCurrentItem(extraCurrentItem);
-      }
-   }
-
-   private void initializeWerkeArray() {
-      if(kuenstlerArrayId > 0) {
-         String[] kuenstlers = getResources().getStringArray(kuenstlerArrayId);
-         Field[] fields = R.drawable.class.getFields();
-         for (String kuenstler : kuenstlers) {
-            for (Field field : fields) {
-               if (field.getName()
-                     .startsWith(kuenstler + "_")) {
-                  try {
-                     werkeArray.add(field.getInt(null));
-                     kuenstlerArray.add(kuenstler);
-                  } catch (IllegalAccessException e) {
-                     e.printStackTrace();
-                  }
-               }
-            }
-         }
-      } else if(!kuenstlerName.isEmpty()) {
-         Field[] fields = R.drawable.class.getFields();
-         for (Field field : fields) {
-            if (field.getName().startsWith(kuenstlerName + "_")) {
-               try {
-                  werkeArray.add(field.getInt(null));
-                  kuenstlerArray.add(kuenstlerName);
-               } catch (IllegalAccessException e) {
-                  e.printStackTrace();
-               }
-            }
-         }
       }
    }
 

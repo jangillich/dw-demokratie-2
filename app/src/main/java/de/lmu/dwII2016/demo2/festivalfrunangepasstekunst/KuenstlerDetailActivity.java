@@ -71,7 +71,8 @@ public class KuenstlerDetailActivity extends AppCompatActivity {
 
    private int descriptionViewFullHeight;
    private String kuenstlerName;
-   private List<Integer> werkeArray = new ArrayList<>();
+   private ArrayList<Integer> werkeArray = new ArrayList<>();
+   private ArrayList<String> kuenstlerArray = new ArrayList<>();
 
    @Override
    protected void onCreate(Bundle savedInstanceState) {
@@ -222,7 +223,8 @@ public class KuenstlerDetailActivity extends AppCompatActivity {
       kuenstlerImagesView.setLayoutManager(layoutManager);
       kuenstlerImagesView.setAdapter(mAdapter);
       int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.spacing);
-      kuenstlerImagesView.addItemDecoration(new GridSpacingItemDecoration(3, spacingInPixels, false, 0));
+      kuenstlerImagesView.addItemDecoration(
+            new GridSpacingItemDecoration(3, spacingInPixels, false, 0));
       kuenstlerImagesView.addOnScrollListener(new RecyclerView.OnScrollListener() {
          @Override
          public void onScrollStateChanged(RecyclerView recyclerView, int scrollState) {
@@ -294,6 +296,7 @@ public class KuenstlerDetailActivity extends AppCompatActivity {
                .startsWith(kuenstlerName + "_")) {
             try {
                werkeArray.add(field.getInt(null));
+               kuenstlerArray.add(kuenstlerName);
             } catch (IllegalAccessException e) {
                e.printStackTrace();
             }
@@ -402,6 +405,8 @@ public class KuenstlerDetailActivity extends AppCompatActivity {
                i.putExtra(ImageDetailActivity.EXTRA_IMAGE,
                      (int) getItemId(holder.getAdapterPosition()));
                i.putExtra("KUENSTLER_NAME", kuenstlerName);
+               i.putStringArrayListExtra("KUENSTLER_ARRAY", kuenstlerArray);
+               i.putIntegerArrayListExtra("WERKE_LIST", werkeArray);
                if (Utils.hasJellyBean()) {
                   // makeThumbnailScaleUpAnimation() looks kind of ugly here as the loading
                   // spinner may

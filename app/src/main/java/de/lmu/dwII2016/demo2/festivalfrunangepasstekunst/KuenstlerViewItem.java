@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-public class KuenstlerViewItem extends RecyclingImageView {
+public class KuenstlerViewItem extends ImageView {
 
    private String kuenstlerName;
 
