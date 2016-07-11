@@ -99,6 +99,7 @@ public class EventInfosActivity extends AppCompatActivity
       if (actionBar != null) {
          actionBar.setDisplayHomeAsUpEnabled(true);
       }
+
       gruenderProfileImagesList.add(
             ResHelper.getResId("kuenstler_profile_adler", R.drawable.class));
       gruenderProfileImagesList.add(ResHelper.getResId("kuenstler_profile_jpg", R.drawable.class));

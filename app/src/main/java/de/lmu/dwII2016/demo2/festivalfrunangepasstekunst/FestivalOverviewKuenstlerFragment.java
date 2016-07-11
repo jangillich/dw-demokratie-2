@@ -31,7 +31,6 @@ public class FestivalOverviewKuenstlerFragment extends Fragment {
       super.onCreate(savedInstanceState);
 
       kuenstlerArray = getArguments().getInt("KUENSTLER_ARRAY");
-
       mAdapter =
             new ArtistViewAdapter(getActivity(), getKuenstlerProfilesList(), getKuenstlerList());
    }
