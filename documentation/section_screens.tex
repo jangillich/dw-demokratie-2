@@ -1,5 +1,5 @@
 \section{Ansichten und Funktionen}
-Im Folgenden werden die Funktionen der App erläutert. 
+Im Folgenden werden die Funktionen der App erläutert. Alle Ansichten sind in Abbildung \ref{fig:overview} dargestellt.
 
 \subsection{Auswahl der Festival-Wocheneden}
 Beim Starten der Anwendung erreicht man die Ansicht zur Auswahl eines Festival-Wochenendes. Für jedes Wochenende gibt es eine Seite, zwischen welchen durch das Wischen nach links und rechts gewechselt werden kann. Diese Seiten enthalten ein Bild in der Farbe des jeweiligen Wochenendes, sowie die wichtigsten Informationen. Durch das Auswählen einer dieser Seiten wird man zur Übersicht des Wochenendes weitergeleitet.
@@ -22,5 +22,22 @@ Die Werke Detail Ansicht besteht aus einem Viewpager. Das bedeutet, dass durch d
 \subsection{Künstler Detail Ansicht}
 Die Künstler Detail Ansicht beinhaltet einen Text über den Künstler, sowie Bilder von dessen Werken. Ist der Text zu lange, wird nur ein Teil angezeigt, wobei der ganze Text durch das Ausklappen der Karte angezeigt werden kann. Bei der Auswahl eines Werks des Künstlers wird die Werk Detail Ansicht geöffnet, wobei durch das Swipen nur die Werke dieses Künstlers angezeigt werden. In der Toolbar wird - wie in der Künstler Übersicht - das Profilbild des Künstlers, sowie dessen Name angezeigt. 
 
+\subsection{Anfahrt}
+In der Anfahrt Ansicht wird eine Google Maps Karte\footnote{\url{https://maps.google.com/}} mit drei Marken an den Orten in München angezeigt. Jeder Marker ist in der jeweiligen Farbe des Wochenendes (vgl. Kapitel \ref{section_visual_elements}). Beim Klick auf einen der Marker erscheint eine Karte mit Informationen über dieses Event (Name, Datum und Ort des ausgewählten Festival Wochenendes). 
+
+\subsection{Event Informationen}
+Zu den Event Informationen gehören das Teaser-Video, eine Beschreibung des Festivals, Termine und Orte, sowie die Gründer des Festivals. Diese Informationen sind über die Ansicht der Event Informationen abrufbar. Da diese Daten viel Platz in Anspruch nehmen, wurden die Beschreibung und die Termine des Festivals in aufklappbare Karten integriert. Die Gründer bestehen aus denselben Elementen wie in der Künstler Übersicht. Durch einen Klick auf eines der Elemente kann man in der Künstler Detail Ansicht mehr über diesen Gründer erfahren.
+
+\subsection{Impressum}
+Im Impressum sind Informationen über die Herkunft der Informationen, den Aufbau der Anwendung, sowie rechtliche Absicherungen festgehalten.
+
 
 \subsection{Navigation}\label{section_navigation}
+
+
+\begin{figure}
+    \centering
+        \includegraphics[width=1.0\textwidth]{figures/overview.png}
+    \caption{Navigationsfluss aller Ansichten}
+    \label{fig:overview}
+\end{figure}

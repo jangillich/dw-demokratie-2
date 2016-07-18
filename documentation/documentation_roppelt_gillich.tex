@@ -12,13 +12,13 @@
 \usepackage{ragged2e} % for tighter hyphenation
 \usepackage{subcaption}
 \usepackage{caption}
+\usepackage{german}
 
 % \usepackage{marginnote} \usepackage[shortlabels]{enumitem}
 % \usepackage{paralist}
 
 %% EXAMPLE BEGIN -- HOW TO OVERRIDE THE DEFAULT COPYRIGHT STRIP --
-\copyrightinfo{}
-%Permission to make digital or hard copies of all or}
+% \copyrightinfo{Permission to make digital or hard copies of all or
 % part of this work for personal or classroom use is granted without
 % fee provided that copies are not made or distributed for profit or
 % commercial advantage and that copies bear this notice and the full
@@ -42,19 +42,19 @@
 \author{%
   \alignauthor{%
     \textbf{Bianka Roppelt}\\
-    \affaddr{LMU München} \\
-    \affaddr{München, Deutschland} \\
+    \affaddr{University of Munich} \\
+    \affaddr{Munich, Germany} \\
     \affaddr{roppelt@cip.ifi.lmu.de} }\alignauthor{%
     \textbf{Jan Gillich}\\
-    \affaddr{LMU München}\\
-    \affaddr{München, Deutschland}\\
+    \affaddr{University of Munich}\\
+    \affaddr{Munich, Germany}\\
     \email{gillich@cip.ifi.lmu.de} } \vfil 
 }
 % Paper metadata (use plain text, for PDF inclusion and later
 % re-using, if desired)
 \def\plaintitle{Dokumentation zum App Design im Designworkshop 2, Sommersemester 2016} \def\plainauthor{Bianka Roppelt, Jan Gillich}
-\def\plainkeywords{Festival für unangepasste Kunst; Designworkshop; App Design; Medieninformatik}
-\def\plaingeneralterms{Dokumentation}
+\def\plainkeywords{Unangepasste Kunst; App Design; Sommersemester 2016; Institut Für Informatik; LMU München}
+\def\plaingeneralterms{Documentation}
 
 %% Set up our PDF with metadata
 \hypersetup{%
@@ -62,8 +62,7 @@
   pdfkeywords={\plainkeywords}, }
 
 % \reversemarginpar%
-\renewcommand{\figurename}{Abbildung}
-\renewcommand{\abstractname}{Kurzzusammenfassung}
+
 \begin{document}
 
 \maketitle
@@ -74,7 +73,13 @@
 
 % Do not change the page size or page settings.
 \begin{abstract}
-Dieses Dokument beschreibt verschiedene Aspekte unserer für den Designworkshop gestalteten und entwickelten App. Außerdem erklären wir den Weg von den Ideen zur fertig Anwendung.
+  UPDATED---\today. This sample paper describes the formatting
+  requirements for SIGCHI Extended Abstract Format, and this sample
+  file offers recommendations on writing for the worldwide SIGCHI
+  readership. Please review this document even if you have submitted
+  to SIGCHI conferences before, as some format details have changed
+  relative to previous years. Abstracts should be about 150
+  words. Required.
 \end{abstract}
 
 \keywords{\plainkeywords}
@@ -85,10 +90,10 @@ Dieses Dokument beschreibt verschiedene Aspekte unserer für den Designworkshop 
 
 \input{section_intro}
 \input{section_process}
-\input{section_screens}
 \input{section_visual}
-%\input{section_technical}
-%\input{section_conclusion}
+\input{section_screens}
+\input{section_technical}
+\input{section_conclusion}
 
 \balance{} 
 
